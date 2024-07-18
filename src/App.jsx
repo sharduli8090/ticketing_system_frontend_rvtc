@@ -1,20 +1,44 @@
+// import React from 'react';
+import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
+import Header from './components/header/Header';
+import Footer from './components/footer/Footer';
+import AdminDashboard from './components/admin-dash/AdminDashboard';
+import EmployeeDashboard from './components/employee-dash/EmployeeDashboard';
+import AdminLogin from './components/admin-login/AdminLogin';
+import EmployeeLogin from './components/employee-login/EmployeeLogin';
+import useAuthService from './services/authService/AuthService';
 
-
-import { useSelector, useDispatch } from 'react-redux';
-import { increment, decrement, reset } from './redux/action';
-
-function App() { 
-  const count = useSelector((state) => state.counter.count);
-  const dispatch = useDispatch();
+const App = () => {
+  const authService = useAuthService();
 
   return (
-    <div>
-    <h1>Counter: {count}</h1>
-    <button onClick={() => dispatch(increment())}>Increment</button>
-    <button onClick={() => dispatch(decrement())}>Decrement</button>
-    <button onClick={() => dispatch(reset())}>Reset</button>
-  </div>
-  )
-}
+    <Router>
+      <Header />
+      <Routes>
+        
+        <Route path="/admin-login" element={<AdminLogin />} />
+        <Route path="/employee-login" element={<EmployeeLogin />} />
+        <Route path="/unauth" element={<h1>Unauthorized</h1>} />
+        <Route path="/admindash" element={<GuardedRoute component={AdminDashboard} roles={['admin']} />} />
+        <Route path="/employeedash" element={<GuardedRoute component={EmployeeDashboard} roles={['employee']} />} />
+        <Route path="/" element={authService.isLoggedIn() ? authService.getUserType() === 'admin' ? <Navigate to="/admindash" /> : <Navigate to="/employeedash" /> : <Navigate to="/employee-login" />} />
+          {/* <Navigate to="/admindash" />} /> */}
+      </Routes>
+      <Footer />
+    </Router>
+  );
+};
 
-export default App
+// eslint-disable-next-line react/prop-types
+const GuardedRoute = ({ component: Component, roles }) => {
+  const authService = useAuthService();
+  return (
+    authService.isAuthorized(roles) ? (
+      <Component />
+    ) : (
+      <Navigate to="/unauth" />
+    )
+  );
+};
+
+export default App;
