@@ -7,6 +7,7 @@ import EmployeeDashboard from './components/employee-dash/EmployeeDashboard';
 import AdminLogin from './components/admin-login/AdminLogin';
 import EmployeeLogin from './components/employee-login/EmployeeLogin';
 import useAuthService from './services/authService/AuthService';
+import Unauthorized from './components/unauth/Unauthorized';
 
 const App = () => {
   const authService = useAuthService();
@@ -18,7 +19,7 @@ const App = () => {
         
         <Route path="/admin-login" element={<AdminLogin />} />
         <Route path="/employee-login" element={<EmployeeLogin />} />
-        <Route path="/unauth" element={<h1>Unauthorized</h1>} />
+        <Route path="/unauth" element={<Unauthorized/>} />
         <Route path="/admindash" element={<GuardedRoute component={AdminDashboard} roles={['admin']} />} />
         <Route path="/employeedash" element={<GuardedRoute component={EmployeeDashboard} roles={['employee']} />} />
         <Route path="/" element={authService.isLoggedIn() ? authService.getUserType() === 'admin' ? <Navigate to="/admindash" /> : <Navigate to="/employeedash" /> : <Navigate to="/employee-login" />} />
