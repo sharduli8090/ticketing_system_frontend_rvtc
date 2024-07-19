@@ -1,13 +1,14 @@
-// import React from 'react';
+/* eslint-disable no-unused-vars */
+import React from 'react';
 import PropTypes from 'prop-types';
-// import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const CardsComponent = ({ cards }) => {
-//   const history = useHistory();
+  const navigate = useNavigate();
 
-//   const navigateToCard = (endpoint) => {
-//     history.push(endpoint);
-//   };
+  const navigateToCard = (endpoint) => {
+    navigate(endpoint);
+  };
 
   return (
     <div className="flex min-h-screen bg-gray-100">
@@ -18,7 +19,7 @@ const CardsComponent = ({ cards }) => {
               <div className="p-4 flex items-center justify-between">
                 <h3 className="text-blue-600 font-bold text-xl">{card.name}</h3>
                 <button
-                //   onClick={() => navigateToCard(card.endpoint)}
+                  onClick={() => navigateToCard(card.endpoint)}
                   className="bg-blue-600 text-white hover:bg-blue-700 font-bold py-2 px-4 rounded shadow-sm"
                 >
                   {card.buttonText}
