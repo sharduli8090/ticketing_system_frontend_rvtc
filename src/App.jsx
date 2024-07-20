@@ -17,6 +17,7 @@ import Header from "./components/header/Header";
 import Home from "./components/home/Home";
 import Unauthorized from "./components/unauth/Unauthorized";
 import useAuthService from "./services/authService/AuthService";
+import SendQuery from "./components/sendQuery/SendQuery";
 
 const App = () => {
   const authService = useAuthService();
@@ -27,6 +28,7 @@ const App = () => {
       <Routes>
         <Route path="/home" element={<Home />} />
         <Route path="/admin-login" element={<AdminLogin />} />
+        <Route path="/sendquery" element={<SendQuery />} />
         <Route path="/employee-login" element={<EmployeeLogin />} />
         <Route path="/unauth" element={<Unauthorized />} />
         <Route

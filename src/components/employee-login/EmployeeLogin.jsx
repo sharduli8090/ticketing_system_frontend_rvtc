@@ -1,5 +1,6 @@
 // components/EmployeeLoginComponent.js
 import { useState } from 'react';
+import { useNavigate } from "react-router-dom";
 // import { useHistory } from 'react-router-dom';
 import EmployeeLoginService from '../../services/employeeLoginService/EmployeeLoginService';
 import Loader from '../loader/Loader';
@@ -9,6 +10,8 @@ const EmployeeLogin = () => {
   const [password, setPassword] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
   const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
+
   // const history = useHistory();
 
   const clearInputs = () => {
@@ -57,10 +60,20 @@ const EmployeeLogin = () => {
     }
   };
 
+const handleAdminContact = () => {
+  navigate('/sendquery');
+}
+
+const handleAlert = () => {
+  alert('Please contact your admin for password reset.');
+  handleAdminContact();
+}
+
+
   return (
-    <div className="min-h-screen flex justify-center items-center bg-gradient-to-r from-blue-50 to-blue-100">
+    <div className="min-h-screen flex justify-center items-center bg-gradient-to-br from-blue-50 via-white to-blue-100">
       {!loading ? (
-        <div className="w-full max-w-md bg-white rounded-lg px-8 py-12 shadow-lg flex flex-col items-center">
+        <div className="w-full max-w-md bg-white rounded-lg px-8 py-12 shadow-2xl flex flex-col items-center">
           <h1 className="text-center text-2xl font-medium mb-8">Welcome Back Employee!</h1>
 
           <form onSubmit={handleSubmit}>
@@ -88,7 +101,7 @@ const EmployeeLogin = () => {
                 onChange={(e) => setPassword(e.target.value)}
                 required
               />
-              <a href="#" className="text-blue-500 text-xs float-right mt-1">Forgot Password?</a>
+              <span onClick={handleAlert} className="text-blue-500 text-xs float-right mt-1 hover:cursor-pointer">Forgot Password?</span>
             </div>
 
             <div className="flex items-center mb-4">
@@ -99,7 +112,7 @@ const EmployeeLogin = () => {
             <div className="text-red-500 text-sm text-center h-5">{errorMessage}</div>
 
             <div className="text-center text-gray-500 text-sm">
-              Sign up as Employee <a href="#" className="text-blue-500 font-bold">Contact Admin</a>
+              Sign up as Employee <span onClick={handleAdminContact} className="text-blue-500 font-bold hover:cursor-pointer">Contact Admin</span>
             </div>
           </form>
         </div>
