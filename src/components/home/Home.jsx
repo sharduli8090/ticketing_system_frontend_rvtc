@@ -1,14 +1,11 @@
-// import React from 'react';
+import React from 'react';
 import { FaAnglesDown } from "react-icons/fa6";
 import { useNavigate } from "react-router-dom";
-
+import Img1 from '../../asset/images/about.jpg';
+import { featCards } from '../../constant/Constant';
 
 const Home = () => {
   const navigate = useNavigate();
-
-  //   const handleAdminLogin = () => {
-  //     navigate("/admin-login");
-  //   };
 
   const handleEmployeeLogin = () => {
     navigate("/employee-login");
@@ -18,9 +15,8 @@ const Home = () => {
     <div className="flex flex-col items-center">
       {/* Login Buttons Section */}
       <section className="w-full min-h-screen bg-white flex flex-col justify-center items-center space-y-8 relative">
-        {/* <div className="absolute inset-0 bg-gradient-to-r from-blue-200 via-blue-100 to-blue-300 opacity-50"></div> */}
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center z-10">
-          <div className="bg-whitek bg-gradient-to-r from-blue-100 via-white to-blue-100  shadow-2xl p-10 relative z-10  ">
+          <div className="bg-white bg-gradient-to-r from-blue-100 via-white to-blue-100 shadow-2xl p-10 relative z-10">
             <h1 className="text-5xl font-medium mb-8 text-gray-800">
               Efficiency Meets Excellence
             </h1>
@@ -36,15 +32,9 @@ const Home = () => {
               </i>
             </h5>
             <div className="flex justify-center space-x-4">
-              {/* <button
-                onClick={handleAdminLogin}
-                className="px-6 py-3 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-lg shadow-md hover:bg-blue-700 transition-transform duration-300"
-              >
-                Admin Login
-              </button> */}
               <button
                 onClick={handleEmployeeLogin}
-                className="px-6 py-3 bg-gradient-to-r from-green-500 to-teal-500 text-white rounded-lg shadow-md hover:bg-green-600 transition-transform transform hover:scale-110 duration-300 w-full"
+                className="px-6 py-3 bg-gradient-to-r from-blue-500 to-indigo-500 text-white rounded-lg shadow-md hover:bg-green-600 transition-transform transform hover:scale-110 duration-300 w-full"
               >
                 Get Started
               </button>
@@ -68,32 +58,47 @@ const Home = () => {
       </section>
 
       {/* About Section */}
-      <section className="w-full min-h-screen bg-blue-800 py-20 text-white flex flex-col justify-center items-center transition-all duration-500 ease-in-out">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-4xl font-bold mb-4">About Us</h2>
-          <p className="text-xl mb-8">
-            We provide excellent ticketing system services to streamline your
-            workflow and enhance productivity.
-          </p>
+      <section className="w-full min-h-screen bg-blue-800 py-20 text-white flex justify-center items-center transition-all duration-500 ease-in-out">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center text-center md:text-left">
+          <div className="md:w-1/2 p-4">
+            <h2 className="text-4xl font-bold mb-4">About Us</h2>
+            <p className="text-xl mb-8 text-justify">
+              Experience the future of ticket management with our cutting-edge
+              system designed for seamless efficiency and user-friendly control.
+              Whether you&apos;re an admin or an employee, our intuitive dashboards and
+              real-time updates ensure you stay on top of every task. Empower your
+              team with effortless logins, comprehensive management tools, and
+              instant data synchronization, all in one dynamic platform. Join us
+              and transform the way you handle tickets, making your workflow
+              smoother and more productive than ever before.
+            </p>
+          </div>
+          <div className="md:w-1/2 p-4 flex justify-center">
+            <img
+              src={Img1}
+              alt="About Us"
+              className="w-full max-w-md rounded-lg shadow-lg"
+            />
+          </div>
         </div>
       </section>
 
       {/* Stats Section */}
       <section className="w-full min-h-screen bg-white py-20 flex flex-col justify-center items-center transition-all duration-500 ease-in-out">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-4xl font-semibold mb-20 ">Our Stats</h2>
+          <h2 className="text-4xl font-semibold mb-20">Our Stats</h2>
           <div className="flex justify-center space-x-8">
             <div className="bg-blue-200 p-20 rounded-lg shadow-md transition-transform transform hover:scale-110 duration-300">
-              <h3 className="text-xl font-sembold mb-2">Tickets Solved</h3>
-              <p className="text-9xl ">1500+</p>
+              <h3 className="text-xl font-semibold mb-2">Tickets Solved</h3>
+              <p className="text-9xl">1500+</p>
             </div>
             <div className="bg-blue-200 p-20 rounded-lg shadow-md transition-transform transform hover:scale-110 duration-300">
-              <h3 className="text-xl font-semibokld mb-2">Happy Clients</h3>
-              <p className="text-9xl ">300+</p>
+              <h3 className="text-xl font-semibold mb-2">Happy Clients</h3>
+              <p className="text-9xl">300+</p>
             </div>
             <div className="bg-blue-200 p-20 rounded-lg shadow-md transition-transform transform hover:scale-110 duration-300">
-              <h3 className="text-xl font-semibokld mb-2">Support Hours</h3>
-              <p className="text-9xl ">24/7</p>
+              <h3 className="text-xl font-semibold mb-2">Support Hours</h3>
+              <p className="text-9xl">24/7</p>
             </div>
           </div>
         </div>
@@ -107,84 +112,41 @@ const Home = () => {
             Explore our range of features designed to cater to all your
             ticketing needs.
           </p>
-          <div className="flex justify-center flex-wrap ">
-            <div className="bg-white text-blue-900 p-6 w-1/3 m-5 rounded-lg shadow-md transition-transform transform hover:scale-110 duration-300">
-              <h3 className="text-xl font-semibold mb-2">
-                Seamless Two-Way Login
-              </h3>
-              <p>
-                Effortlessly switch between admin and employee roles with
-                secure, easy logins.
-              </p>
-            </div>
-            <div className="bg-white text-blue-900 p-6 w-1/3 m-5 rounded-lg shadow-md transition-transform transform hover:scale-110 duration-300">
-              <h3 className="text-xl font-semibold mb-2">
-                Tailored Dashboards
-              </h3>
-              <p>
-                Enjoy personalized dashboards designed specifically for admins
-                and employees, providing a focused and intuitive user
-                experience.
-              </p>
-            </div>
-            <div className="bg-white text-blue-900 p-6 w-1/3 m-5 rounded-lg shadow-md transition-transform transform hover:scale-110 duration-300">
-              <h3 className="text-xl font-semibold mb-2">
-                Comprehensive Admin Control
-              </h3>
-              <p>
-                Manage everything with ease: view, update, and delete all
-                tickets and employee data from one powerful admin panel.
-              </p>
-            </div>
-            <div className="bg-white text-blue-900 p-6 w-1/3 m-5 rounded-lg shadow-md transition-transform transform hover:scale-110 duration-300">
-              <h3 className="text-xl font-semibold mb-2">
-                Efficient Ticket Resolution
-              </h3>
-              <p>
-                Admins can quickly close individual tickets, ensuring swift
-                issue resolution.
-              </p>
-            </div>
-            <div className="bg-white text-blue-900 p-6 w-1/3 m-5 rounded-lg shadow-md transition-transform transform hover:scale-110 duration-300">
-              <h3 className="text-xl font-semibold mb-2">
-                Empowered Employee Access
-              </h3>
-              <p>
-                Employees can manage their profiles, view tickets they’ve raised
-                or are assigned to, and close them with ease.
-              </p>
-            </div>
-            <div className="bg-white text-blue-900 p-6 w-1/3 m-5 rounded-lg shadow-md transition-transform transform hover:scale-110 duration-300">
-              <h3 className="text-xl font-semibold mb-2">
-                Instant Real-Time Updates
-              </h3>
-              <p>
-                Stay up-to-date with automatic real-time data synchronization,
-                ensuring everyone has the latest information at their
-                fingertips.
-              </p>
-            </div>
+          <div className="flex justify-center flex-wrap">
+            {
+                featCards.map((card, index) => (
+                    <div className="bg-white text-blue-900 p-6 w-1/3 m-5 rounded-lg shadow-md transition-transform transform hover:scale-110 duration-300 hover:bg-gradient-to-br hover:from-blue-200 hover:via-white hover:to-indigo-200" key={index}>
+                        <h3 className="text-xl font-semibold mb-2">{card.head}</h3>
+                        <p>{card.desc}</p>
+                    </div>
+                ))
+
+            }
+            
           </div>
         </div>
       </section>
 
       {/* More Info Section */}
       <section className="w-full min-h-screen bg-white py-20 flex flex-col justify-center items-center transition-all duration-500 ease-in-out">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center ">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-4xl font-bold mb-4">More Information</h2>
           <p className="text-xl mb-8">
             Get in touch with us to know more about our services and how we can
             help you.
           </p>
         </div>
+        <div className='bg-gradient-to-b from-blue-200  to-indigo-400 p-20 rounded-full animate-bounce shadow-2xl mt-20 drop-shadow-2xlll'>
+
         <FaAnglesDown
-          className="text-9xl mt-5 text-blue-500 animate-bounce"
+          className="text-9xl mt-5 text-white "
           style={{
-            background: "linear-gradient(to right, #3b82f6, #6366f1)",
-            WebkitBackgroundClip: "text",
-            WebkitTextFillColor: "transparent",
-          }}
-        />
+              background: "linear-gradient(to right, #3b82f6, #6366f1)",
+              WebkitBackgroundClip: "text",
+              WebkitTextFillColor: "transparent",
+            }}
+            />
+            </div>
       </section>
     </div>
   );

@@ -49,12 +49,12 @@ const Footer = () => {
         />
         <button
           type="submit"
-          className="btn btn-sm bg-blue-300 hover:bg-blue-400 text-white font-bold py-2 px-4 rounded-md md:mt-5 md:w-full md:mx-28 lg:mx-0 lg:w-auto lg:mt-0"
+          className="btn btn-sm bg-blue-300 hover:bg-blue-400 text-white font-bold py-2 px-4 rounded-md md:mt-5 md:w-full md:mx-28 lg:mx-0 lg:w-auto lg:mt-0 transition-transform transform hover:scale-110 duration-300"
         >
           Send Query
         </button>
       </form>
-      <p className="text-xs">&copy; 2024 Created by Creativstan</p>
+      <p className="text-xs transition-transform transform hover:scale-110 duration-300 ">&copy; 2024 Created by Creativstan</p>
     </footer>
   );
 };

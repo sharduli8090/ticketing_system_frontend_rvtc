@@ -80,3 +80,14 @@ export const employeeCards = [
 // update ticket on admin side
 // update employee on admin side
 // check response constant
+
+
+
+export const featCards = [
+  {head: 'Seamless Two-Way Login', desc: 'Effortlessly switch between admin and employee roles with secure, easy logins.'},
+  {head: 'Tailored Dashboards', desc: 'Enjoy personalized dashboards designed specifically for admins and employees, providing a focused and intuitive user experience.'},
+  {head: 'Comprehensive Admin Control', desc: 'Manage everything with ease: view, update, and delete all tickets and employee data from one powerful admin panel.'},
+  {head: 'Efficient Ticket Resolution', desc: 'Admins can quickly close individual tickets, ensuring swift issue resolution.'},
+  {head: 'Empowered Employee Access', desc: 'Employees can manage their profiles, view tickets they’ve raised or are assigned to, and close them with ease.'},
+  {head: 'Instant Real-Time Updates', desc: 'Stay up-to-date with automatic real-time data synchronization, ensuring everyone has the latest information at their fingertips.'},
+];
