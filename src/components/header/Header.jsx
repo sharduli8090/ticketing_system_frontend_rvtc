@@ -41,14 +41,18 @@ const Header = () => {
     navigate(isEmployeeLogin ? "/admin-login" : "/employee-login");
   };
 
+  // Handle navigation to home
+  const handleNavigate = () => {
+    navigate("/home");
+  };
   return (
     <>
       <header className="flex items-center justify-between px-4 py-3 bg-gradient-to-r from-blue-800 via-blue-700 to-blue-400 text-white shadow-md">
         <img
           src={Img1}
           alt="Logo"
-          className="w-10 h-10 "
-          onClick={() => navigate("/")}
+          className="w-10 h-10 animate-bounce hover:cursor-pointer"
+          onClick={handleNavigate}
         />
         <div className="md:text-3xl lg:text-3xl text-md font-semibold md:font-normal lg:font-normal">
           Ticketing System
