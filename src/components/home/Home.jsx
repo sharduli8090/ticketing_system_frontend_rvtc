@@ -11,6 +11,10 @@ const Home = () => {
     navigate("/employee-login");
   };
 
+  const handleSendQuery = () => {
+    navigate("/sendquery");
+  }
+
   return (
     <div className="flex flex-col items-center">
       {/* Login Buttons Section */}
@@ -136,7 +140,7 @@ const Home = () => {
             help you.
           </p>
         </div>
-        <div className='bg-gradient-to-b from-blue-200  to-indigo-400 p-20 rounded-full animate-bounce shadow-2xl mt-20 drop-shadow-2xlll'>
+        <div className='bg-gradient-to-b from-blue-200  to-indigo-400 p-20 rounded-full animate-bounce shadow-2xl mt-20 drop-shadow-2xlll' onClick={handleSendQuery}>
 
         <FaAnglesDown
           className="text-9xl mt-5 text-white "
@@ -145,6 +149,8 @@ const Home = () => {
               WebkitBackgroundClip: "text",
               WebkitTextFillColor: "transparent",
             }}
+
+            
             />
             </div>
       </section>

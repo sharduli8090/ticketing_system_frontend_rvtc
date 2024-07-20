@@ -18,6 +18,7 @@ import Home from "./components/home/Home";
 import Unauthorized from "./components/unauth/Unauthorized";
 import useAuthService from "./services/authService/AuthService";
 import SendQuery from "./components/sendQuery/SendQuery";
+import FloatingWidget from "./components/floating-widget/FloatingWidget";
 
 const App = () => {
   const authService = useAuthService();
@@ -74,6 +75,7 @@ const App = () => {
         {/* <Navigate to="/admindash" />} /> */}
       </Routes>
       <Footer />
+      <FloatingWidget/>
     </Router>
   );
 };
