@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
-import QueryService from '../../services/queryservice/QueryService';
-import Loader from '../loader/Loader';
+import { useState } from "react";
+import QueryService from "../../services/queryservice/QueryService";
+import Loader from "../loader/Loader";
 
 const Footer = () => {
-  const [formData, setFormData] = useState({ name: '', query: '' });
+  const [formData, setFormData] = useState({ name: "", query: "" });
   const [isLoading, setIsLoading] = useState(false);
 
   const handleInputChange = (e) => {
@@ -16,10 +16,10 @@ const Footer = () => {
     setIsLoading(true);
     try {
       const response = await QueryService.sendQuery(formData);
-      alert(response.message || 'Query sent successfully!');
-      setFormData({ name: '', query: '' }); // Clear input boxes after successful submission
+      alert(response.message || "Query sent successfully!");
+      setFormData({ name: "", query: "" });
     } catch (error) {
-      alert('Error sending query.');
+      alert("Error sending query.");
     } finally {
       setIsLoading(false);
     }
@@ -28,7 +28,10 @@ const Footer = () => {
   return (
     <footer className="flex justify-between items-center pb-3 bg-gradient-to-r from-blue-700 to-blue-500 text-white shadow-md flex-col">
       {isLoading && <Loader />}
-      <form onSubmit={handleSubmit} className="flex flex-col md:flex-row mt-5 md:mt-0 mb-7 md:mb-20 md:flex-wrap lg:flex-nowrap justify-center lg:py-7 md:py-10 lg:mx-0 md:w-full md:bg-blue-800">
+      <form
+        onSubmit={handleSubmit}
+        className="flex flex-col md:flex-row mt-5 md:mt-0 mb-7 md:mb-20 md:flex-wrap lg:flex-nowrap justify-center lg:py-7 md:py-10 lg:mx-0 md:w-full md:bg-blue-800"
+      >
         <input
           type="text"
           name="name"
@@ -54,7 +57,9 @@ const Footer = () => {
           Send Query
         </button>
       </form>
-      <p className="text-xs transition-transform transform hover:scale-110 duration-300 ">&copy; 2024 Created by Creativstan</p>
+      <p className="text-xs transition-transform transform hover:scale-110 duration-300 ">
+        &copy; 2024 Created by Creativstan
+      </p>
     </footer>
   );
 };

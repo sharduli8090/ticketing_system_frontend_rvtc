@@ -1,5 +1,3 @@
-
-// LocalStorageService can be implemented as a simple utility
 const LocalStorageService = {
   getItem: (key) => localStorage.getItem(key),
   setItem: (key, value) => localStorage.setItem(key, value),
@@ -8,15 +6,15 @@ const LocalStorageService = {
 
 const useAuthService = () => {
   const getAuthorizationHeaders = (userType) => {
-    let token = '';
-    if (userType === 'admin') {
-      token = LocalStorageService.getItem('admintoken') || ''; // Retrieve admin token
+    let token = "";
+    if (userType === "admin") {
+      token = LocalStorageService.getItem("admintoken") || ""; // Retrieve admin token
     } else {
-      token = LocalStorageService.getItem('emptoken') || ''; // Retrieve employee token
+      token = LocalStorageService.getItem("emptoken") || ""; // Retrieve employee token
     }
 
     if (!token) {
-      throw new Error('Unauthorized: No token found');
+      throw new Error("Unauthorized: No token found");
     }
 
     return {
@@ -27,23 +25,23 @@ const useAuthService = () => {
   };
 
   const isLoggedIn = () => {
-    let token = '';
-    if (LocalStorageService.getItem('admintoken')) {
-      token = LocalStorageService.getItem('admintoken') || '';
-    } else if (LocalStorageService.getItem('emptoken')) {
-      token = LocalStorageService.getItem('emptoken') || '';
+    let token = "";
+    if (LocalStorageService.getItem("admintoken")) {
+      token = LocalStorageService.getItem("admintoken") || "";
+    } else if (LocalStorageService.getItem("emptoken")) {
+      token = LocalStorageService.getItem("emptoken") || "";
     }
     return !!token;
   };
 
   const getUserType = () => {
-    let user = '';
-    if (LocalStorageService.getItem('admintoken')) {
-      user = 'admin';
-    } else if (LocalStorageService.getItem('emptoken')) {
-      user = 'employee';
+    let user = "";
+    if (LocalStorageService.getItem("admintoken")) {
+      user = "admin";
+    } else if (LocalStorageService.getItem("emptoken")) {
+      user = "employee";
     }
-    return user; // Implement your logic to retrieve the user type
+    return user;
   };
 
   const isAuthorized = (requiredRoles) => {
@@ -56,10 +54,10 @@ const useAuthService = () => {
   };
 
   const logout = () => {
-    LocalStorageService.removeItem('admintoken');
-    LocalStorageService.removeItem('adminid');
-    LocalStorageService.removeItem('emptoken');
-    LocalStorageService.removeItem('empid');
+    LocalStorageService.removeItem("admintoken");
+    LocalStorageService.removeItem("adminid");
+    LocalStorageService.removeItem("emptoken");
+    LocalStorageService.removeItem("empid");
   };
 
   return {

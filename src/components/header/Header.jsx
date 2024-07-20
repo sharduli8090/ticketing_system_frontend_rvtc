@@ -6,14 +6,13 @@ import useAuthService from "../../services/authService/AuthService";
 const Header = () => {
   const { isLoggedIn, getUserType, logout } = useAuthService();
   const [loggedIn, setLoggedIn] = useState(isLoggedIn());
-  const [initialLoginChecked, setInitialLoginChecked] = useState(false); // Track if initial login check is done
+  const [initialLoginChecked, setInitialLoginChecked] = useState(false);
   const [isEmployeeLogin, setIsEmployeeLogin] = useState(true);
   const navigate = useNavigate();
 
-  // Effect to handle initial login redirection
   useEffect(() => {
     if (!initialLoginChecked) {
-      setInitialLoginChecked(true); // Mark initial login check done to prevent further updates
+      setInitialLoginChecked(true);
       const userType = getUserType();
       if (isLoggedIn()) {
         if (userType === "admin") {
@@ -75,9 +74,6 @@ const Header = () => {
           )}
         </div>
       </header>
-      <main>
-        {/* Placeholder for dynamically rendering the login component */}
-      </main>
     </>
   );
 };

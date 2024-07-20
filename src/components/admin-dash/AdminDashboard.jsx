@@ -1,7 +1,7 @@
 // import React from 'react';
-import CardsComponent from '../cards/Card';
+import CardsComponent from "../cards/Card";
 
-import { adminCards } from '../../constant/Constant';
+import { adminCards } from "../../constant/Constant";
 
 const AdminDashboard = () => {
   return (

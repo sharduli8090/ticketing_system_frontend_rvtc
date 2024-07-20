@@ -1,4 +1,3 @@
-// import React from 'react';
 import {
   Navigate,
   Route,
@@ -12,13 +11,13 @@ import AllTicket from "./components/all-ticket/AllTicket";
 import CreateEmployee from "./components/create-employee/CreateEmployee";
 import EmployeeDashboard from "./components/employee-dash/EmployeeDashboard";
 import EmployeeLogin from "./components/employee-login/EmployeeLogin";
+import FloatingWidget from "./components/floating-widget/FloatingWidget";
 import Footer from "./components/footer/Footer";
 import Header from "./components/header/Header";
 import Home from "./components/home/Home";
+import SendQuery from "./components/sendQuery/SendQuery";
 import Unauthorized from "./components/unauth/Unauthorized";
 import useAuthService from "./services/authService/AuthService";
-import SendQuery from "./components/sendQuery/SendQuery";
-import FloatingWidget from "./components/floating-widget/FloatingWidget";
 
 const App = () => {
   const authService = useAuthService();
@@ -72,10 +71,9 @@ const App = () => {
             )
           }
         />
-        {/* <Navigate to="/admindash" />} /> */}
       </Routes>
       <Footer />
-      <FloatingWidget/>
+      <FloatingWidget />
     </Router>
   );
 };

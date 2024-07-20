@@ -1,8 +1,7 @@
-import React from 'react';
 import { FaAnglesDown } from "react-icons/fa6";
 import { useNavigate } from "react-router-dom";
-import Img1 from '../../asset/images/about.jpg';
-import { featCards } from '../../constant/Constant';
+import Img1 from "../../asset/images/about.jpg";
+import { featCards } from "../../constant/Constant";
 
 const Home = () => {
   const navigate = useNavigate();
@@ -13,7 +12,7 @@ const Home = () => {
 
   const handleSendQuery = () => {
     navigate("/sendquery");
-  }
+  };
 
   return (
     <div className="flex flex-col items-center">
@@ -69,12 +68,13 @@ const Home = () => {
             <p className="text-xl mb-8 text-justify">
               Experience the future of ticket management with our cutting-edge
               system designed for seamless efficiency and user-friendly control.
-              Whether you&apos;re an admin or an employee, our intuitive dashboards and
-              real-time updates ensure you stay on top of every task. Empower your
-              team with effortless logins, comprehensive management tools, and
-              instant data synchronization, all in one dynamic platform. Join us
-              and transform the way you handle tickets, making your workflow
-              smoother and more productive than ever before.
+              Whether you&apos;re an admin or an employee, our intuitive
+              dashboards and real-time updates ensure you stay on top of every
+              task. Empower your team with effortless logins, comprehensive
+              management tools, and instant data synchronization, all in one
+              dynamic platform. Join us and transform the way you handle
+              tickets, making your workflow smoother and more productive than
+              ever before.
             </p>
           </div>
           <div className="md:w-1/2 p-4 flex justify-center">
@@ -117,16 +117,15 @@ const Home = () => {
             ticketing needs.
           </p>
           <div className="flex justify-center flex-wrap">
-            {
-                featCards.map((card, index) => (
-                    <div className="bg-white text-blue-900 p-6 w-1/3 m-5 rounded-lg shadow-md transition-transform transform hover:scale-110 duration-300 hover:bg-gradient-to-br hover:from-blue-200 hover:via-white hover:to-indigo-200" key={index}>
-                        <h3 className="text-xl font-semibold mb-2">{card.head}</h3>
-                        <p>{card.desc}</p>
-                    </div>
-                ))
-
-            }
-            
+            {featCards.map((card, index) => (
+              <div
+                className="bg-white text-blue-900 p-6 w-1/3 m-5 rounded-lg shadow-md transition-transform transform hover:scale-110 duration-300 hover:bg-gradient-to-br hover:from-blue-200 hover:via-white hover:to-indigo-200"
+                key={index}
+              >
+                <h3 className="text-xl font-semibold mb-2">{card.head}</h3>
+                <p>{card.desc}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -140,19 +139,19 @@ const Home = () => {
             help you.
           </p>
         </div>
-        <div className='bg-gradient-to-b from-blue-200  to-indigo-400 p-20 rounded-full animate-bounce shadow-2xl mt-20 drop-shadow-2xlll' onClick={handleSendQuery}>
-
-        <FaAnglesDown
-          className="text-9xl mt-5 text-white "
-          style={{
+        <div
+          className="bg-gradient-to-b from-blue-200  to-indigo-400 p-20 rounded-full animate-bounce shadow-2xl mt-20 drop-shadow-2xlll"
+          onClick={handleSendQuery}
+        >
+          <FaAnglesDown
+            className="text-9xl mt-5 text-white "
+            style={{
               background: "linear-gradient(to right, #3b82f6, #6366f1)",
               WebkitBackgroundClip: "text",
               WebkitTextFillColor: "transparent",
             }}
-
-            
-            />
-            </div>
+          />
+        </div>
       </section>
     </div>
   );

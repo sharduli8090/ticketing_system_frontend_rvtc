@@ -1,5 +1,3 @@
-/* eslint-disable react/no-unescaped-entities */
-// import React from "react";
 import { FaLock } from "react-icons/fa";
 
 const Unauthorized = () => {
@@ -10,14 +8,15 @@ const Unauthorized = () => {
         <h1 className="text-5xl font-extrabold">Oops!</h1>
       </div>
       <p className="text-xl mb-6 text-center">
-        It seems you don't have the right credentials to access this page.
+        It seems you don&apos;t have the right credentials to access this page.
       </p>
       <p className="text-lg mb-8 text-center">
-        If you believe this is a mistake, please contact your administrator or try logging in with the appropriate account.
+        If you believe this is a mistake, please contact your administrator or
+        try logging in with the appropriate account.
       </p>
       <button
         className="bg-blue-600 hover:bg-blue-800 text-white font-bold py-3 px-6 rounded-full shadow-lg transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105"
-        onClick={() => window.location.href = '/'}
+        onClick={() => (window.location.href = "/")}
       >
         Take me to Home
       </button>

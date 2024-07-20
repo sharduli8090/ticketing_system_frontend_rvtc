@@ -1,7 +1,6 @@
-// import React from 'react';
-import CardsComponent from '../cards/Card';
+import CardsComponent from "../cards/Card";
 
-import { employeeCards } from '../../constant/Constant';
+import { employeeCards } from "../../constant/Constant";
 
 const EmployeeDashboard = () => {
   return (

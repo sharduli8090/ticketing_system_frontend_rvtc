@@ -1,19 +1,14 @@
-/* eslint-disable no-unused-vars */
-import React, { useEffect, useState } from 'react';
-import Loader from '../loader/Loader';
-import Table from '../table/Table';
-import AdminService from '../../services/adminService/AdminService';
+import { useEffect, useState } from "react";
+import AdminService from "../../services/adminService/AdminService";
+import Loader from "../loader/Loader";
+import Table from "../table/Table";
 
 const AllTicket = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [selectedStatus, setSelectedStatus] = useState('all');
+  const [selectedStatus, setSelectedStatus] = useState("all");
 
-  const {
-    getAllTicket,
-    getTicketsDeptWise,
-    deleteAllTickets,
-  } = AdminService; // Use the object methods directly
+  const { getAllTicket, getTicketsDeptWise, deleteAllTickets } = AdminService;
 
   useEffect(() => {
     fetchData();
@@ -32,9 +27,9 @@ const AllTicket = () => {
         Updated_At: ticket.updatedAt,
       }));
       setData(formattedData);
-      console.log('Data fetched successfully', formattedData);
+      console.log("Data fetched successfully", formattedData);
     } catch (error) {
-      alert('An error occurred while fetching data');
+      alert("An error occurred while fetching data");
       console.error(error);
     } finally {
       setLoading(false);
@@ -44,7 +39,7 @@ const AllTicket = () => {
   const filterByDept = async () => {
     setLoading(true);
     try {
-      if (selectedStatus === 'all') {
+      if (selectedStatus === "all") {
         fetchData();
       } else {
         const response = await getTicketsDeptWise({ status: selectedStatus });
@@ -57,10 +52,15 @@ const AllTicket = () => {
           Updated_At: ticket.updatedAt,
         }));
         setData(formattedData);
-        console.log(`Data fetched successfully for status: ${selectedStatus}`, formattedData);
+        console.log(
+          `Data fetched successfully for status: ${selectedStatus}`,
+          formattedData
+        );
       }
     } catch (error) {
-      alert(`An error occurred while fetching data for status: ${selectedStatus}`);
+      alert(
+        `An error occurred while fetching data for status: ${selectedStatus}`
+      );
       console.error(error);
     } finally {
       setLoading(false);
@@ -70,10 +70,10 @@ const AllTicket = () => {
   const handleDeleteAll = async () => {
     try {
       await deleteAllTickets();
-      alert('All tickets deleted successfully');
+      alert("All tickets deleted successfully");
       setData([]);
     } catch (error) {
-      alert('An error occurred while deleting all tickets');
+      alert("An error occurred while deleting all tickets");
       console.error(error);
     }
   };

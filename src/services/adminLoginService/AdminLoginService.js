@@ -1,7 +1,6 @@
-// services/adminLoginService.js
 import axios from "axios";
+import { Constants } from "../../constant/Constant";
 import { environment } from "../../environments/environment";
-import { Constants } from "../../constant/Constant"
 
 const AdminLoginService = () => {
   const adminLogin = async (obj) => {

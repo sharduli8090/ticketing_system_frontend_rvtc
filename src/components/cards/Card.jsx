@@ -1,7 +1,5 @@
-/* eslint-disable no-unused-vars */
-import React from 'react';
-import PropTypes from 'prop-types';
-import { useNavigate } from 'react-router-dom';
+import PropTypes from "prop-types";
+import { useNavigate } from "react-router-dom";
 
 const CardsComponent = ({ cards }) => {
   const navigate = useNavigate();
@@ -15,7 +13,10 @@ const CardsComponent = ({ cards }) => {
       <div className="flex-grow px-4 py-8">
         <div className="flex flex-col h-full justify-center items-center ">
           {cards.map((card) => (
-            <div key={card.name} className="bg-white shadow-md rounded mb-4 w-1/2">
+            <div
+              key={card.name}
+              className="bg-white shadow-md rounded mb-4 w-1/2"
+            >
               <div className="p-4 flex items-center justify-between">
                 <h3 className="text-blue-600 font-bold text-xl">{card.name}</h3>
                 <button

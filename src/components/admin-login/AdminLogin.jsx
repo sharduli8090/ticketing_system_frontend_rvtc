@@ -1,23 +1,20 @@
-// components/AdminLoginComponent.js
-import  { useState } from 'react';
-// import { useHistory } from 'react-router-dom';
-import AdminLoginService from '../../services/adminLoginService/AdminLoginService';
-import Loader from '../loader/Loader';
-import { useNavigate } from 'react-router-dom';
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import AdminLoginService from "../../services/adminLoginService/AdminLoginService";
+import Loader from "../loader/Loader";
 const AdminLogin = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [errorMessage, setErrorMessage] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
   const [loading, setLoading] = useState(false);
-  // const history = useHistory();
-const navigate = useNavigate();
+  const navigate = useNavigate();
   const clearInputs = () => {
-    setEmail('');
-    setPassword('');
+    setEmail("");
+    setPassword("");
   };
 
   const clearError = () => {
-    setErrorMessage('');
+    setErrorMessage("");
   };
 
   const handleSubmit = async (e) => {
@@ -25,7 +22,7 @@ const navigate = useNavigate();
     setLoading(true);
 
     if (!email || !password) {
-      setErrorMessage('Please enter valid email and password.');
+      setErrorMessage("Please enter valid email and password.");
       setLoading(false);
       clearInputs();
       return;
@@ -36,46 +33,51 @@ const navigate = useNavigate();
     try {
       const response = await AdminLoginService.adminLogin(loginData);
       if (response.statuscode === 200) {
-        setErrorMessage('');
-        console.log('Login successful:', response);
+        setErrorMessage("");
+        console.log("Login successful:", response);
         setLoading(false);
         clearInputs();
         clearError();
         window.location.reload();
-        // history.push('/admindash'); // Uncomment this line to navigate to the admin dashboard
       } else {
-        console.error('Login error:', response);
+        console.error("Login error:", response);
         setLoading(false);
-        setErrorMessage('Invalid Credentials');
+        setErrorMessage("Invalid Credentials");
         clearInputs();
       }
     } catch (error) {
-      console.error('Login error:', error);
+      console.error("Login error:", error);
       setLoading(false);
-      setErrorMessage('An error occurred. Please try again later.');
+      setErrorMessage("An error occurred. Please try again later.");
       clearInputs();
     }
   };
 
   const handleEmployeeLogin = () => {
-    navigate('/employee-login');
-  }
+    navigate("/employee-login");
+  };
 
   const handleAlert = () => {
-    alert('Please contact your admin for any queries.');
-    navigate('/sendquery');
-
-  }
+    alert("Please contact your admin for any queries.");
+    navigate("/sendquery");
+  };
 
   return (
     <div className="min-h-screen flex justify-center items-center bg-gradient-to-br from-blue-50 via-white to-blue-100">
       {!loading ? (
         <div className="w-full max-w-md bg-white rounded-lg px-8 py-12 shadow-2xl flex flex-col items-center">
-          <h1 className="text-center text-2xl font-medium mb-8">Welcome Back Admin!</h1>
+          <h1 className="text-center text-2xl font-medium mb-8">
+            Welcome Back Admin!
+          </h1>
 
           <form onSubmit={handleSubmit}>
             <div className="mb-6">
-              <label htmlFor="email" className="block text-gray-700 text-sm font-bold mb-2">Email:</label>
+              <label
+                htmlFor="email"
+                className="block text-gray-700 text-sm font-bold mb-2"
+              >
+                Email:
+              </label>
               <input
                 type="email"
                 id="email"
@@ -88,7 +90,12 @@ const navigate = useNavigate();
             </div>
 
             <div className="mb-6">
-              <label htmlFor="password" className="block text-gray-700 text-sm font-bold mb-2">Password:</label>
+              <label
+                htmlFor="password"
+                className="block text-gray-700 text-sm font-bold mb-2"
+              >
+                Password:
+              </label>
               <input
                 type="password"
                 id="password"
@@ -98,18 +105,34 @@ const navigate = useNavigate();
                 onChange={(e) => setPassword(e.target.value)}
                 required
               />
-              <span onClick={handleAlert} className="text-blue-500 text-xs float-right mt-1 hover:cursor-pointer">Send Your Query</span>
+              <span
+                onClick={handleAlert}
+                className="text-blue-500 text-xs float-right mt-1 hover:cursor-pointer"
+              >
+                Send Your Query
+              </span>
             </div>
 
             <div className="flex items-center mb-4">
-              <button type="submit" className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-700">
+              <button
+                type="submit"
+                className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-700"
+              >
                 Login
               </button>
-            </div> 
-            <div className="text-red-500 text-sm text-center h-5">{errorMessage}</div>
+            </div>
+            <div className="text-red-500 text-sm text-center h-5">
+              {errorMessage}
+            </div>
 
             <div className="text-center text-gray-500 text-sm">
-              Sign in as Employee <span className="text-blue-500 font-bold hover:cursor-pointer" onClick={handleEmployeeLogin}>Employee Login</span>
+              Sign in as Employee
+              <span
+                className="text-blue-500 font-bold hover:cursor-pointer"
+                onClick={handleEmployeeLogin}
+              >
+                Employee Login
+              </span>
             </div>
           </form>
         </div>

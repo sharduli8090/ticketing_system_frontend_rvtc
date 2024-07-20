@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
-import QueryService from '../../services/queryservice/QueryService';
-import Loader from '../loader/Loader';
+import { useState } from "react";
+import QueryService from "../../services/queryservice/QueryService";
+import Loader from "../loader/Loader";
 
 const SendQuery = () => {
-  const [formData, setFormData] = useState({ name: '', query: '' });
+  const [formData, setFormData] = useState({ name: "", query: "" });
   const [isLoading, setIsLoading] = useState(false);
 
   const handleInputChange = (e) => {
@@ -15,16 +15,16 @@ const SendQuery = () => {
     e.preventDefault();
     setIsLoading(true);
     try {
-        if (!formData.name || !formData.query) {
-          alert('Please enter your name and query.');
-          setIsLoading(false);
-          return;
-        }   
+      if (!formData.name || !formData.query) {
+        alert("Please enter your name and query.");
+        setIsLoading(false);
+        return;
+      }
       const response = await QueryService.sendQuery(formData);
-      alert(response.message || 'Query sent successfully!');
-      setFormData({ name: '', query: '' });
+      alert(response.message || "Query sent successfully!");
+      setFormData({ name: "", query: "" });
     } catch (error) {
-      alert('Error sending query.');
+      alert("Error sending query.");
     } finally {
       setIsLoading(false);
     }
@@ -37,7 +37,8 @@ const SendQuery = () => {
         Got a Query? We&apos;re Here to Help!
       </h2>
       <p className="text-gray-600 text-center mb-6">
-        Fill in your details and query below, and we&apos;ll get back to you promptly.
+        Fill in your details and query below, and we&apos;ll get back to you
+        promptly.
       </p>
       <form onSubmit={handleSubmit} className="space-y-4">
         <input

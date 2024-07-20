@@ -1,19 +1,15 @@
-/* eslint-disable no-unused-vars */
-import React, { useEffect, useState } from 'react';
-import Loader from '../loader/Loader';
-import Table from '../table/Table';
-import AdminService from '../../services/adminService/AdminService';
+import { useEffect, useState } from "react";
+import AdminService from "../../services/adminService/AdminService";
+import Loader from "../loader/Loader";
+import Table from "../table/Table";
 
 const AllEmployee = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [selectedDepartment, setSelectedDepartment] = useState('all');
+  const [selectedDepartment, setSelectedDepartment] = useState("all");
 
-  const {
-    getAllEmployee,
-    getEmployeeDeptWise,
-    deleteAllEmployee,
-  } = AdminService; // Use the object methods directly
+  const { getAllEmployee, getEmployeeDeptWise, deleteAllEmployee } =
+    AdminService;
 
   useEffect(() => {
     fetchData();
@@ -23,7 +19,7 @@ const AllEmployee = () => {
     setLoading(true);
     try {
       const response = await getAllEmployee();
-      console.log('Response:', response);
+      console.log("Response:", response);
       const formattedData = response.data.map((employee) => ({
         id: employee.id,
         Email: employee.email,
@@ -36,9 +32,9 @@ const AllEmployee = () => {
         Department: employee.empDepartment,
       }));
       setData(formattedData);
-      console.log('Data fetched successfully', formattedData);
+      console.log("Data fetched successfully", formattedData);
     } catch (error) {
-      alert('An error occurred while fetching data');
+      alert("An error occurred while fetching data");
       console.error(error);
     } finally {
       setLoading(false);
@@ -48,10 +44,12 @@ const AllEmployee = () => {
   const filterByDepartment = async () => {
     setLoading(true);
     try {
-      if (selectedDepartment === 'all') {
+      if (selectedDepartment === "all") {
         fetchData();
       } else {
-        const response = await getEmployeeDeptWise({ dept: selectedDepartment });
+        const response = await getEmployeeDeptWise({
+          dept: selectedDepartment,
+        });
         const formattedData = response.data.map((employee) => ({
           id: employee.id,
           Email: employee.email,
@@ -64,10 +62,15 @@ const AllEmployee = () => {
           Department: employee.empDepartment,
         }));
         setData(formattedData);
-        console.log(`Data fetched successfully for department: ${selectedDepartment}`, formattedData);
+        console.log(
+          `Data fetched successfully for department: ${selectedDepartment}`,
+          formattedData
+        );
       }
     } catch (error) {
-      alert(`An error occurred while fetching data for department: ${selectedDepartment}`);
+      alert(
+        `An error occurred while fetching data for department: ${selectedDepartment}`
+      );
       console.error(error);
     } finally {
       setLoading(false);
@@ -77,10 +80,10 @@ const AllEmployee = () => {
   const handleDeleteAll = async () => {
     try {
       await deleteAllEmployee();
-      alert('All employees deleted successfully');
+      alert("All employees deleted successfully");
       setData([]);
     } catch (error) {
-      alert('An error occurred while deleting all employees');
+      alert("An error occurred while deleting all employees");
       console.error(error);
     }
   };
