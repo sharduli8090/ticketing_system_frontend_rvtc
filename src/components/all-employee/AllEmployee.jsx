@@ -122,7 +122,7 @@ const AllEmployee = () => {
               </button>
             </div>
           </div>
-          <Table data={data} />
+          <Table data={data} update={true} delete={true} />
         </>
       )}
     </div>

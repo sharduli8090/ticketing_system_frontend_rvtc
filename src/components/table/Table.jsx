@@ -1,8 +1,10 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable react/prop-types */
 import { useEffect, useState } from "react";
 import AdminService from "../../services/adminService/AdminService";
 import Loader from "../loader/Loader";
 
-const Table = ({ data }) => {
+const Table = ({ data, update, delete: del, approve, deny, close }) => {
   const [keys, setKeys] = useState([]);
   const [loading, setLoading] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
@@ -53,6 +55,19 @@ const Table = ({ data }) => {
     closeModal();
   };
 
+  const capitalizeFirstLetter = (string) => {
+    if (typeof string !== "string") return string;
+    if (!string) return "NIL";
+    return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
+  };
+
+  const formatData = (row, key) => {
+    if (key === "department") {
+      return row[key] ? row[key].toUpperCase() : "NIL";
+    }
+    return capitalizeFirstLetter(row[key]);
+  };
+
   return (
     <>
       {!loading ? (
@@ -77,22 +92,50 @@ const Table = ({ data }) => {
                     key={idx}
                     className="px-6 py-4 text-ellipsis overflow-hidden whitespace-nowrap text-center"
                   >
-                    {row[key]}
+                    {formatData(row, key)}
                   </td>
                 ))}
                 <td className="px-6 py-4 text-center">
-                  <button
-                    onClick={() => openUpdateModal(row)}
-                    className="bg-blue-500 hover:bg-blue-700 rounded mr-3 text-white text-sm p-2"
-                  >
-                    Update
-                  </button>
-                  <button
-                    onClick={() => handleDeleteRow(row.id, "employee")}
-                    className="bg-red-500 hover:bg-red-700 rounded mr-3 text-white text-sm p-2"
-                  >
-                    Delete
-                  </button>
+                  {update && (
+                    <button
+                      onClick={() => openUpdateModal(row)}
+                      className="bg-blue-500 hover:bg-blue-700 rounded mr-3 text-white text-sm p-2"
+                    >
+                      Update
+                    </button>
+                  )}
+                  {del && (
+                    <button
+                      onClick={() => handleDeleteRow(row.id, "employee")}
+                      className="bg-red-500 hover:bg-red-700 rounded mr-3 text-white text-sm p-2"
+                    >
+                      Delete
+                    </button>
+                  )}
+                  {approve && (
+                    <button
+                      onClick={() => alert("Approve action for " + row.id)}
+                      className="bg-green-500 hover:bg-green-700 rounded mr-3 text-white text-sm p-2"
+                    >
+                      Approve
+                    </button>
+                  )}
+                  {deny && (
+                    <button
+                      onClick={() => alert("Deny action for " + row.id)}
+                      className="bg-yellow-500 hover:bg-yellow-700 rounded mr-3 text-white text-sm p-2"
+                    >
+                      Deny
+                    </button>
+                  )}
+                  {close && (
+                    <button
+                      onClick={() => alert("Close action for " + row.id)}
+                      className="bg-gray-500 hover:bg-gray-700 rounded text-white text-sm p-2"
+                    >
+                      Close
+                    </button>
+                  )}
                 </td>
               </tr>
             ))}

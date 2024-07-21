@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { FaFemale, FaMale } from 'react-icons/fa';
 import EmployeeService from '../../services/employeeService/EmployeeService';
 import Loader from '../loader/Loader';

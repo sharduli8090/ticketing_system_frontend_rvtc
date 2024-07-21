@@ -20,11 +20,14 @@ const AllTicket = () => {
       const response = await getAllTicket();
       const formattedData = response.data.map((ticket) => ({
         id: ticket.id,
-        Title: ticket.title,
-        Description: ticket.description,
-        Status: ticket.status,
-        Created_At: ticket.createdAt,
-        Updated_At: ticket.updatedAt,
+        Title: ticket.ticketName,
+        Description: ticket.ticketDescription,
+        Created_At: ticket.dateOfCreation,
+        RaisedBy: ticket.ticketRaisedByName,
+        AssignedTo: ticket.ticketAssignedToName,
+        Status: ticket.ticketStatus,
+        Comments: ticket.ticketComments,
+        Department: ticket.ticketDepartment,
       }));
       setData(formattedData);
       console.log("Data fetched successfully", formattedData);
@@ -45,11 +48,14 @@ const AllTicket = () => {
         const response = await getTicketsDeptWise({ status: selectedStatus });
         const formattedData = response.data.map((ticket) => ({
           id: ticket.id,
-          Title: ticket.title,
-          Description: ticket.description,
-          Status: ticket.status,
-          Created_At: ticket.createdAt,
-          Updated_At: ticket.updatedAt,
+          Title: ticket.ticketName,
+          Description: ticket.ticketDescription,
+          Created_At: ticket.dateOfCreation,
+          RaisedBy: ticket.ticketRaisedByName,
+          AssignedTo: ticket.ticketAssignedToName,
+          Status: ticket.ticketStatus,
+          Comments: ticket.ticketComments,
+          Department: ticket.ticketDepartment,
         }));
         setData(formattedData);
         console.log(
@@ -112,7 +118,7 @@ const AllTicket = () => {
               </button>
             </div>
           </div>
-          <Table data={data} />
+          <Table data={data} close={true} delete={true} approve={true} deny={true}  />
         </>
       )}
     </div>
