@@ -18,6 +18,7 @@ import Home from "./components/home/Home";
 import SendQuery from "./components/sendQuery/SendQuery";
 import Unauthorized from "./components/unauth/Unauthorized";
 import useAuthService from "./services/authService/AuthService";
+import EmployeeProfile from "./components/employeeProfile/EmployeeProfile";
 
 const App = () => {
   const authService = useAuthService();
@@ -55,6 +56,12 @@ const App = () => {
           path="/employeedash"
           element={
             <GuardedRoute component={EmployeeDashboard} roles={["employee"]} />
+          }
+        />
+        <Route
+          path="/employeeprofile"
+          element={
+            <GuardedRoute component={EmployeeProfile} roles={["employee"]} />
           }
         />
         <Route

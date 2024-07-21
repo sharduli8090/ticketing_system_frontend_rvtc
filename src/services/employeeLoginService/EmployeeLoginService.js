@@ -6,7 +6,7 @@ const employeeLoginService = () => {
   const employeeLogin = async (obj) => {
     try {
       const response = await axios.post(
-        `${environment.API_URL}${Constants.API_EMPLOYEE_ENDPOINT.EMPLOYEE_LOGIN}`,
+        `${environment.API_EMPLOYEE_URL}${Constants.API_EMPLOYEE_ENDPOINT.EMPLOYEE_LOGIN}`,
         obj
       );
       const res = response.data;

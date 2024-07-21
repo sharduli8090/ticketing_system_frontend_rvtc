@@ -13,9 +13,10 @@ export const Constants = {
     GET_TICKET_DEPT_WISE: "getdeptwiseticket",
   },
   API_EMPLOYEE_ENDPOINT: {
-    EMPLOYEE_LOGIN: "employee/login",
-    CREATE_TICKET: "employee/createticket",
-    CLOSE_TICKET: "employee/closeticket/",
+    EMPLOYEE_LOGIN: "login",
+    CREATE_TICKET: "createticket",
+    CLOSE_TICKET: "closeticket",
+    GET_EMPLOYEE: "getemployee/",
   },
   API_GENERAL_ENDPOINT: {
     SEND_QUERY: "sendqueryfeedback",
@@ -48,7 +49,7 @@ export const employeeCards = [
   {
     name: "Explore Your Profile",
     buttonText: "Explore",
-    endpoint: "/getemployee/",
+    endpoint: "/employeeprofile",
     description:
       "Explore your personal profile to view and manage your information.",
   },
