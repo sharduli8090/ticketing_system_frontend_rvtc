@@ -1,17 +1,17 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 import { useEffect, useState } from "react";
-import AdminService from "../../services/adminService/AdminService";
+import useAdminService from "../../services/adminService/AdminService";
 import Loader from "../loader/Loader";
 
-const Table = ({ data, update, delete: del, approve, deny, close }) => {
+const Table = ({ data, update, delete: del, approve, deny, close , tableType}) => {
   const [keys, setKeys] = useState([]);
   const [loading, setLoading] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const [inputValue, setInputValue] = useState("");
 
   // Destructure the deleteEmployee method from AdminService
-  const { deleteEmployee } = AdminService;
+  const { deleteEmployee } = useAdminService();
 
   useEffect(() => {
     if (data.length > 0) {
@@ -19,15 +19,14 @@ const Table = ({ data, update, delete: del, approve, deny, close }) => {
     }
   }, [data]);
 
-  const handleDeleteRow = async (id, userType) => {
+  const handleDeleteRow = async (id, tableType) => {
     setLoading(true);
     try {
-      if (userType === "ticket") {
+      if (tableType === "ticket") {
         alert("Ticket delete called " + id);
       } else {
-        await deleteEmployee(id);
-        alert("Employee deleted successfully");
-        // You might need to fetch updated data here
+        const delResp = await deleteEmployee(id);
+        alert(delResp.message); 
       }
     } catch (error) {
       console.error("Error deleting employee:", error);
@@ -51,7 +50,6 @@ const Table = ({ data, update, delete: del, approve, deny, close }) => {
 
   const submitForm = (event) => {
     event.preventDefault();
-    console.log("Submitted value:", inputValue);
     closeModal();
   };
 
@@ -106,7 +104,7 @@ const Table = ({ data, update, delete: del, approve, deny, close }) => {
                   )}
                   {del && (
                     <button
-                      onClick={() => handleDeleteRow(row.id, "employee")}
+                      onClick={() => handleDeleteRow(row.id, tableType)}
                       className="bg-red-500 hover:bg-red-700 rounded mr-3 text-white text-sm p-2"
                     >
                       Delete

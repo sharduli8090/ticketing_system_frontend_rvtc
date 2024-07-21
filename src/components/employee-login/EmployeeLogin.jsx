@@ -1,9 +1,10 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import EmployeeLoginService from "../../services/employeeLoginService/EmployeeLoginService";
+import useEmployeeLoginService from "../../services/employeeLoginService/EmployeeLoginService";
 import Loader from "../loader/Loader";
 
 const EmployeeLogin = () => {
+  const { employeeLogin } = useEmployeeLoginService();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
@@ -33,10 +34,9 @@ const EmployeeLogin = () => {
     const loginData = { email, password };
 
     try {
-      const response = await EmployeeLoginService.employeeLogin(loginData);
+      const response = await employeeLogin(loginData);
       if (response.statuscode === 200) {
         setErrorMessage("");
-        console.log("Login successful:", response);
         setLoading(false);
         clearInputs();
         clearError();

@@ -1,21 +1,22 @@
-import { useState, useEffect } from 'react';
-import { FaFemale, FaMale } from 'react-icons/fa';
-import EmployeeService from '../../services/employeeService/EmployeeService';
-import Loader from '../loader/Loader';
-import 'tailwindcss/tailwind.css';
+import { useEffect, useState } from "react";
+import { FaFemale, FaMale } from "react-icons/fa";
+import "tailwindcss/tailwind.css";
+import useEmployeeService from "../../services/employeeService/EmployeeService";
+import Loader from "../loader/Loader";
 
 const EmployeeProfile = () => {
+  const { getEmployee } = useEmployeeService();
   const [employee, setEmployee] = useState(null);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
   const [empId, setEmpId] = useState(null);
 
   useEffect(() => {
-    const empIdFromStorage = localStorage.getItem('empid');
+    const empIdFromStorage = localStorage.getItem("empid");
     if (empIdFromStorage) {
       setEmpId(empIdFromStorage);
     } else {
-      setError('Employee ID not found in local storage');
+      setError("Employee ID not found in local storage");
       setLoading(false);
     }
   }, []);
@@ -24,10 +25,10 @@ const EmployeeProfile = () => {
     const fetchEmployee = async () => {
       if (empId) {
         try {
-          const { data } = await EmployeeService.getEmployee(empId);
+          const { data } = await getEmployee(empId);
           setEmployee(data);
         } catch (err) {
-          setError('Failed to fetch employee data');
+          setError("Failed to fetch employee data");
         } finally {
           setLoading(false);
         }
@@ -49,8 +50,16 @@ const EmployeeProfile = () => {
     return <div>No employee data available</div>;
   }
 
-  const { empName, empPosition, empGender, empDateOfBirth, empDateOfJoining, empDepartment, email } = employee;
-  const isFemale = empGender.toLowerCase() === 'female';
+  const {
+    empName,
+    empPosition,
+    empGender,
+    empDateOfBirth,
+    empDateOfJoining,
+    empDepartment,
+    email,
+  } = employee;
+  const isFemale = empGender.toLowerCase() === "female";
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-white p-8">
@@ -60,7 +69,9 @@ const EmployeeProfile = () => {
           {isFemale ? <FaFemale /> : <FaMale />}
         </div>
       </div>
-      <h2 className="mt-8 text-6xl font-bold text-gray-800 capitalize">{empName}</h2>
+      <h2 className="mt-8 text-6xl font-bold text-gray-800 capitalize">
+        {empName}
+      </h2>
       <p className="text-2xl text-gray-600 mt-2 capitalize">{empPosition}</p>
       <div className="mt-10 w-full max-w-4xl text-xl text-gray-700">
         <div className="flex justify-between py-4 border-b border-gray-300">

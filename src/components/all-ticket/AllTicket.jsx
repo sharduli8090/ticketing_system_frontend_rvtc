@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import AdminService from "../../services/adminService/AdminService";
+import useAdminService from "../../services/adminService/AdminService";
 import Loader from "../loader/Loader";
 import Table from "../table/Table";
 
@@ -8,7 +8,8 @@ const AllTicket = () => {
   const [loading, setLoading] = useState(true);
   const [selectedStatus, setSelectedStatus] = useState("all");
 
-  const { getAllTicket, getTicketsDeptWise, deleteAllTickets } = AdminService;
+  const { getAllTicket, getTicketsDeptWise, deleteAllTickets } =
+    useAdminService();
 
   useEffect(() => {
     fetchData();
@@ -30,7 +31,6 @@ const AllTicket = () => {
         Department: ticket.ticketDepartment,
       }));
       setData(formattedData);
-      console.log("Data fetched successfully", formattedData);
     } catch (error) {
       alert("An error occurred while fetching data");
       console.error(error);
@@ -58,10 +58,6 @@ const AllTicket = () => {
           Department: ticket.ticketDepartment,
         }));
         setData(formattedData);
-        console.log(
-          `Data fetched successfully for status: ${selectedStatus}`,
-          formattedData
-        );
       }
     } catch (error) {
       alert(
@@ -118,7 +114,14 @@ const AllTicket = () => {
               </button>
             </div>
           </div>
-          <Table data={data} close={true} delete={true} approve={true} deny={true}  />
+          <Table
+            data={data}
+            close={true}
+            delete={true}
+            approve={true}
+            deny={true}
+            tableType={"ticket"}
+          />
         </>
       )}
     </div>

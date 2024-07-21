@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-import AdminService from "../../services/adminService/AdminService";
+import useAdminService from "../../services/adminService/AdminService";
 import Loader from "../loader/Loader";
 
 const CreateEmployee = () => {
@@ -13,12 +13,13 @@ const CreateEmployee = () => {
   } = useForm();
   const [loading, setLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
+  const { createEmployee } = useAdminService();
 
   const onSubmit = async (data) => {
     setLoading(true);
     setErrorMessage("");
     try {
-      const resp = await AdminService.createEmployee(data);
+      const resp = await createEmployee(data);
       alert(resp.message);
       if (resp.statuscode === 200) {
         reset();

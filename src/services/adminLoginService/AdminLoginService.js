@@ -1,9 +1,10 @@
 import axios from "axios";
+import { useCallback } from "react";
 import { Constants } from "../../constant/Constant";
 import { environment } from "../../environments/environment";
 
-const AdminLoginService = () => {
-  const adminLogin = async (obj) => {
+const useAdminLoginService = () => {
+  const adminLogin = useCallback(async (obj) => {
     try {
       const response = await axios.post(
         `${environment.API_ADMIN_URL}${Constants.API_ADMIN_ENDPOINT.ADMIN_LOGIN}`,
@@ -14,7 +15,7 @@ const AdminLoginService = () => {
         localStorage.setItem("admintoken", res.data.token);
         localStorage.setItem("adminid", res.data.id);
       } else {
-        alert("Invalid Credentials");
+        alert(response.data.message);
         adminLogout();
       }
       return res;
@@ -22,12 +23,12 @@ const AdminLoginService = () => {
       console.error("Error logging in", error);
       throw error;
     }
-  };
+  }, []);
 
-  const adminLogout = () => {
+  const adminLogout = useCallback(() => {
     localStorage.removeItem("admintoken");
     localStorage.removeItem("adminid");
-  };
+  }, []);
 
   return {
     adminLogin,
@@ -35,4 +36,4 @@ const AdminLoginService = () => {
   };
 };
 
-export default AdminLoginService();
+export default useAdminLoginService;

@@ -1,11 +1,12 @@
 import { useState } from "react";
-import QueryService from "../../services/queryservice/QueryService";
+import useSendQueryService from "../../services/queryservice/QueryService";
 import Loader from "../loader/Loader";
 
 const Footer = () => {
   const [formData, setFormData] = useState({ name: "", query: "" });
   const [isLoading, setIsLoading] = useState(false);
 
+  const { sendQuery } = useSendQueryService();
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
@@ -15,7 +16,7 @@ const Footer = () => {
     e.preventDefault();
     setIsLoading(true);
     try {
-      const response = await QueryService.sendQuery(formData);
+      const response = await sendQuery(formData);
       alert(response.message || "Query sent successfully!");
       setFormData({ name: "", query: "" });
     } catch (error) {

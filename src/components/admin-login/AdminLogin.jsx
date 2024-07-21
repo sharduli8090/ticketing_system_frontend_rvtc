@@ -1,8 +1,9 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import AdminLoginService from "../../services/adminLoginService/AdminLoginService";
+import useAdminLoginService from "../../services/adminLoginService/AdminLoginService";
 import Loader from "../loader/Loader";
 const AdminLogin = () => {
+  const { adminLogin } = useAdminLoginService();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
@@ -31,10 +32,9 @@ const AdminLogin = () => {
     const loginData = { email, password };
 
     try {
-      const response = await AdminLoginService.adminLogin(loginData);
+      const response = await adminLogin(loginData);
       if (response.statuscode === 200) {
         setErrorMessage("");
-        console.log("Login successful:", response);
         setLoading(false);
         clearInputs();
         clearError();

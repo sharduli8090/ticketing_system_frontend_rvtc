@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import AdminService from "../../services/adminService/AdminService";
+import useAdminService from "../../services/adminService/AdminService";
 import Loader from "../loader/Loader";
 import Table from "../table/Table";
 
@@ -9,7 +9,7 @@ const AllEmployee = () => {
   const [selectedDepartment, setSelectedDepartment] = useState("all");
 
   const { getAllEmployee, getEmployeeDeptWise, deleteAllEmployee } =
-    AdminService;
+    useAdminService();
 
   useEffect(() => {
     fetchData();
@@ -19,7 +19,6 @@ const AllEmployee = () => {
     setLoading(true);
     try {
       const response = await getAllEmployee();
-      console.log("Response:", response);
       const formattedData = response.data.map((employee) => ({
         id: employee.id,
         Email: employee.email,
@@ -32,7 +31,6 @@ const AllEmployee = () => {
         Department: employee.empDepartment,
       }));
       setData(formattedData);
-      console.log("Data fetched successfully", formattedData);
     } catch (error) {
       alert("An error occurred while fetching data");
       console.error(error);
@@ -62,10 +60,6 @@ const AllEmployee = () => {
           Department: employee.empDepartment,
         }));
         setData(formattedData);
-        console.log(
-          `Data fetched successfully for department: ${selectedDepartment}`,
-          formattedData
-        );
       }
     } catch (error) {
       alert(
@@ -79,8 +73,8 @@ const AllEmployee = () => {
 
   const handleDeleteAll = async () => {
     try {
-      await deleteAllEmployee();
-      alert("All employees deleted successfully");
+      const delResp = await deleteAllEmployee();
+      alert(delResp.message || "All employees deleted successfully");
       setData([]);
     } catch (error) {
       alert("An error occurred while deleting all employees");
@@ -122,7 +116,12 @@ const AllEmployee = () => {
               </button>
             </div>
           </div>
-          <Table data={data} update={true} delete={true} />
+          <Table
+            data={data}
+            update={true}
+            delete={true}
+            tableType={"employee"}
+          />
         </>
       )}
     </div>

@@ -1,8 +1,9 @@
 import { useState } from "react";
-import QueryService from "../../services/queryservice/QueryService";
+import useSendQueryService from "../../services/queryservice/QueryService";
 import Loader from "../loader/Loader";
 
 const SendQuery = () => {
+  const { sendQuery } = useSendQueryService();
   const [formData, setFormData] = useState({ name: "", query: "" });
   const [isLoading, setIsLoading] = useState(false);
 
@@ -12,6 +13,7 @@ const SendQuery = () => {
   };
 
   const handleSubmit = async (e) => {
+    
     e.preventDefault();
     setIsLoading(true);
     try {
@@ -20,7 +22,7 @@ const SendQuery = () => {
         setIsLoading(false);
         return;
       }
-      const response = await QueryService.sendQuery(formData);
+      const response = await sendQuery(formData);
       alert(response.message || "Query sent successfully!");
       setFormData({ name: "", query: "" });
     } catch (error) {
