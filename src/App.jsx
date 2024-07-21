@@ -9,8 +9,10 @@ import AdminLogin from "./components/admin-login/AdminLogin";
 import AllEmployee from "./components/all-employee/AllEmployee";
 import AllTicket from "./components/all-ticket/AllTicket";
 import CreateEmployee from "./components/create-employee/CreateEmployee";
+import CreateTicket from "./components/create-ticket/CreateTicket";
 import EmployeeDashboard from "./components/employee-dash/EmployeeDashboard";
 import EmployeeLogin from "./components/employee-login/EmployeeLogin";
+import EmployeeProfile from "./components/employeeProfile/EmployeeProfile";
 import FloatingWidget from "./components/floating-widget/FloatingWidget";
 import Footer from "./components/footer/Footer";
 import Header from "./components/header/Header";
@@ -18,7 +20,6 @@ import Home from "./components/home/Home";
 import SendQuery from "./components/sendQuery/SendQuery";
 import Unauthorized from "./components/unauth/Unauthorized";
 import useAuthService from "./services/authService/AuthService";
-import EmployeeProfile from "./components/employeeProfile/EmployeeProfile";
 
 const App = () => {
   const authService = useAuthService();
@@ -56,6 +57,12 @@ const App = () => {
           path="/employeedash"
           element={
             <GuardedRoute component={EmployeeDashboard} roles={["employee"]} />
+          }
+        />
+        <Route
+          path="/createticket"
+          element={
+            <GuardedRoute component={CreateTicket} roles={["employee"]} />
           }
         />
         <Route

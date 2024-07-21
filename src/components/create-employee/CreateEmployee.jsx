@@ -192,13 +192,17 @@ const CreateEmployee = () => {
                 >
                   Department: <span className="text-sm text-red-600">*</span>
                 </label>
-                <input
-                  type="text"
+                <select
                   id="empDepartment"
-                  placeholder="Employee Department"
+                  defaultValue="admin"
                   {...register("empDepartment", { required: true })}
-                  className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 focus:outline-none focus:ring-blue-500 focus:ring-opacity-50"
-                />
+                  className="shadow bg-white border rounded w-full py-2 px-3 text-gray-700 focus:outline-none focus:ring-blue-500 focus:ring-opacity-50"
+                >
+                  <option value="admin">Admin</option>
+                  <option value="hr">HR</option>
+                  <option value="finance">Finance</option>
+                  <option value="it">IT</option>
+                </select>
                 {errors.empDepartment && (
                   <span className="text-red-600 text-sm">
                     Department is required
@@ -212,13 +216,17 @@ const CreateEmployee = () => {
                 >
                   Position: <span className="text-sm text-red-600">*</span>
                 </label>
-                <input
-                  type="text"
+                <select
                   id="empPosition"
-                  placeholder="Employee Position"
+                  defaultValue="intern"
                   {...register("empPosition", { required: true })}
-                  className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 focus:outline-none focus:ring-blue-500 focus:ring-opacity-50"
-                />
+                  className="shadow bg-white border rounded w-full py-2 px-3 text-gray-700 focus:outline-none focus:ring-blue-500 focus:ring-opacity-50"
+                >
+                  <option value="manager">Manager</option>
+                  <option value="intern">Intern</option>
+                  <option value="associate">Associate</option>
+                  <option value="ceo">CEO</option>
+                </select>
                 {errors.empPosition && (
                   <span className="text-red-600 text-sm">
                     Position is required
