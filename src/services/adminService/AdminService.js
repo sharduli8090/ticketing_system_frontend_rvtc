@@ -119,6 +119,19 @@ const useAdminService = () => {
     [getAuthorizationHeaders]
   );
 
+  const updateEmployee = useCallback(
+    async (obj, empId) => {
+      const headers = getAuthorizationHeaders("admin");
+      const response = await axios.put(
+        `${environment.API_ADMIN_URL}${Constants.API_ADMIN_ENDPOINT.UPDATE_EMPLOYEE}${empId}`,
+        obj,
+        headers
+      );
+      return response.data;
+    },
+    [getAuthorizationHeaders]
+  );
+
   return {
     createEmployee,
     getAllEmployee,
@@ -130,6 +143,7 @@ const useAdminService = () => {
     approveDenyTicket,
     getEmployeeDeptWise,
     getTicketsDeptWise,
+    updateEmployee,
   };
 };
 

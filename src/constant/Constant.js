@@ -8,9 +8,10 @@ export const Constants = {
     DELETE_TICKET: "deleteticket/",
     DELETE_EMPLOYEE: "deleteemployee/",
     DELETE_ALL_EMPLOYEE: "deleteallemployee",
-    APPROVE_DENY_TICKET: "approvedenyticket/",
     GET_EMPLOYEE_DEPT_WISE: "getdeptwiseemployee",
     GET_TICKET_DEPT_WISE: "getdeptwiseticket",
+    UPDATE_EMPLOYEE: "updateemployee/",
+    APPROVE_DENY_TICKET: "approvedenyticket/",
   },
   API_EMPLOYEE_ENDPOINT: {
     EMPLOYEE_LOGIN: "login",
@@ -43,6 +44,12 @@ export const adminCards = [
     buttonText: "View Tickets",
     endpoint: "/getallticket",
     description: "Track and address support requests.",
+  },
+  {
+    name: "Review problems",
+    buttonText: "View Queries",
+    endpoint: "/getquery",
+    description: "Track and address support queries",
   },
 ];
 export const employeeCards = [

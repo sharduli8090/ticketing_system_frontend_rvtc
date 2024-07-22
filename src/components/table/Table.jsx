@@ -1,17 +1,33 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
+import PropTypes from "prop-types";
 import { useEffect, useState } from "react";
+import { GoCheck, GoX } from "react-icons/go";
+import { MdDeleteOutline, MdEdit } from "react-icons/md";
+import { RiMailCloseLine } from "react-icons/ri";
 import useAdminService from "../../services/adminService/AdminService";
 import Loader from "../loader/Loader";
+import ApproveDenyComments from "../modal/ApproveDenyComments";
+import UpdateEmployeeModal from "../modal/UpdateEmployeeModal";
 
-const Table = ({ data, update, delete: del, approve, deny, close , tableType}) => {
+const Table = ({
+  data,
+  update,
+  delete: del,
+  approve,
+  deny,
+  close,
+  tableType,
+}) => {
   const [keys, setKeys] = useState([]);
   const [loading, setLoading] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
-  const [inputValue, setInputValue] = useState("");
+  const [selectedRow, setSelectedRow] = useState(null);
+  const [commentModalOpen, setCommentModalOpen] = useState(false);
+  const [ticketStatus, setTicketStatus] = useState("");
+  const [ticketComments, setTicketComments] = useState("");
 
-  // Destructure the deleteEmployee method from AdminService
-  const { deleteEmployee } = useAdminService();
+  const { deleteEmployee, approveDenyTicket, deleteTicket } = useAdminService();
 
   useEffect(() => {
     if (data.length > 0) {
@@ -23,10 +39,11 @@ const Table = ({ data, update, delete: del, approve, deny, close , tableType}) =
     setLoading(true);
     try {
       if (tableType === "ticket") {
-        alert("Ticket delete called " + id);
+        const delResp = await deleteTicket(id);
+        alert(delResp.message);
       } else {
         const delResp = await deleteEmployee(id);
-        alert(delResp.message); 
+        alert(delResp.message);
       }
     } catch (error) {
       console.error("Error deleting employee:", error);
@@ -36,21 +53,42 @@ const Table = ({ data, update, delete: del, approve, deny, close , tableType}) =
   };
 
   const openUpdateModal = (row) => {
-    // Perform actions with the row data if necessary
-    openModal();
-  };
-
-  const openModal = () => {
+    setSelectedRow(row);
     setIsOpen(true);
   };
 
   const closeModal = () => {
     setIsOpen(false);
+    setSelectedRow(null);
   };
 
-  const submitForm = (event) => {
-    event.preventDefault();
-    closeModal();
+  const openCommentModal = (row, status) => {
+    setSelectedRow(row);
+    setTicketStatus(status);
+    setCommentModalOpen(true);
+  };
+
+  const closeCommentModal = () => {
+    setCommentModalOpen(false);
+    setTicketComments("");
+    setSelectedRow(null);
+  };
+
+  const handleApproveDenyClose = async () => {
+    setLoading(true);
+    try {
+      const body = {
+        ticketStatus: ticketStatus,
+        ticketComments: ticketComments,
+      };
+      const resp = await approveDenyTicket(body, selectedRow.id);
+      alert(resp.message);
+      closeCommentModal();
+    } catch (error) {
+      console.error(`Error handling ticket ${ticketStatus}:`, error);
+    } finally {
+      setLoading(false);
+    }
   };
 
   const capitalizeFirstLetter = (string) => {
@@ -97,41 +135,71 @@ const Table = ({ data, update, delete: del, approve, deny, close , tableType}) =
                   {update && (
                     <button
                       onClick={() => openUpdateModal(row)}
-                      className="bg-blue-500 hover:bg-blue-700 rounded mr-3 text-white text-sm p-2"
+                      className="bg-blue-500 hover:bg-blue-700 rounded mr-3 text-white text-sm p-2 relative group"
                     >
-                      Update
+                      <MdEdit />
+                      <div className="absolute hidden group-hover:block bg-gray-500 text-white text-sm rounded py-1 px-2 bottom-full left-1/2 transform -translate-x-1/2 mb-2">
+                        Update
+                      </div>
                     </button>
                   )}
                   {del && (
                     <button
                       onClick={() => handleDeleteRow(row.id, tableType)}
-                      className="bg-red-500 hover:bg-red-700 rounded mr-3 text-white text-sm p-2"
+                      className="bg-red-500 hover:bg-red-700 rounded mr-3 text-white text-sm p-2 relative group"
                     >
-                      Delete
+                      <MdDeleteOutline />
+                      <div className="absolute hidden group-hover:block bg-gray-500 text-white text-sm rounded py-1 px-2 bottom-full left-1/2 transform -translate-x-1/2 mb-2">
+                        Delete
+                      </div>
                     </button>
                   )}
                   {approve && (
                     <button
-                      onClick={() => alert("Approve action for " + row.id)}
-                      className="bg-green-500 hover:bg-green-700 rounded mr-3 text-white text-sm p-2"
+                      onClick={() => openCommentModal(row, "approved")}
+                      className={`${
+                        row.Status !== "open"
+                          ? "bg-gray-300"
+                          : "bg-green-500 hover:bg-green-700"
+                      } rounded mr-3 text-white text-sm p-2 relative group`}
+                      disabled={row.Status !== "open"}
                     >
-                      Approve
+                      <GoCheck />
+                      <div className="absolute hidden group-hover:block bg-gray-500 text-white text-sm rounded py-1 px-2 bottom-full left-1/2 transform -translate-x-1/2 mb-2">
+                      {row.Status !== "open" ? "Disabled" : "Approve"}
+                      </div>
                     </button>
                   )}
                   {deny && (
                     <button
-                      onClick={() => alert("Deny action for " + row.id)}
-                      className="bg-yellow-500 hover:bg-yellow-700 rounded mr-3 text-white text-sm p-2"
+                      onClick={() => openCommentModal(row, "denied")}
+                      className={`${
+                        row.Status !== "open"
+                          ? "bg-gray-300"
+                          : "bg-yellow-500 hover:bg-yellow-700"
+                      } rounded mr-3 text-white text-sm p-2 relative group`}
+                      disabled={row.Status !== "open"}
                     >
-                      Deny
+                      <GoX />
+                      <div className="absolute hidden group-hover:block bg-gray-500 text-white text-sm rounded py-1 px-2 bottom-full left-1/2 transform -translate-x-1/2 mb-2">
+                      {row.Status !== "open" ? "Disabled" : "Deny"}
+                      </div>
                     </button>
                   )}
                   {close && (
                     <button
-                      onClick={() => alert("Close action for " + row.id)}
-                      className="bg-gray-500 hover:bg-gray-700 rounded text-white text-sm p-2"
+                      onClick={() => openCommentModal(row, "close")}
+                      className={`${
+                        row.Status !== "open"
+                          ? "bg-gray-300"
+                          : "bg-gray-500 hover:bg-gray-700"
+                      } rounded mr-3 text-white text-sm p-2 relative group`}
+                      disabled={row.Status !== "open"} 
                     >
-                      Close
+                      <RiMailCloseLine />
+                      <div className="absolute hidden group-hover:block bg-gray-500 text-white text-sm rounded py-1 px-2 bottom-full left-1/2 transform -translate-x-1/2 mb-2">
+                        {row.Status !== "open" ? "Disabled" : "Close"}
+                                             </div>
                     </button>
                   )}
                 </td>
@@ -143,58 +211,39 @@ const Table = ({ data, update, delete: del, approve, deny, close , tableType}) =
         <Loader />
       )}
 
-      {isOpen && (
-        <div className="fixed z-10 inset-0 overflow-y-auto">
-          <div className="flex items-center justify-center min-h-screen">
-            <div className="fixed inset-0 bg-gray-500 opacity-75"></div>
-            <div className="relative bg-white rounded-lg p-8">
-              <button
-                className="absolute top-0 right-0 p-2"
-                onClick={closeModal}
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-6 w-6 text-gray-600"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M6 18L18 6M6 6l12 12"
-                  />
-                </svg>
-              </button>
-              <h2 className="text-xl font-bold mb-4">Modal Title</h2>
-              <form onSubmit={submitForm}>
-                <div>
-                  <label htmlFor="inputField" className="block mb-2">
-                    Input Field:
-                  </label>
-                  <input
-                    id="inputField"
-                    type="text"
-                    className="w-full border rounded px-3 py-2"
-                    value={inputValue}
-                    onChange={(e) => setInputValue(e.target.value)}
-                    required
-                  />
-                </div>
-                <button
-                  type="submit"
-                  className="mt-4 bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600"
-                >
-                  Submit
-                </button>
-              </form>
-            </div>
-          </div>
-        </div>
-      )}
+      <UpdateEmployeeModal
+        isOpen={isOpen}
+        closeModal={closeModal}
+        selectedRow={selectedRow}
+      />
+
+      <ApproveDenyComments
+        isOpen={commentModalOpen}
+        closeCommentModal={closeCommentModal}
+        handleApproveDenyClose={handleApproveDenyClose}
+        ticketStatus={ticketStatus}
+        ticketComments={ticketComments}
+        setTicketComments={setTicketComments}
+      />
     </>
   );
+};
+
+Table.propTypes = {
+  data: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      status: PropTypes.string.isRequired, // Added status field
+      department: PropTypes.string,
+      // Add other properties as needed
+    })
+  ).isRequired,
+  update: PropTypes.bool,
+  delete: PropTypes.bool,
+  approve: PropTypes.bool,
+  deny: PropTypes.bool,
+  close: PropTypes.bool,
+  tableType: PropTypes.string.isRequired,
 };
 
 export default Table;

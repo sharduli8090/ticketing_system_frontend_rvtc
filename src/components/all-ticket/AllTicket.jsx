@@ -115,8 +115,7 @@ const AllTicket = () => {
             </div>
           </div>
           <Table
-            data={data}
-            close={true}
+            data={data} 
             delete={true}
             approve={true}
             deny={true}
