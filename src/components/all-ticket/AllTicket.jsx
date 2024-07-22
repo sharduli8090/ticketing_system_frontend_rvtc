@@ -8,8 +8,7 @@ const AllTicket = () => {
   const [loading, setLoading] = useState(true);
   const [selectedStatus, setSelectedStatus] = useState("all");
 
-  const { getAllTicket, getTicketsDeptWise, deleteAllTickets } =
-    useAdminService();
+  const { getAllTicket, getTicketsDeptWise, deleteAllTicket } = useAdminService();
 
   useEffect(() => {
     fetchData();
@@ -44,8 +43,8 @@ const AllTicket = () => {
     try {
       if (selectedStatus === "all") {
         fetchData();
-      } else {
-        const response = await getTicketsDeptWise({ status: selectedStatus });
+      } else { 
+        const response = await getTicketsDeptWise({ dept: selectedStatus });
         const formattedData = response.data.map((ticket) => ({
           id: ticket.id,
           Title: ticket.ticketName,
@@ -60,9 +59,7 @@ const AllTicket = () => {
         setData(formattedData);
       }
     } catch (error) {
-      alert(
-        `An error occurred while fetching data for status: ${selectedStatus}`
-      );
+      alert(`An error occurred while fetching data for status: ${selectedStatus}`);
       console.error(error);
     } finally {
       setLoading(false);
@@ -70,13 +67,16 @@ const AllTicket = () => {
   };
 
   const handleDeleteAll = async () => {
+    setLoading(true);
     try {
-      await deleteAllTickets();
-      alert("All tickets deleted successfully");
+      const resp = await deleteAllTicket();
+      alert(resp.message);
       setData([]);
     } catch (error) {
       alert("An error occurred while deleting all tickets");
       console.error(error);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -115,7 +115,7 @@ const AllTicket = () => {
             </div>
           </div>
           <Table
-            data={data} 
+            data={data}
             delete={true}
             approve={true}
             deny={true}
