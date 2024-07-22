@@ -21,15 +21,13 @@ const TicketsRaisedByMe = () => {
         alert("Please login to view tickets");
         return;
       }
-      console.log("empid", empid);
-      const obj = {empId: empid};
+      const obj = { empId: empid };
       const response = await getTicketsRaisedByMe(obj);
-      console.log("responseiiiiiii", response);
       const formattedData = response.data.map((ticket) => ({
         id: ticket.id,
         Title: ticket.ticketName,
         Description: ticket.ticketDescription,
-        CreatedAt: ticket.dateOfCreation, 
+        CreatedAt: ticket.dateOfCreation,
         DateOfCompletion: ticket.dateOfCompletion || "Not Completed",
         RaisedBy: ticket.ticketRaisedByName,
         AssignedTo: ticket.ticketAssignedToName,

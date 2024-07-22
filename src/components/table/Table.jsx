@@ -261,7 +261,6 @@ const Table = ({
         isOpen={commentModalOpen}
         closeCommentModal={closeCommentModal}
         handleApproveDeny={handleApproveDeny}
-        handleCloseTicket={handleCloseTicket}
         ticketStatus={ticketStatus}
         ticketComments={ticketComments}
         setTicketComments={setTicketComments}
@@ -274,9 +273,8 @@ Table.propTypes = {
   data: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.string.isRequired,
-      status: PropTypes.string, // Added status field
+      status: PropTypes.string,
       department: PropTypes.string,
-      // Add other properties as needed
     })
   ).isRequired,
   update: PropTypes.bool,
