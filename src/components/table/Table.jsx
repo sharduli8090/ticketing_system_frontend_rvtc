@@ -6,6 +6,7 @@ import { GoCheck, GoX } from "react-icons/go";
 import { MdDeleteOutline, MdEdit } from "react-icons/md";
 import { RiMailCloseLine } from "react-icons/ri";
 import useAdminService from "../../services/adminService/AdminService";
+import useEmployeeService from "../../services/employeeService/EmployeeService";
 import Loader from "../loader/Loader";
 import ApproveDenyComments from "../modal/ApproveDenyComments";
 import UpdateEmployeeModal from "../modal/UpdateEmployeeModal";
@@ -26,12 +27,17 @@ const Table = ({
   const [commentModalOpen, setCommentModalOpen] = useState(false);
   const [ticketStatus, setTicketStatus] = useState("");
   const [ticketComments, setTicketComments] = useState("");
+  const [noData, setNoData] = useState(false);
 
   const { deleteEmployee, approveDenyTicket, deleteTicket } = useAdminService();
+  const { closeTicket } = useEmployeeService();
 
   useEffect(() => {
     if (data.length > 0) {
       setKeys(Object.keys(data[0]).filter((key) => key !== "id"));
+    } else {
+      setKeys([]);
+      setNoData(true);
     }
   }, [data]);
 
@@ -74,18 +80,44 @@ const Table = ({
     setSelectedRow(null);
   };
 
-  const handleApproveDenyClose = async () => {
+  const handleApproveDeny = async () => {
     setLoading(true);
     try {
-      const body = {
-        ticketStatus: ticketStatus,
-        ticketComments: ticketComments,
-      };
-      const resp = await approveDenyTicket(body, selectedRow.id);
-      alert(resp.message);
+      if (tableType === "ticket" && localStorage.getItem("adminid")) {
+        const body = {
+          ticketStatus: ticketStatus,
+          ticketComments: ticketComments,
+        };
+        const resp = await approveDenyTicket(body, selectedRow.id);
+        alert(resp.message);
+      } else if (tableType === "ticket" && localStorage.getItem("empid")) {
+        const body = {
+          ticketStatus: ticketStatus,
+          ticketComments: ticketComments,
+        };
+        const resp = await approveDenyTicket(body, selectedRow.id);
+        alert(resp.message);
+      }
+
       closeCommentModal();
     } catch (error) {
       console.error(`Error handling ticket ${ticketStatus}:`, error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleCloseTicket = async (row) => {
+    setLoading(true);
+    try {
+      console.log("selectedRow", row.id);
+      const resp = await closeTicket(
+        { empId: localStorage.getItem("empid") },
+        row.id
+      );
+      alert(resp.message);
+    } catch (error) {
+      console.error("Error closing ticket:", error);
     } finally {
       setLoading(false);
     }
@@ -106,7 +138,13 @@ const Table = ({
 
   return (
     <>
-      {!loading ? (
+      {loading ? (
+        <Loader />
+      ) : noData ? (
+        <div className="text-center text-gray-400 my-40 text-3xl">
+          No data found
+        </div>
+      ) : (
         <table className="max-w-full rounded-lg shadow-2xl divide-y divide-blue-300 m-0 w-19/20">
           <thead className="bg-blue-500 text-white">
             <tr>
@@ -125,7 +163,6 @@ const Table = ({
             {data.map((row, index) => (
               <tr key={index} className={index % 2 === 0 ? "bg-blue-100" : ""}>
                 <td className="px-6 py-4 text-center">{index + 1}</td>
-
                 {keys.map((key, idx) => (
                   <td
                     key={idx}
@@ -192,7 +229,7 @@ const Table = ({
                     )}
                     {close && (
                       <button
-                        onClick={() => openCommentModal(row, "close")}
+                        onClick={() => handleCloseTicket(row)}
                         className={`${
                           row.Status !== "open"
                             ? "bg-gray-300"
@@ -212,8 +249,6 @@ const Table = ({
             ))}
           </tbody>
         </table>
-      ) : (
-        <Loader />
       )}
 
       <UpdateEmployeeModal
@@ -225,7 +260,8 @@ const Table = ({
       <ApproveDenyComments
         isOpen={commentModalOpen}
         closeCommentModal={closeCommentModal}
-        handleApproveDenyClose={handleApproveDenyClose}
+        handleApproveDeny={handleApproveDeny}
+        handleCloseTicket={handleCloseTicket}
         ticketStatus={ticketStatus}
         ticketComments={ticketComments}
         setTicketComments={setTicketComments}
@@ -238,7 +274,7 @@ Table.propTypes = {
   data: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.string.isRequired,
-      status: PropTypes.string.isRequired, // Added status field
+      status: PropTypes.string, // Added status field
       department: PropTypes.string,
       // Add other properties as needed
     })

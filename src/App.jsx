@@ -21,6 +21,8 @@ import SendQuery from "./components/sendQuery/SendQuery";
 import Unauthorized from "./components/unauth/Unauthorized";
 import useAuthService from "./services/authService/AuthService";
 import AllQuery from "./components/allquery/AllQuery";
+import TicketsRaisedByMe from "./components/ticketsbyme/TicketsRaisedByMe";
+import TicketsInMyName from "./components/ticketsinmyname/TicketsInMyName";
 
 const App = () => {
   const authService = useAuthService();
@@ -76,6 +78,18 @@ const App = () => {
           path="/employeeprofile"
           element={
             <GuardedRoute component={EmployeeProfile} roles={["employee"]} />
+          }
+        />
+        <Route
+          path="/getticketraisedbyme"
+          element={
+            <GuardedRoute component={TicketsRaisedByMe} roles={["employee"]} />
+          }
+        />
+        <Route
+          path="/getticketinmyname"
+          element={
+            <GuardedRoute component={TicketsInMyName} roles={["employee"]} />
           }
         />
         <Route

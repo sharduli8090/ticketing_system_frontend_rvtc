@@ -4,12 +4,22 @@ import PropTypes from 'prop-types';
 const ApproveDenyComments = ({
   isOpen,
   closeCommentModal,
-  handleApproveDenyClose,
+  handleApproveDeny,
   ticketStatus,
   ticketComments,
   setTicketComments,
+  handleCloseTicket,
 }) => {
   if (!isOpen) return null;
+  const  handleSubmit = () => {
+    if (ticketStatus === "approved" || ticketStatus === "denied") {
+      handleApproveDeny();
+    }
+    if (ticketStatus === "closed") {
+      handleCloseTicket();
+    }
+  }
+  
 
   return (
     <div className="fixed z-10 inset-0 overflow-y-auto">
@@ -46,7 +56,7 @@ const ApproveDenyComments = ({
             onChange={(e) => setTicketComments(e.target.value)}
           />
           <button
-            onClick={handleApproveDenyClose}
+            onClick={handleSubmit}
             className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600"
           >
             Submit
@@ -60,7 +70,8 @@ const ApproveDenyComments = ({
 ApproveDenyComments.propTypes = {
   isOpen: PropTypes.bool.isRequired,
   closeCommentModal: PropTypes.func.isRequired,
-  handleApproveDenyClose: PropTypes.func.isRequired,
+  handleApproveDeny: PropTypes.func.isRequired,
+  handleCloseTicket: PropTypes.func.isRequired,
   ticketStatus: PropTypes.string.isRequired,
   ticketComments: PropTypes.string.isRequired,
   setTicketComments: PropTypes.func.isRequired,

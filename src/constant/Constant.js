@@ -17,8 +17,10 @@ export const Constants = {
   API_EMPLOYEE_ENDPOINT: {
     EMPLOYEE_LOGIN: "login",
     CREATE_TICKET: "createticket",
-    CLOSE_TICKET: "closeticket",
+    CLOSE_TICKET: "closeticket/",
     GET_EMPLOYEE: "getemployee/",
+    GET_TICKETS_RAISED_BY_ME: "getticketraisedbyme",
+    GET_TICKETS_IN_MY_NAME: "getticketinmyname",
   },
   API_GENERAL_ENDPOINT: {
     SEND_QUERY: "sendqueryfeedback",
