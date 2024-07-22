@@ -1,4 +1,4 @@
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 // import { useState } from 'react';
 
 const ApproveDenyComments = ({
@@ -36,7 +36,8 @@ const ApproveDenyComments = ({
             </svg>
           </button>
           <h2 className="text-xl font-bold mb-4">
-            {ticketStatus.charAt(0).toUpperCase() + ticketStatus.slice(1)} Ticket
+            {ticketStatus.charAt(0).toUpperCase() + ticketStatus.slice(1)}{" "}
+            Ticket
           </h2>
           <textarea
             className="w-full border rounded px-3 py-2 mb-4"

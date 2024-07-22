@@ -8,7 +8,8 @@ const AllTicket = () => {
   const [loading, setLoading] = useState(true);
   const [selectedStatus, setSelectedStatus] = useState("all");
 
-  const { getAllTicket, getTicketsDeptWise, deleteAllTicket } = useAdminService();
+  const { getAllTicket, getTicketsDeptWise, deleteAllTicket } =
+    useAdminService();
 
   useEffect(() => {
     fetchData();
@@ -43,15 +44,15 @@ const AllTicket = () => {
     try {
       if (selectedStatus === "all") {
         fetchData();
-      } else { 
+      } else {
         const response = await getTicketsDeptWise({ dept: selectedStatus });
         const formattedData = response.data.map((ticket) => ({
           id: ticket.id,
           Title: ticket.ticketName,
           Description: ticket.ticketDescription,
           CreatedAt: ticket.dateOfCreation,
-        DateOfCompletion: ticket.dateOfCompletion || "Not Completed",
-        RaisedBy: ticket.ticketRaisedByName,
+          DateOfCompletion: ticket.dateOfCompletion || "Not Completed",
+          RaisedBy: ticket.ticketRaisedByName,
           AssignedTo: ticket.ticketAssignedToName,
           Status: ticket.ticketStatus,
           Comments: ticket.ticketComments,
@@ -60,7 +61,9 @@ const AllTicket = () => {
         setData(formattedData);
       }
     } catch (error) {
-      alert(`An error occurred while fetching data for status: ${selectedStatus}`);
+      alert(
+        `An error occurred while fetching data for status: ${selectedStatus}`
+      );
       console.error(error);
     } finally {
       setLoading(false);
@@ -121,6 +124,7 @@ const AllTicket = () => {
             approve={true}
             deny={true}
             tableType={"ticket"}
+            fetchData={fetchData}
           />
         </>
       )}

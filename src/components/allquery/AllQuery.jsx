@@ -5,9 +5,9 @@ import Table from "../table/Table";
 
 const AllQuery = () => {
   const [data, setData] = useState([]);
-  const [loading, setLoading] = useState(true); 
+  const [loading, setLoading] = useState(true);
 
-  const {getquery  } = useAdminService();
+  const { getquery } = useAdminService();
 
   useEffect(() => {
     fetchData();
@@ -20,7 +20,7 @@ const AllQuery = () => {
       console.log(response);
       const formattedData = response.data.map((query) => ({
         Name: query.name,
-        Query: query.query, 
+        Query: query.query,
       }));
       setData(formattedData);
     } catch (error) {
@@ -31,22 +31,14 @@ const AllQuery = () => {
     }
   };
 
-  
- 
   return (
     <div className="flex flex-col justify-between items-center mt-32 mb-64 w-auto mx-28">
       {loading ? (
         <Loader />
       ) : (
         <>
-          <div className="flex justify-center items-center flex-row w-full mb-10">
-            
-         
-          </div>
-          <Table
-            data={data}
-            tableType={"query"}
-          />
+          <div className="flex justify-center items-center flex-row w-full mb-10"></div>
+          <Table data={data} tableType={"query"} />
         </>
       )}
     </div>

@@ -21,7 +21,7 @@ const UpdateEmployeeModal = ({ isOpen, closeModal, selectedRow }) => {
     if (selectedRow) {
       setFormData({
         email: selectedRow.Email || "",
-        password: "", // Assuming passwords are not prefilled
+        password: "",
         empName: selectedRow.Name || "",
         empPosition: selectedRow.Designation || "",
         empDateOfBirth: selectedRow.Date_Of_Birth || "",
@@ -43,6 +43,7 @@ const UpdateEmployeeModal = ({ isOpen, closeModal, selectedRow }) => {
       const updateResp = await updateEmployee(formData, selectedRow.id);
       alert(updateResp.message);
       closeModal();
+      window.location.reload();
     } catch (error) {
       console.error("Error updating employee:", error);
     } finally {

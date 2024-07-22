@@ -38,7 +38,7 @@ const AdminLogin = () => {
         setLoading(false);
         clearInputs();
         clearError();
-        window.location.reload();
+        navigate("/admindash");
       } else {
         console.error("Login error:", response);
         setLoading(false);

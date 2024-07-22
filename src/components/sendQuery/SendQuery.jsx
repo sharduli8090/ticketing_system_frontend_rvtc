@@ -13,7 +13,6 @@ const SendQuery = () => {
   };
 
   const handleSubmit = async (e) => {
-    
     e.preventDefault();
     setIsLoading(true);
     try {

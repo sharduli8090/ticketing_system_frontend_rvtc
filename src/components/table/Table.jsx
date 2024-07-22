@@ -19,6 +19,7 @@ const Table = ({
   deny,
   close,
   tableType,
+  fetchData,
 }) => {
   const [keys, setKeys] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -47,9 +48,11 @@ const Table = ({
       if (tableType === "ticket") {
         const delResp = await deleteTicket(id);
         alert(delResp.message);
+        fetchData();
       } else {
         const delResp = await deleteEmployee(id);
         alert(delResp.message);
+        fetchData();
       }
     } catch (error) {
       console.error("Error deleting employee:", error);
@@ -90,6 +93,7 @@ const Table = ({
         };
         const resp = await approveDenyTicket(body, selectedRow.id);
         alert(resp.message);
+        fetchData();
       } else if (tableType === "ticket" && localStorage.getItem("empid")) {
         const body = {
           ticketStatus: ticketStatus,
@@ -97,6 +101,7 @@ const Table = ({
         };
         const resp = await approveDenyTicket(body, selectedRow.id);
         alert(resp.message);
+        fetchData();
       }
 
       closeCommentModal();
@@ -116,6 +121,7 @@ const Table = ({
         row.id
       );
       alert(resp.message);
+      fetchData();
     } catch (error) {
       console.error("Error closing ticket:", error);
     } finally {
@@ -283,6 +289,7 @@ Table.propTypes = {
   deny: PropTypes.bool,
   close: PropTypes.bool,
   tableType: PropTypes.string.isRequired,
+  fetchData: PropTypes.func,
 };
 
 export default Table;

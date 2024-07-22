@@ -73,12 +73,15 @@ const AllEmployee = () => {
 
   const handleDeleteAll = async () => {
     try {
+      setLoading(true);
       const delResp = await deleteAllEmployee();
       alert(delResp.message || "All employees deleted successfully");
       setData([]);
     } catch (error) {
       alert("An error occurred while deleting all employees");
       console.error(error);
+    } finally {
+      setLoading(false);
     }
   };
 

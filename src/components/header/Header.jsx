@@ -1,37 +1,20 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Img1 from "../../asset/images/favicon.ico";
 import useAuthService from "../../services/authService/AuthService";
 
 const Header = () => {
-  const { isLoggedIn, getUserType, logout } = useAuthService();
+  const { isLoggedIn, logout } = useAuthService();
   const [loggedIn, setLoggedIn] = useState(isLoggedIn());
-  const [initialLoginChecked, setInitialLoginChecked] = useState(false);
   const [isEmployeeLogin, setIsEmployeeLogin] = useState(true);
   const navigate = useNavigate();
-
-  useEffect(() => {
-    if (!initialLoginChecked) {
-      setInitialLoginChecked(true);
-      const userType = getUserType();
-      if (isLoggedIn()) {
-        if (userType === "admin") {
-          navigate("/admindash");
-        } else {
-          navigate("/employeedash");
-        }
-      } else {
-        navigate("/employee-login");
-      }
-    }
-  }, [isLoggedIn, getUserType, navigate, initialLoginChecked]);
 
   // Handle logout
   const handleLogout = () => {
     logout();
     setLoggedIn(false);
     navigate("/employee-login");
-    window.reload;
+    window.reload();
   };
 
   // Toggle between admin and employee login

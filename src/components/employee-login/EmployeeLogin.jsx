@@ -40,7 +40,7 @@ const EmployeeLogin = () => {
         setLoading(false);
         clearInputs();
         clearError();
-        window.location.reload();
+        navigate("/employeedash"); 
       } else {
         console.error("Login error:", response);
         setLoading(false);
