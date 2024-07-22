@@ -12,6 +12,7 @@ export const Constants = {
     GET_TICKET_DEPT_WISE: "getdeptwiseticket",
     UPDATE_EMPLOYEE: "updateemployee/",
     APPROVE_DENY_TICKET: "approvedenyticket/",
+    GET_QUERY: "getquery",
   },
   API_EMPLOYEE_ENDPOINT: {
     EMPLOYEE_LOGIN: "login",

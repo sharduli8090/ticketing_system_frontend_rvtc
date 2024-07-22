@@ -132,6 +132,15 @@ const useAdminService = () => {
     [getAuthorizationHeaders]
   );
 
+  const getquery = useCallback(async () => {
+    const headers = getAuthorizationHeaders("admin");
+    const response = await axios.get(
+      `${environment.API_ADMIN_URL}${Constants.API_ADMIN_ENDPOINT.GET_QUERY}`,
+      headers
+    );
+    return response.data;
+  }, [getAuthorizationHeaders]);
+
   return {
     createEmployee,
     getAllEmployee,
@@ -144,6 +153,7 @@ const useAdminService = () => {
     getEmployeeDeptWise,
     getTicketsDeptWise,
     updateEmployee,
+    getquery
   };
 };
 

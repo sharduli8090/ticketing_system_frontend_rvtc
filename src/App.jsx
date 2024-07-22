@@ -20,6 +20,7 @@ import Home from "./components/home/Home";
 import SendQuery from "./components/sendQuery/SendQuery";
 import Unauthorized from "./components/unauth/Unauthorized";
 import useAuthService from "./services/authService/AuthService";
+import AllQuery from "./components/allquery/AllQuery";
 
 const App = () => {
   const authService = useAuthService();
@@ -51,6 +52,12 @@ const App = () => {
           path="/createemployee"
           element={
             <GuardedRoute component={CreateEmployee} roles={["admin"]} />
+          }
+        />
+        <Route
+          path="/getquery"
+          element={
+            <GuardedRoute component={AllQuery} roles={["admin"]} />
           }
         />
         <Route
