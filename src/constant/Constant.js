@@ -21,6 +21,7 @@ export const Constants = {
     GET_EMPLOYEE: "getemployee/",
     GET_TICKETS_RAISED_BY_ME: "getticketraisedbyme",
     GET_TICKETS_IN_MY_NAME: "getticketinmyname",
+    APPROVE_DENY_TICKET: "approvedenyticket/",
   },
   API_GENERAL_ENDPOINT: {
     SEND_QUERY: "sendqueryfeedback",

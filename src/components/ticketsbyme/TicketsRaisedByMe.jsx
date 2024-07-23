@@ -60,6 +60,7 @@ const TicketsRaisedByMe = () => {
             deny={false}
             close={true}
             tableType={"ticket"}
+            fetchDataTicketsRaisedByMe={fetchData}
           />
         </>
       )}

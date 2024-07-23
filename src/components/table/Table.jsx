@@ -21,6 +21,8 @@ const Table = ({
   close,
   tableType,
   fetchData,
+  fetchDataTicketsInMyName,
+  fetchDataTicketsRaisedByMe,
 }) => {
   const [keys, setKeys] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -32,7 +34,7 @@ const Table = ({
   const [noData, setNoData] = useState(false);
 
   const { deleteEmployee, approveDenyTicket, deleteTicket } = useAdminService();
-  const { closeTicket } = useEmployeeService();
+  const { closeTicket, approveDenyTicketEmployee } = useEmployeeService();
   const { notifyError } = useToastNotifications();
 
   useEffect(() => {
@@ -96,11 +98,16 @@ const Table = ({
         fetchData();
       } else if (tableType === "ticket" && localStorage.getItem("empid")) {
         const body = {
+          empId: localStorage.getItem("empid"),
           ticketStatus: ticketStatus,
           ticketComments: ticketComments,
         };
-        const resp = await approveDenyTicket(body, selectedRow.id);
-        fetchData();
+        console.log("body", body);
+        console.log(ticketComments);
+        console.log(ticketStatus);
+        
+        const resp = await approveDenyTicketEmployee(body, selectedRow.id);
+        fetchDataTicketsInMyName();
       }
       closeCommentModal();
     } catch (error) {
@@ -114,11 +121,8 @@ const Table = ({
   const handleCloseTicket = async (row) => {
     setLoading(true);
     try {
-      const resp = await closeTicket(
-        { empId: localStorage.getItem("empid") },
-        row.id
-      );
-      fetchData();
+      await closeTicket({ empId: localStorage.getItem("empid") }, row.id);
+      fetchDataTicketsRaisedByMe();
     } catch (error) {
       console.error("Error closing ticket:", error);
       notifyError("Error closing ticket", error);
@@ -288,6 +292,8 @@ Table.propTypes = {
   close: PropTypes.bool,
   tableType: PropTypes.string.isRequired,
   fetchData: PropTypes.func,
+  fetchDataTicketsInMyName: PropTypes.func,
+  fetchDataTicketsRaisedByMe: PropTypes.func,
 };
 
 export default Table;

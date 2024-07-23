@@ -54,11 +54,12 @@ const TicketsInMyName = () => {
         <>
           <Table
             data={data}
-            delete={true}
+            delete={false}
             approve={true}
             deny={true}
             close={false}
             tableType={"ticket"}
+            fetchDataTicketsInMyName={fetchData}
           />
         </>
       )}

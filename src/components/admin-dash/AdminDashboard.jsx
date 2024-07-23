@@ -7,10 +7,10 @@ import { useEffect } from "react";
 import useToastNotifications from "../../services/toastify/ToasterService";
 
 const AdminDashboard = () => {
-  const { notifyError } = useToastNotifications();
+  const { notifyDefault } = useToastNotifications();
   useEffect(() => {
-    notifyError("Welcome to Admin Dashboard");
-  }, [notifyError]);
+    notifyDefault("Welcome to Admin Dashboard");
+  }, [notifyDefault]);
 
   return (
     <div>

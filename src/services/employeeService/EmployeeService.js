@@ -78,12 +78,27 @@ const useEmployeeService = () => {
     [getAuthorizationHeaders, notifySuccess]
   );
 
+  const approveDenyTicketEmployee = useCallback(
+    async (obj, ticketId) => {
+      const headers = getAuthorizationHeaders("employee"); 
+      const response = await axios.put(
+        `${environment.API_EMPLOYEE_URL}${Constants.API_EMPLOYEE_ENDPOINT.APPROVE_DENY_TICKET}${ticketId}`,
+        obj,
+        headers
+      );
+      notifySuccess(response.data.message);
+      return response.data;
+    },
+    [getAuthorizationHeaders, notifySuccess]
+  );
+
   return {
     getEmployee,
     createTicket,
     closeTicket,
     getTicketsRaisedByMe,
     getTicketsInMyName,
+    approveDenyTicketEmployee,
   };
 };
 
