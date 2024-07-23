@@ -13,13 +13,14 @@ const UpdateEmployeeModal = ({ isOpen, closeModal, selectedRow }) => {
     empDepartment: "",
     empGender: "",
   });
+  const [initialFormData, setInitialFormData] = useState({});
   const [loading, setLoading] = useState(false);
 
   const { updateEmployee } = useAdminService();
 
   useEffect(() => {
     if (selectedRow) {
-      setFormData({
+      const initialData = {
         email: selectedRow.Email || "",
         password: "",
         empName: selectedRow.Name || "",
@@ -27,7 +28,9 @@ const UpdateEmployeeModal = ({ isOpen, closeModal, selectedRow }) => {
         empDateOfBirth: selectedRow.Date_Of_Birth || "",
         empDepartment: selectedRow.Department || "",
         empGender: selectedRow.Gender || "",
-      });
+      };
+      setFormData(initialData);
+      setInitialFormData(initialData);
     }
   }, [selectedRow]);
 
@@ -36,17 +39,32 @@ const UpdateEmployeeModal = ({ isOpen, closeModal, selectedRow }) => {
     setFormData({ ...formData, [name]: value });
   };
 
+  const getUpdatedFields = () => {
+    const updatedFields = {};
+    for (const key in formData) {
+      if (formData[key] !== initialFormData[key]) {
+        updatedFields[key] = formData[key];
+      }
+    }
+    return updatedFields;
+  };
+
   const submitForm = async (event) => {
     event.preventDefault();
     setLoading(true);
     try {
-      const updateResp = await updateEmployee(formData, selectedRow.id);
-      alert(updateResp.message);
-      closeModal();
-      window.location.reload();
+      const updatedFields = getUpdatedFields();
+      if (Object.keys(updatedFields).length > 0) {
+        const updateResp = await updateEmployee(updatedFields, selectedRow.id);
+        alert(updateResp.message);
+        closeModal();
+        window.location.reload();
+      } else {
+        alert("No changes detected.");
+        setLoading(false);
+      }
     } catch (error) {
       console.error("Error updating employee:", error);
-    } finally {
       setLoading(false);
     }
   };

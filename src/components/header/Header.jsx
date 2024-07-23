@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Img1 from "../../asset/images/favicon.ico";
 import useAuthService from "../../services/authService/AuthService";
@@ -9,12 +9,20 @@ const Header = () => {
   const [isEmployeeLogin, setIsEmployeeLogin] = useState(true);
   const navigate = useNavigate();
 
+  // Sync loggedIn state with isLoggedIn
+  useEffect(() => {
+    setLoggedIn(isLoggedIn());
+  }, [isLoggedIn]);
+
   // Handle logout
   const handleLogout = () => {
     logout();
     setLoggedIn(false);
-    navigate("/employee-login");
-    window.reload();
+    if(isEmployeeLogin) {
+      navigate("/employee-login");
+    }else{
+      navigate("/admin-login");
+    }
   };
 
   // Toggle between admin and employee login
@@ -27,6 +35,7 @@ const Header = () => {
   const handleNavigate = () => {
     navigate("/home");
   };
+
   return (
     <>
       <header className="flex items-center justify-between px-4 py-3 bg-gradient-to-r from-blue-800 via-blue-700 to-blue-400 text-white shadow-md">
