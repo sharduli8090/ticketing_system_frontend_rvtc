@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react";
 import useEmployeeService from "../../services/employeeService/EmployeeService";
+import useToastNotifications from "../../services/toastify/ToasterService";
 import Loader from "../loader/Loader";
 import Table from "../table/Table";
 
 const TicketsInMyName = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
+  const { notifyError } = useToastNotifications();
 
   const { getTicketsInMyName } = useEmployeeService();
 
@@ -17,7 +19,7 @@ const TicketsInMyName = () => {
     setLoading(true);
     try {
       if (localStorage.getItem("empid") === null) {
-        alert("Please login to view tickets");
+        notifyError("Please login to view tickets");
         return;
       }
       const response = await getTicketsInMyName({
@@ -37,7 +39,7 @@ const TicketsInMyName = () => {
       }));
       setData(formattedData);
     } catch (error) {
-      alert("An error occurred while fetching data");
+      notifyError("An error occurred while fetching data");
       console.error(error);
     } finally {
       setLoading(false);

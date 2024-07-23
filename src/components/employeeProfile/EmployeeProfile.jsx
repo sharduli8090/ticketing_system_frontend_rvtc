@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { FaFemale, FaMale } from "react-icons/fa";
 import "tailwindcss/tailwind.css";
 import useEmployeeService from "../../services/employeeService/EmployeeService";
+import useToastNotifications from "../../services/toastify/ToasterService";
 import Loader from "../loader/Loader";
 
 const EmployeeProfile = () => {
@@ -10,12 +11,14 @@ const EmployeeProfile = () => {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
   const [empId, setEmpId] = useState(null);
+  const { notifyError } = useToastNotifications();
 
   useEffect(() => {
     const empIdFromStorage = localStorage.getItem("empid");
     if (empIdFromStorage) {
       setEmpId(empIdFromStorage);
     } else {
+      notifyError("Employee ID not found in local storage");
       setError("Employee ID not found in local storage");
       setLoading(false);
     }
@@ -28,6 +31,7 @@ const EmployeeProfile = () => {
           const { data } = await getEmployee(empId);
           setEmployee(data);
         } catch (err) {
+          notifyError("Failed to fetch employee data");
           setError("Failed to fetch employee data");
         } finally {
           setLoading(false);

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import useEmployeeService from "../../services/employeeService/EmployeeService";
+import useToastNotifications from "../../services/toastify/ToasterService";
 import Loader from "../loader/Loader";
 
 const CreateTicket = () => {
@@ -13,6 +14,7 @@ const CreateTicket = () => {
   } = useForm();
   const [loading, setLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
+  const { notifyError } = useToastNotifications();
 
   const onSubmit = async (data) => {
     setLoading(true);
@@ -20,6 +22,7 @@ const CreateTicket = () => {
     try {
       const empId = localStorage.getItem("empid");
       if (!empId) {
+        notifyError("Employee ID not found in local storage");
         setErrorMessage("Employee ID not found in local storage");
         setLoading(false);
         return;
@@ -31,14 +34,15 @@ const CreateTicket = () => {
       };
 
       const resp = await createTicket(ticketData);
-      alert(resp.message);
       if (resp.statuscode === 200) {
         reset();
       } else {
+        notifyError("Error creating ticket");
         setErrorMessage("Error creating ticket");
         return;
       }
     } catch (error) {
+      notifyError("Error creating ticket");
       setErrorMessage("Error creating ticket");
       console.error(error);
     } finally {

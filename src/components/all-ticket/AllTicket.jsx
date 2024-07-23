@@ -1,5 +1,7 @@
+/* eslint-disable no-unused-vars */
 import { useEffect, useState } from "react";
 import useAdminService from "../../services/adminService/AdminService";
+import useToastNotifications from "../../services/toastify/ToasterService";
 import Loader from "../loader/Loader";
 import Table from "../table/Table";
 
@@ -10,6 +12,7 @@ const AllTicket = () => {
 
   const { getAllTicket, getTicketsDeptWise, deleteAllTicket } =
     useAdminService();
+  const { notifyError } = useToastNotifications();
 
   useEffect(() => {
     fetchData();
@@ -32,7 +35,7 @@ const AllTicket = () => {
       }));
       setData(formattedData);
     } catch (error) {
-      alert("An error occurred while fetching data");
+      notifyError("An error occurred while fetching data");
       console.error(error);
     } finally {
       setLoading(false);
@@ -61,7 +64,7 @@ const AllTicket = () => {
         setData(formattedData);
       }
     } catch (error) {
-      alert(
+      notifyError(
         `An error occurred while fetching data for status: ${selectedStatus}`
       );
       console.error(error);
@@ -74,10 +77,9 @@ const AllTicket = () => {
     setLoading(true);
     try {
       const resp = await deleteAllTicket();
-      alert(resp.message);
       setData([]);
     } catch (error) {
-      alert("An error occurred while deleting all tickets");
+      notifyError("An error occurred while deleting all tickets");
       console.error(error);
     } finally {
       setLoading(false);

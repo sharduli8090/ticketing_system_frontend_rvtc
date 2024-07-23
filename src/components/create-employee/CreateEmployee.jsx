@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import useAdminService from "../../services/adminService/AdminService";
+import useToastNotifications from "../../services/toastify/ToasterService";
 import Loader from "../loader/Loader";
 
 const CreateEmployee = () => {
@@ -14,20 +15,22 @@ const CreateEmployee = () => {
   const [loading, setLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const { createEmployee } = useAdminService();
+  const { notifyError } = useToastNotifications();
 
   const onSubmit = async (data) => {
     setLoading(true);
     setErrorMessage("");
     try {
       const resp = await createEmployee(data);
-      alert(resp.message);
       if (resp.statuscode === 200) {
         reset();
       } else {
+        notifyError("Error creating employee");
         setErrorMessage("Error creating employee");
         return;
       }
     } catch (error) {
+      notifyError("Error creating employee");
       setErrorMessage("Error creating employee");
       console.error(error);
     } finally {

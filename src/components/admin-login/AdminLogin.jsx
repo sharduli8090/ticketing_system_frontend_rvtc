@@ -1,7 +1,9 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import useAdminLoginService from "../../services/adminLoginService/AdminLoginService";
+import useToastNotifications from "../../services/toastify/ToasterService";
 import Loader from "../loader/Loader";
+
 const AdminLogin = () => {
   const { adminLogin } = useAdminLoginService();
   const [email, setEmail] = useState("");
@@ -9,6 +11,7 @@ const AdminLogin = () => {
   const [errorMessage, setErrorMessage] = useState("");
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+  const { notifyError } = useToastNotifications();
   const clearInputs = () => {
     setEmail("");
     setPassword("");
@@ -23,6 +26,7 @@ const AdminLogin = () => {
     setLoading(true);
 
     if (!email || !password) {
+      notifyError("Please enter valid email and password.");
       setErrorMessage("Please enter valid email and password.");
       setLoading(false);
       clearInputs();
@@ -40,12 +44,14 @@ const AdminLogin = () => {
         clearError();
         navigate("/admindash");
       } else {
+        notifyError("Invalid Credentials");
         console.error("Login error:", response);
         setLoading(false);
         setErrorMessage("Invalid Credentials");
         clearInputs();
       }
     } catch (error) {
+      notifyError("An error occurred. Please try again later.");
       console.error("Login error:", error);
       setLoading(false);
       setErrorMessage("An error occurred. Please try again later.");
@@ -58,7 +64,7 @@ const AdminLogin = () => {
   };
 
   const handleAlert = () => {
-    alert("Please contact your admin for any queries.");
+    notifyError("Please contact your admin for any queries.");
     navigate("/sendquery");
   };
 

@@ -1,3 +1,5 @@
+import useToastNotifications from "../toastify/ToasterService";
+
 const LocalStorageService = {
   getItem: (key) => localStorage.getItem(key),
   setItem: (key, value) => localStorage.setItem(key, value),
@@ -5,6 +7,7 @@ const LocalStorageService = {
 };
 
 const useAuthService = () => {
+  const { notifySuccess } = useToastNotifications();
   const getAuthorizationHeaders = (userType) => {
     let token = "";
     if (userType === "admin") {
@@ -58,6 +61,7 @@ const useAuthService = () => {
     LocalStorageService.removeItem("adminid");
     LocalStorageService.removeItem("emptoken");
     LocalStorageService.removeItem("empid");
+    notifySuccess("Logged out successfully");
   };
 
   return {

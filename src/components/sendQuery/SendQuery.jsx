@@ -1,11 +1,14 @@
+/* eslint-disable no-unused-vars */
 import { useState } from "react";
 import useSendQueryService from "../../services/queryservice/QueryService";
+import useToastNotifications from "../../services/toastify/ToasterService";
 import Loader from "../loader/Loader";
 
 const SendQuery = () => {
   const { sendQuery } = useSendQueryService();
   const [formData, setFormData] = useState({ name: "", query: "" });
   const [isLoading, setIsLoading] = useState(false);
+  const { notifyError } = useToastNotifications();
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -17,15 +20,14 @@ const SendQuery = () => {
     setIsLoading(true);
     try {
       if (!formData.name || !formData.query) {
-        alert("Please enter your name and query.");
+        notifyError("Please enter your name and query.");
         setIsLoading(false);
         return;
       }
       const response = await sendQuery(formData);
-      alert(response.message || "Query sent successfully!");
       setFormData({ name: "", query: "" });
     } catch (error) {
-      alert("Error sending query.");
+      notifyError("Error sending query.", error);
     } finally {
       setIsLoading(false);
     }

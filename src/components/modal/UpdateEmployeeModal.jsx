@@ -1,6 +1,8 @@
+/* eslint-disable no-unused-vars */
 import PropTypes from "prop-types";
 import { useEffect, useState } from "react";
 import useAdminService from "../../services/adminService/AdminService";
+import useToastNotifications from "../../services/toastify/ToasterService";
 import Loader from "../loader/Loader";
 
 const UpdateEmployeeModal = ({ isOpen, closeModal, selectedRow }) => {
@@ -17,6 +19,7 @@ const UpdateEmployeeModal = ({ isOpen, closeModal, selectedRow }) => {
   const [loading, setLoading] = useState(false);
 
   const { updateEmployee } = useAdminService();
+  const { notifyError } = useToastNotifications();
 
   useEffect(() => {
     if (selectedRow) {
@@ -56,15 +59,15 @@ const UpdateEmployeeModal = ({ isOpen, closeModal, selectedRow }) => {
       const updatedFields = getUpdatedFields();
       if (Object.keys(updatedFields).length > 0) {
         const updateResp = await updateEmployee(updatedFields, selectedRow.id);
-        alert(updateResp.message);
         closeModal();
         window.location.reload();
       } else {
-        alert("No changes detected.");
+        notifyError("No changes detected.");
         setLoading(false);
       }
     } catch (error) {
       console.error("Error updating employee:", error);
+      notifyError("Error updating employee.");
       setLoading(false);
     }
   };

@@ -4,10 +4,13 @@ import {
   BrowserRouter as Router,
   Routes,
 } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import AdminDashboard from "./components/admin-dash/AdminDashboard";
 import AdminLogin from "./components/admin-login/AdminLogin";
 import AllEmployee from "./components/all-employee/AllEmployee";
 import AllTicket from "./components/all-ticket/AllTicket";
+import AllQuery from "./components/allquery/AllQuery";
 import CreateEmployee from "./components/create-employee/CreateEmployee";
 import CreateTicket from "./components/create-ticket/CreateTicket";
 import EmployeeDashboard from "./components/employee-dash/EmployeeDashboard";
@@ -18,18 +21,17 @@ import Footer from "./components/footer/Footer";
 import Header from "./components/header/Header";
 import Home from "./components/home/Home";
 import SendQuery from "./components/sendQuery/SendQuery";
-import Unauthorized from "./components/unauth/Unauthorized";
-import useAuthService from "./services/authService/AuthService";
-import AllQuery from "./components/allquery/AllQuery";
 import TicketsRaisedByMe from "./components/ticketsbyme/TicketsRaisedByMe";
 import TicketsInMyName from "./components/ticketsinmyname/TicketsInMyName";
-
+import Unauthorized from "./components/unauth/Unauthorized";
+import useAuthService from "./services/authService/AuthService";
 const App = () => {
   const authService = useAuthService();
 
   return (
     <Router>
       <Header />
+      <ToastContainer />
       <Routes>
         <Route path="/home" element={<Home />} />
         <Route path="/admin-login" element={<AdminLogin />} />
@@ -58,9 +60,7 @@ const App = () => {
         />
         <Route
           path="/getquery"
-          element={
-            <GuardedRoute component={AllQuery} roles={["admin"]} />
-          }
+          element={<GuardedRoute component={AllQuery} roles={["admin"]} />}
         />
         <Route
           path="/employeedash"

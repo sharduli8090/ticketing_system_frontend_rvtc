@@ -1,6 +1,8 @@
 import { FaLock } from "react-icons/fa";
-
+import useToastNotifications from "../../services/toastify/ToasterService";
 const Unauthorized = () => {
+  const { notifyError } = useToastNotifications();
+  notifyError("Unauthorized access");
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-white text-gray-800 p-6">
       <div className="flex items-center justify-center mb-6">

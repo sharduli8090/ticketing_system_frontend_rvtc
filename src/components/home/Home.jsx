@@ -1,10 +1,13 @@
+import { useEffect } from "react";
 import { FaAnglesDown } from "react-icons/fa6";
 import { useNavigate } from "react-router-dom";
 import Img1 from "../../asset/images/about.jpg";
 import { featCards } from "../../constant/Constant";
+import useToastNotifications from "../../services/toastify/ToasterService";
 
 const Home = () => {
   const navigate = useNavigate();
+  const { notifyDefault } = useToastNotifications();
 
   const handleEmployeeLogin = () => {
     navigate("/employee-login");
@@ -13,6 +16,13 @@ const Home = () => {
   const handleSendQuery = () => {
     navigate("/sendquery");
   };
+  useEffect(() => {
+    notifyDefault("Welcome to Ticketing System");
+    notifyDefault("Use dummy data for login as employee ");
+    notifyDefault(
+      "Click on the icon below right corner of the page for dummy credentials"
+    );
+  }, [notifyDefault]);
 
   return (
     <div className="flex flex-col items-center">

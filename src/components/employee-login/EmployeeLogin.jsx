@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import useEmployeeLoginService from "../../services/employeeLoginService/EmployeeLoginService";
+import useToastNotifications from "../../services/toastify/ToasterService";
 import Loader from "../loader/Loader";
 
 const EmployeeLogin = () => {
@@ -10,6 +11,7 @@ const EmployeeLogin = () => {
   const [errorMessage, setErrorMessage] = useState("");
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+  const { notifyError } = useToastNotifications();
 
   const clearInputs = () => {
     setEmail("");
@@ -25,6 +27,7 @@ const EmployeeLogin = () => {
     setLoading(true);
 
     if (!email || !password) {
+      notifyError("Please enter valid email and password.");
       setErrorMessage("Please enter valid email and password.");
       setLoading(false);
       clearInputs();
@@ -40,14 +43,16 @@ const EmployeeLogin = () => {
         setLoading(false);
         clearInputs();
         clearError();
-        navigate("/employeedash"); 
+        navigate("/employeedash");
       } else {
+        notifyError("Invalid Credentials");
         console.error("Login error:", response);
         setLoading(false);
         setErrorMessage("Invalid Credentials");
         clearInputs();
       }
     } catch (error) {
+      notifyError("An error occurred. Please try again later.");
       console.error("Login error:", error);
       setLoading(false);
       setErrorMessage("An error occurred. Please try again later.");
@@ -60,7 +65,7 @@ const EmployeeLogin = () => {
   };
 
   const handleAlert = () => {
-    alert("Please contact your admin for password reset.");
+    notifyError("Please contact your admin for password reset.");
     handleAdminContact();
   };
 

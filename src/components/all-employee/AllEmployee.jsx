@@ -1,5 +1,7 @@
+/* eslint-disable no-unused-vars */
 import { useEffect, useState } from "react";
 import useAdminService from "../../services/adminService/AdminService";
+import useToastNotifications from "../../services/toastify/ToasterService";
 import Loader from "../loader/Loader";
 import Table from "../table/Table";
 
@@ -10,6 +12,7 @@ const AllEmployee = () => {
 
   const { getAllEmployee, getEmployeeDeptWise, deleteAllEmployee } =
     useAdminService();
+  const { notifyError } = useToastNotifications();
 
   useEffect(() => {
     fetchData();
@@ -32,7 +35,7 @@ const AllEmployee = () => {
       }));
       setData(formattedData);
     } catch (error) {
-      alert("An error occurred while fetching data");
+      notifyError("An error occurred while fetching data");
       console.error(error);
     } finally {
       setLoading(false);
@@ -62,7 +65,7 @@ const AllEmployee = () => {
         setData(formattedData);
       }
     } catch (error) {
-      alert(
+      notifyError(
         `An error occurred while fetching data for department: ${selectedDepartment}`
       );
       console.error(error);
@@ -75,10 +78,9 @@ const AllEmployee = () => {
     try {
       setLoading(true);
       const delResp = await deleteAllEmployee();
-      alert(delResp.message || "All employees deleted successfully");
       setData([]);
     } catch (error) {
-      alert("An error occurred while deleting all employees");
+      notifyError("An error occurred while deleting all employees");
       console.error(error);
     } finally {
       setLoading(false);

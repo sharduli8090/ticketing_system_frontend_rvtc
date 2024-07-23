@@ -1,5 +1,7 @@
+/* eslint-disable no-unused-vars */
 import { useState } from "react";
 import useSendQueryService from "../../services/queryservice/QueryService";
+import useToastNotifications from "../../services/toastify/ToasterService";
 import Loader from "../loader/Loader";
 
 const Footer = () => {
@@ -7,6 +9,7 @@ const Footer = () => {
   const [isLoading, setIsLoading] = useState(false);
 
   const { sendQuery } = useSendQueryService();
+  const { notifyError } = useToastNotifications();
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
@@ -17,10 +20,9 @@ const Footer = () => {
     setIsLoading(true);
     try {
       const response = await sendQuery(formData);
-      alert(response.message || "Query sent successfully!");
       setFormData({ name: "", query: "" });
     } catch (error) {
-      alert("Error sending query.");
+      notifyError("Error sending query.");
     } finally {
       setIsLoading(false);
     }

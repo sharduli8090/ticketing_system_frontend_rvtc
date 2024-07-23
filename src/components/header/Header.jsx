@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Img1 from "../../asset/images/favicon.ico";
 import useAuthService from "../../services/authService/AuthService";
@@ -18,9 +18,9 @@ const Header = () => {
   const handleLogout = () => {
     logout();
     setLoggedIn(false);
-    if(isEmployeeLogin) {
+    if (isEmployeeLogin) {
       navigate("/employee-login");
-    }else{
+    } else {
       navigate("/admin-login");
     }
   };

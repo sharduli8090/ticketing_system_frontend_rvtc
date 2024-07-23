@@ -7,6 +7,7 @@ import { MdDeleteOutline, MdEdit } from "react-icons/md";
 import { RiMailCloseLine } from "react-icons/ri";
 import useAdminService from "../../services/adminService/AdminService";
 import useEmployeeService from "../../services/employeeService/EmployeeService";
+import useToastNotifications from "../../services/toastify/ToasterService";
 import Loader from "../loader/Loader";
 import ApproveDenyComments from "../modal/ApproveDenyComments";
 import UpdateEmployeeModal from "../modal/UpdateEmployeeModal";
@@ -32,6 +33,7 @@ const Table = ({
 
   const { deleteEmployee, approveDenyTicket, deleteTicket } = useAdminService();
   const { closeTicket } = useEmployeeService();
+  const { notifyError } = useToastNotifications();
 
   useEffect(() => {
     if (data.length > 0) {
@@ -47,15 +49,14 @@ const Table = ({
     try {
       if (tableType === "ticket") {
         const delResp = await deleteTicket(id);
-        alert(delResp.message);
         fetchData();
       } else {
         const delResp = await deleteEmployee(id);
-        alert(delResp.message);
         fetchData();
       }
     } catch (error) {
       console.error("Error deleting employee:", error);
+      notifyError("Error deleting employee", error);
     } finally {
       setLoading(false);
     }
@@ -92,7 +93,6 @@ const Table = ({
           ticketComments: ticketComments,
         };
         const resp = await approveDenyTicket(body, selectedRow.id);
-        alert(resp.message);
         fetchData();
       } else if (tableType === "ticket" && localStorage.getItem("empid")) {
         const body = {
@@ -100,13 +100,12 @@ const Table = ({
           ticketComments: ticketComments,
         };
         const resp = await approveDenyTicket(body, selectedRow.id);
-        alert(resp.message);
         fetchData();
       }
-
       closeCommentModal();
     } catch (error) {
-      console.error(`Error handling ticket ${ticketStatus}:`, error);
+      console.error(`Error handling ticket`, error);
+      notifyError(`Error handling ticket`, error);
     } finally {
       setLoading(false);
     }
@@ -115,15 +114,14 @@ const Table = ({
   const handleCloseTicket = async (row) => {
     setLoading(true);
     try {
-      console.log("selectedRow", row.id);
       const resp = await closeTicket(
         { empId: localStorage.getItem("empid") },
         row.id
       );
-      alert(resp.message);
       fetchData();
     } catch (error) {
       console.error("Error closing ticket:", error);
+      notifyError("Error closing ticket", error);
     } finally {
       setLoading(false);
     }

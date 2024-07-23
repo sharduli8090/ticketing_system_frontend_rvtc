@@ -3,10 +3,11 @@ import { useCallback } from "react";
 import { Constants } from "../../constant/Constant";
 import { environment } from "../../environments/environment";
 import useAuthService from "../authService/AuthService";
+import useToastNotifications from "../toastify/ToasterService";
 
 const useAdminService = () => {
   const { getAuthorizationHeaders } = useAuthService();
-
+  const { notifySuccess } = useToastNotifications();
   const createEmployee = useCallback(
     async (obj) => {
       const headers = getAuthorizationHeaders("admin");
@@ -15,9 +16,10 @@ const useAdminService = () => {
         obj,
         headers
       );
+      notifySuccess(response.data.message);
       return response.data;
     },
-    [getAuthorizationHeaders]
+    [getAuthorizationHeaders, notifySuccess]
   );
 
   const getAllEmployee = useCallback(async () => {
@@ -26,8 +28,9 @@ const useAdminService = () => {
       `${environment.API_ADMIN_URL}${Constants.API_ADMIN_ENDPOINT.GET_ALL_EMPLOYEE}`,
       headers
     );
+    notifySuccess(response.data.message);
     return response.data;
-  }, [getAuthorizationHeaders]);
+  }, [getAuthorizationHeaders, notifySuccess]);
 
   const getAllTicket = useCallback(async () => {
     const headers = getAuthorizationHeaders("admin");
@@ -35,8 +38,9 @@ const useAdminService = () => {
       `${environment.API_ADMIN_URL}${Constants.API_ADMIN_ENDPOINT.GET_ALL_TICKET}`,
       headers
     );
+    notifySuccess(response.data.message);
     return response.data;
-  }, [getAuthorizationHeaders]);
+  }, [getAuthorizationHeaders, notifySuccess]);
 
   const deleteAllTicket = useCallback(async () => {
     const headers = getAuthorizationHeaders("admin");
@@ -44,8 +48,9 @@ const useAdminService = () => {
       `${environment.API_ADMIN_URL}${Constants.API_ADMIN_ENDPOINT.DELETE_ALL_TICKET}`,
       headers
     );
+    notifySuccess(response.data.message);
     return response.data;
-  }, [getAuthorizationHeaders]);
+  }, [getAuthorizationHeaders, notifySuccess]);
 
   const deleteAllEmployee = useCallback(async () => {
     const headers = getAuthorizationHeaders("admin");
@@ -53,8 +58,9 @@ const useAdminService = () => {
       `${environment.API_ADMIN_URL}${Constants.API_ADMIN_ENDPOINT.DELETE_ALL_EMPLOYEE}`,
       headers
     );
+    notifySuccess(response.data.message);
     return response.data;
-  }, [getAuthorizationHeaders]);
+  }, [getAuthorizationHeaders, notifySuccess]);
 
   const deleteEmployee = useCallback(
     async (id) => {
@@ -63,9 +69,10 @@ const useAdminService = () => {
         `${environment.API_ADMIN_URL}${Constants.API_ADMIN_ENDPOINT.DELETE_EMPLOYEE}${id}`,
         headers
       );
+      notifySuccess(response.data.message);
       return response.data;
     },
-    [getAuthorizationHeaders]
+    [getAuthorizationHeaders, notifySuccess]
   );
 
   const deleteTicket = useCallback(
@@ -75,9 +82,10 @@ const useAdminService = () => {
         `${environment.API_ADMIN_URL}${Constants.API_ADMIN_ENDPOINT.DELETE_TICKET}${id}`,
         headers
       );
+      notifySuccess(response.data.message);
       return response.data;
     },
-    [getAuthorizationHeaders]
+    [getAuthorizationHeaders, notifySuccess]
   );
 
   const approveDenyTicket = useCallback(
@@ -88,9 +96,10 @@ const useAdminService = () => {
         obj,
         headers
       );
+      notifySuccess(response.data.message);
       return response.data;
     },
-    [getAuthorizationHeaders]
+    [getAuthorizationHeaders, notifySuccess]
   );
 
   const getEmployeeDeptWise = useCallback(
@@ -101,9 +110,10 @@ const useAdminService = () => {
         obj,
         headers
       );
+      notifySuccess(response.data.message);
       return response.data;
     },
-    [getAuthorizationHeaders]
+    [getAuthorizationHeaders, notifySuccess]
   );
 
   const getTicketsDeptWise = useCallback(
@@ -114,9 +124,10 @@ const useAdminService = () => {
         obj,
         headers
       );
+      notifySuccess(response.data.message);
       return response.data;
     },
-    [getAuthorizationHeaders]
+    [getAuthorizationHeaders, notifySuccess]
   );
 
   const updateEmployee = useCallback(
@@ -127,9 +138,10 @@ const useAdminService = () => {
         obj,
         headers
       );
+      notifySuccess(response.data.message);
       return response.data;
     },
-    [getAuthorizationHeaders]
+    [getAuthorizationHeaders, notifySuccess]
   );
 
   const getquery = useCallback(async () => {
@@ -138,8 +150,9 @@ const useAdminService = () => {
       `${environment.API_ADMIN_URL}${Constants.API_ADMIN_ENDPOINT.GET_QUERY}`,
       headers
     );
+    notifySuccess(response.data.message);
     return response.data;
-  }, [getAuthorizationHeaders]);
+  }, [getAuthorizationHeaders, notifySuccess]);
 
   return {
     createEmployee,
@@ -153,7 +166,7 @@ const useAdminService = () => {
     getEmployeeDeptWise,
     getTicketsDeptWise,
     updateEmployee,
-    getquery
+    getquery,
   };
 };
 
