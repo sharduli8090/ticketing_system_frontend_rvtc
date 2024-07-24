@@ -27,8 +27,8 @@ const Home = () => {
   return (
     <div className="flex flex-col items-center">
       {/* Login Buttons Section */}
-      <section className="w-full min-h-screen bg-white flex flex-col justify-center items-center space-y-8 relative">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center z-10">
+      <section className="w-full min-h-screen bg-white flex flex-col justify-center items-center space-y-8 relative mt-16 mb-32 lg:my-0 md:my-0">
+        <div className="max-w-7xl mx-auto md:px-4 px-6 lg:px-8 text-center z-1">
           <div className="bg-white bg-gradient-to-r from-blue-100 via-white to-blue-100 shadow-2xl p-10 relative z-10 ">
             <h1 className="text-5xl font-medium mb-8 text-gray-800 ">
               Efficiency Meets Excellence
@@ -74,8 +74,8 @@ const Home = () => {
       <section className="w-full min-h-screen bg-blue-800 py-20 text-white flex justify-center items-center transition-all duration-500 ease-in-out">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center text-center md:text-left">
           <div className="md:w-1/2 p-4">
-            <h2 className="text-4xl font-bold mb-4">About Us</h2>
-            <p className="text-xl mb-8 text-justify">
+            <h2 className="lg:text-4xl md:text-4xl text-2xl font-bold mb-4">About Us</h2>
+            <p className="lg:text-xl md:text-xl text-sm mb-8 text-justify">
               Experience the future of ticket management with our cutting-edge
               system designed for seamless efficiency and user-friendly control.
               Whether you&apos;re an admin or an employee, our intuitive
@@ -100,7 +100,7 @@ const Home = () => {
       {/* Stats Section */}
       <section className="w-full min-h-screen bg-white py-20 flex flex-col justify-center items-center transition-all duration-500 ease-in-out">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-4xl font-semibold mb-20">Our Stats</h2>
+          <h2 className="lg:text-4xl md:text-4xl text-2xl  font-semibold mb-20">Our Stats</h2>
           <div className="flex justify-center flex-wrap  lg:space-x-8 ">
             {
               // Stats Cards
@@ -123,8 +123,8 @@ const Home = () => {
       {/* Feature Section */}
       <section className="w-full min-h-screen bg-blue-800 py-20 text-white flex flex-col justify-center items-center transition-all duration-500 ease-in-out">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-4xl font-bold mb-4">Our Features</h2>
-          <p className="text-xl mb-8">
+          <h2 className="lg:text-4xl md:text-4xl text-2xl font-bold mb-4">Our Features</h2>
+          <p className="lg:text-xl md:text-xl text-md mb-8">
             Explore our range of features designed to cater to all your
             ticketing needs.
           </p>
@@ -145,18 +145,18 @@ const Home = () => {
       {/* More Info Section */}
       <section className="w-full min-h-screen bg-white py-20 flex flex-col justify-center items-center transition-all duration-500 ease-in-out">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-4xl font-bold mb-4">More Information</h2>
-          <p className="text-xl mb-8">
+          <h2 className="lg:text-4xl md:text-4xl text-2xl font-bold mb-4">More Information</h2>
+          <p className="lg:text-xl md:text-xl text-md mb-8">
             Get in touch with us to know more about our services and how we can
             help you.
           </p>
         </div>
         <div
-          className="bg-gradient-to-b from-blue-200  to-indigo-400 p-20 rounded-full animate-bounce shadow-2xl mt-20 drop-shadow-2xlll"
+          className="bg-gradient-to-b from-blue-200  to-indigo-400 p-20 rounded-full animate-bounce shadow-2xl mt-20 "
           onClick={handleSendQuery}
         >
           <FaAnglesDown
-            className="text-9xl mt-5 text-white "
+            className="lg:text-9xl md:text-9xl text-7xl text-white "
             style={{
               background: "linear-gradient(to right, #3b82f6, #6366f1)",
               WebkitBackgroundClip: "text",
