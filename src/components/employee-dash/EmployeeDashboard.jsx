@@ -9,11 +9,7 @@ const EmployeeDashboard = () => {
     notifyDefault("Welcome to Employee Dashboard");
   }, [notifyDefault]);
 
-  return (
-    <div>
-      <CardsComponent cards={employeeCards} />
-    </div>
-  );
+  return <CardsComponent cards={employeeCards} />;
 };
 
 export default EmployeeDashboard;

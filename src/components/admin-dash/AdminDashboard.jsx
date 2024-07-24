@@ -12,11 +12,7 @@ const AdminDashboard = () => {
     notifyDefault("Welcome to Admin Dashboard");
   }, [notifyDefault]);
 
-  return (
-    <div>
-      <CardsComponent cards={adminCards} />
-    </div>
-  );
+  return <CardsComponent cards={adminCards} />;
 };
 
 export default AdminDashboard;
