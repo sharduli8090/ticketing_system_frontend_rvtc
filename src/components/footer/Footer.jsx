@@ -38,10 +38,10 @@ const Footer = () => {
         <input
           type="text"
           name="name"
-          placeholder="Your Name or Type Anonymous"
+          placeholder="Title or Anonymous"
           value={formData.name}
           onChange={handleInputChange}
-          className="md:px-3 md:py-2 px-2 py-2 md:mr-2 md:mb-0 mb-2 text-center md:text-left lg:text-left rounded-md focus:outline-none focus:ring focus:ring-blue-300 text-gray-800 text-md"
+          className="md:px-3 md:py-2 px-2 py-2 md:mr-2 md:mb-0 mb-2 text-center md:text-left lg:text-left rounded-md focus:outline-none focus:ring focus:ring-blue-300 text-gray-800 text-sm lg:text-md md:text-md"
           autoComplete="off"
         />
         <input
@@ -50,12 +50,12 @@ const Footer = () => {
           placeholder="Your Query"
           value={formData.query}
           onChange={handleInputChange}
-          className="md:px-3 md:py-2 px-2 py-2 md:mb-0 md:mr-2 mb-2 text-center md:text-left lg:text-left rounded-md focus:outline-none focus:ring focus:ring-blue-300 text-gray-800 text-md"
+          className="md:px-3 md:py-2 px-2 py-2 md:mb-0 md:mr-2 mb-2 text-center md:text-left lg:text-left rounded-md focus:outline-none focus:ring focus:ring-blue-300 text-gray-800 text-sm lg:text-md md:text-md"
           autoComplete="off"
         />
         <button
           type="submit"
-          className="btn btn-sm bg-blue-300 hover:bg-blue-400 text-white font-bold py-2 px-4 rounded-md md:mt-5 md:w-full md:mx-28 lg:mx-0 lg:w-auto lg:mt-0 transition-transform transform hover:scale-110 duration-300"
+          className="btn btn-sm bg-blue-300 hover:bg-blue-400 text-white font-bold py-2 px-4 rounded-md md:mt-5 md:w-full md:mx-28 lg:mx-0 lg:w-auto lg:mt-0 transition-transform transform hover:scale-110 duration-300 text-sm lg:text-md md:text-md"
         >
           Send Query
         </button>

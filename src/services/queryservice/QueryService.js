@@ -9,6 +9,10 @@ const useSendQueryService = () => {
   const sendQuery = useCallback(async (queryObj) => {
     try {
       const url = `${environment.API_URL}${Constants.API_GENERAL_ENDPOINT.SEND_QUERY}`;
+      if (!queryObj.name || !queryObj.query) {
+        notifyError("Please fill all the entries.");
+        return;
+      }
       const response = await axios.post(url, queryObj);
       notifySuccess(response.data.message);
       return response.data;
