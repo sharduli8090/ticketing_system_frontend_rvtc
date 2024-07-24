@@ -29,11 +29,11 @@ const Home = () => {
       {/* Login Buttons Section */}
       <section className="w-full min-h-screen bg-white flex flex-col justify-center items-center space-y-8 relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center z-10">
-          <div className="bg-white bg-gradient-to-r from-blue-100 via-white to-blue-100 shadow-2xl p-10 relative z-10">
-            <h1 className="text-5xl font-medium mb-8 text-gray-800">
+          <div className="bg-white bg-gradient-to-r from-blue-100 via-white to-blue-100 shadow-2xl p-10 relative z-10 ">
+            <h1 className="text-5xl font-medium mb-8 text-gray-800 ">
               Efficiency Meets Excellence
             </h1>
-            <h5 className="font-thin h-24">
+            <h5 className="font-light mb-10">
               <i>
                 Our ticketing system is more than just a tool—it&apos;s a
                 catalyst for exceptional customer service. By integrating
