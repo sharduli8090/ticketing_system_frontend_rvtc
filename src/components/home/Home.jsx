@@ -106,7 +106,7 @@ const Home = () => {
               // Stats Cards
               statsCards.map((card, index) => (
                 <div
-                  className="bg-blue-200 w-full lg:w-auto md:w-3/4 p-10 lg:p-20 md:p-20 rounded-lg shadow-lg transition-transform transform hover:scale-110 duration-300 mb-5"
+                  className="bg-blue-200 w-full lg:w-auto md:w-3/4 p-10 lg:p-20 md:p-20 rounded-lg shadow-lg transition-transform transform hover:scale-110 duration-300 mb-5 hover:bg-blue-300 hover:cursor-default"
                   key={index}
                 >
                   <h3 className="text-xl font-semibold mb-2">{card.head}</h3>
