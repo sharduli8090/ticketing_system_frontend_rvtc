@@ -101,11 +101,7 @@ const Table = ({
           empId: localStorage.getItem("empid"),
           ticketStatus: ticketStatus,
           ticketComments: ticketComments,
-        };
-        console.log("body", body);
-        console.log(ticketComments);
-        console.log(ticketStatus);
-        
+        };         
         const resp = await approveDenyTicketEmployee(body, selectedRow.id);
         fetchDataTicketsInMyName();
       }
@@ -149,11 +145,11 @@ const Table = ({
       {loading ? (
         <Loader />
       ) : noData ? (
-        <div className="text-center text-gray-400 my-40 text-3xl">
+        <div className="text-center text-gray-400 my-40 lg:text-3xl md:text-3xl text-xl">
           No data found
         </div>
       ) : (
-        <table className="max-w-full rounded-lg shadow-2xl divide-y divide-blue-300 m-0 w-19/20">
+        <table className="max-w-xssw rounded-lg shadow-2xl divide-y divide-blue-300 m-0 w-19/20">
           <thead className="bg-blue-500 text-white">
             <tr>
               <th className="px-6 py-3 text-center">S.No.</th>
