@@ -59,7 +59,7 @@ const CreateTicket = () => {
       {loading ? (
         <Loader />
       ) : (
-        <div className="w-full max-w-screen-md bg-white rounded-lg px-8 py-12 shadow-lg flex flex-col items-center">
+        <div className="w-full max-w-screen-md bg-white rounded-lg px-8 py-12 shadow-lg flex flex-col items-center h-screen lg:h-auto md:h-auto">
           <h1 className="text-center text-2xl font-medium mb-8">
             Create Ticket
           </h1>
