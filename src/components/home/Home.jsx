@@ -120,7 +120,7 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Products Section */}
+      {/* Feature Section */}
       <section className="w-full min-h-screen bg-blue-800 py-20 text-white flex flex-col justify-center items-center transition-all duration-500 ease-in-out">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-4xl font-bold mb-4">Our Features</h2>
@@ -131,7 +131,7 @@ const Home = () => {
           <div className="flex justify-center flex-wrap">
             {featCards.map((card, index) => (
               <div
-                className="bg-white text-blue-900 p-6 w-1/3 m-5 rounded-lg shadow-md transition-transform transform hover:scale-110 duration-300 hover:bg-gradient-to-br hover:from-blue-200 hover:via-white hover:to-indigo-200"
+                className="bg-white text-blue-900 p-6 lg:w-1/3 md:w-1/3 w-full m-5 rounded-lg shadow-md transition-transform transform hover:scale-110 duration-300 hover:bg-gradient-to-br hover:from-blue-200 hover:via-white hover:to-indigo-200"
                 key={index}
               >
                 <h3 className="text-xl font-semibold mb-2">{card.head}</h3>
