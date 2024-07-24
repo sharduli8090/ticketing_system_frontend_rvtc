@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { FaAnglesDown } from "react-icons/fa6";
 import { useNavigate } from "react-router-dom";
 import Img1 from "../../asset/images/about.jpg";
-import { featCards } from "../../constant/Constant";
+import { featCards, statsCards } from "../../constant/Constant";
 import useToastNotifications from "../../services/toastify/ToasterService";
 
 const Home = () => {
@@ -101,19 +101,21 @@ const Home = () => {
       <section className="w-full min-h-screen bg-white py-20 flex flex-col justify-center items-center transition-all duration-500 ease-in-out">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-4xl font-semibold mb-20">Our Stats</h2>
-          <div className="flex justify-center space-x-8">
-            <div className="bg-blue-200 p-20 rounded-lg shadow-md transition-transform transform hover:scale-110 duration-300">
-              <h3 className="text-xl font-semibold mb-2">Tickets Solved</h3>
-              <p className="text-9xl">1500+</p>
-            </div>
-            <div className="bg-blue-200 p-20 rounded-lg shadow-md transition-transform transform hover:scale-110 duration-300">
-              <h3 className="text-xl font-semibold mb-2">Happy Clients</h3>
-              <p className="text-9xl">300+</p>
-            </div>
-            <div className="bg-blue-200 p-20 rounded-lg shadow-md transition-transform transform hover:scale-110 duration-300">
-              <h3 className="text-xl font-semibold mb-2">Support Hours</h3>
-              <p className="text-9xl">24/7</p>
-            </div>
+          <div className="flex justify-center flex-wrap  lg:space-x-8 ">
+            {
+              // Stats Cards
+              statsCards.map((card, index) => (
+                <div
+                  className="bg-blue-200 w-full lg:w-auto md:w-3/4 p-10 lg:p-20 md:p-20 rounded-lg shadow-lg transition-transform transform hover:scale-110 duration-300 mb-5"
+                  key={index}
+                >
+                  <h3 className="text-xl font-semibold mb-2">{card.head}</h3>
+                  <p className="lg:text-9xl md:text-9xl text-7xl">
+                    {card.desc}
+                  </p>
+                </div>
+              ))
+            }
           </div>
         </div>
       </section>

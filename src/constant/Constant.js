@@ -112,3 +112,19 @@ export const featCards = [
     desc: "Stay up-to-date with automatic real-time data synchronization, ensuring everyone has the latest information at their fingertips.",
   },
 ];
+
+
+export const statsCards = [
+  {
+    head: "Tickets Solved",
+    desc: "1500+",
+  },
+  {
+    head: "Happy Clients",
+    desc: "300+",
+  },
+  {
+    head: "Support Hours",
+    desc: "24/7",
+  },
+];
