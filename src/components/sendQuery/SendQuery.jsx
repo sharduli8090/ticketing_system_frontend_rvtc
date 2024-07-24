@@ -34,12 +34,12 @@ const SendQuery = () => {
   };
 
   return (
-    <div className="bg-white p-10 rounded-lg shadow-2xl max-w-md mx-auto m-72">
+    <div className="bg-white p-10 rounded-lg shadow-2xl max-w-md mx-auto m-72  w-3/4  ">
       {isLoading && <Loader />}
-      <h2 className="text-3xl font-semibold text-gray-800 mb-4 text-center">
+      <h2 className="lg:text-3xl md:text-3xl text-2xl font-semibold text-gray-800 mb-4 text-center">
         Got a Query? We&apos;re Here to Help!
       </h2>
-      <p className="text-gray-600 text-center mb-6">
+      <p className="text-gray-600 text-center mb-6 text-sm lg:text-base md:text-base">
         Fill in your details and query below, and we&apos;ll get back to you
         promptly.
       </p>
@@ -50,7 +50,7 @@ const SendQuery = () => {
           placeholder="Your Name or Type Anonymous"
           value={formData.name}
           onChange={handleInputChange}
-          className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring focus:ring-blue-300 text-gray-800"
+          className="shadow appearance-none border rounded w-full py-1 lg:py-2 md:py-2 px-2 lg:px-3 md:px-3  text-gray-700 focus:outline-none focus:ring-blue-500 focus:ring-opacity-50 text-sm lg:text-base md:text-base"
           autoComplete="off"
         />
         <input
@@ -59,12 +59,12 @@ const SendQuery = () => {
           placeholder="Your Query"
           value={formData.query}
           onChange={handleInputChange}
-          className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring focus:ring-blue-300 text-gray-800"
+          className="shadow appearance-none border rounded w-full py-1 lg:py-2 md:py-2 px-2 lg:px-3 md:px-3  text-gray-700 focus:outline-none focus:ring-blue-500 focus:ring-opacity-50 text-sm lg:text-base md:text-base"
           autoComplete="off"
         />
         <button
           type="submit"
-          className="w-full py-2 bg-blue-500 text-white font-bold rounded-md hover:bg-blue-600 transition-transform transform hover:scale-105 duration-300"
+          className="w-full py-1 text-base lg:py-2 md:py-2 bg-blue-500 text-white font-bold rounded-md hover:bg-blue-600 transition-transform transform hover:scale-105 duration-300"
         >
           Send Query
         </button>
