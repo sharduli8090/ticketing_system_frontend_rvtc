@@ -4,6 +4,7 @@ import useAdminService from "../../services/adminService/AdminService";
 import useToastNotifications from "../../services/toastify/ToasterService";
 import Loader from "../loader/Loader";
 import Table from "../table/Table";
+import BackButton from "../backButton/BackButton";
 
 const AllEmployee = () => {
   const [data, setData] = useState([]);
@@ -89,6 +90,7 @@ const AllEmployee = () => {
 
   return (
     <div className="flex flex-col justify-between items-center mt-32 mb-64 w-auto mx-28">
+      <BackButton />
       {loading ? (
         <Loader />
       ) : (

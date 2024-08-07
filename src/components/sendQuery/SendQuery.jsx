@@ -3,6 +3,7 @@ import { useState } from "react";
 import useSendQueryService from "../../services/queryservice/QueryService";
 import useToastNotifications from "../../services/toastify/ToasterService";
 import Loader from "../loader/Loader";
+import BackButton from "../backButton/BackButton";
 
 const SendQuery = () => {
   const { sendQuery } = useSendQueryService();
@@ -35,7 +36,11 @@ const SendQuery = () => {
 
   return (
     <div className="bg-white p-10 rounded-lg shadow-2xl max-w-md mx-auto m-72  w-3/4  ">
-      {isLoading && <Loader />}
+      <BackButton />
+      {isLoading ? (
+        <Loader />
+      ) : (
+        <>
       <h2 className="lg:text-3xl md:text-3xl text-2xl font-semibold text-gray-800 mb-4 text-center">
         Got a Query? We&apos;re Here to Help!
       </h2>
@@ -69,6 +74,8 @@ const SendQuery = () => {
           Send Query
         </button>
       </form>
+      </>
+    )}
     </div>
   );
 };

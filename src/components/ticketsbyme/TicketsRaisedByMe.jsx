@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import useEmployeeService from "../../services/employeeService/EmployeeService";
 import useToastNotifications from "../../services/toastify/ToasterService";
+import BackButton from "../backButton/BackButton";
 import Loader from "../loader/Loader";
 import Table from "../table/Table";
 
@@ -48,6 +49,7 @@ const TicketsRaisedByMe = () => {
 
   return (
     <div className="flex flex-col justify-between items-center mt-32 mb-64 w-auto mx-28">
+      <BackButton />
       {loading ? (
         <Loader />
       ) : (

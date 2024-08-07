@@ -6,6 +6,7 @@ import "tailwindcss/tailwind.css";
 import useEmployeeService from "../../services/employeeService/EmployeeService";
 import useToastNotifications from "../../services/toastify/ToasterService";
 import Loader from "../loader/Loader";
+import BackButton from "../backButton/BackButton";
 
 const EmployeeProfile = () => {
   const { getEmployee } = useEmployeeService();
@@ -75,6 +76,7 @@ const EmployeeProfile = () => {
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-white p-8 mb-56">
+      <BackButton />
       <div className="relative w-40 h-40 mb-6 transition-transform transform hover:scale-110 duration-300">
         <div className="absolute inset-0 rounded-full bg-gray-200 shadow-md  "></div>
         <div className="absolute inset-0 rounded-full flex items-center justify-center  text-blue-500   text-8xl ">

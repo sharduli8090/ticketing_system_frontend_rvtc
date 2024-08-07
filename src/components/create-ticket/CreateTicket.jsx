@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import useEmployeeService from "../../services/employeeService/EmployeeService";
 import useToastNotifications from "../../services/toastify/ToasterService";
 import Loader from "../loader/Loader";
-
+import BackButton from "../backButton/BackButton";
 const CreateTicket = () => {
   const { createTicket } = useEmployeeService();
   const {
@@ -56,6 +56,7 @@ const CreateTicket = () => {
         loading ? "bg-transparent" : "bg-gradient-to-r from-blue-50 to-blue-100"
       }`}
     >
+      <BackButton />
       {loading ? (
         <Loader />
       ) : (
