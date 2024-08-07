@@ -5,7 +5,7 @@ import Img1 from "../../asset/images/favicon.ico";
 import useAuthService from "../../services/authService/AuthService";
 
 const Header = () => {
-  const { isLoggedIn, logout } = useAuthService();
+  const { isLoggedIn, logout , getUserType} = useAuthService();
   const [loggedIn, setLoggedIn] = useState(isLoggedIn());
   const [isEmployeeLogin, setIsEmployeeLogin] = useState(true);
   const navigate = useNavigate();
@@ -37,6 +37,15 @@ const Header = () => {
     navigate("/home");
   };
 
+const handleNavigateDash = () => {
+  const userType = getUserType();
+  if (userType === "admin") {
+    navigate("/admindash");
+  } else {
+    navigate("/employeedash");
+  }
+}
+
   return (
     <>
       <header className="flex items-center justify-between px-4 py-3 bg-gradient-to-r from-blue-800 via-blue-700 to-blue-400 text-white shadow-md">
@@ -51,11 +60,10 @@ const Header = () => {
         </div>
         <div>
           {loggedIn ? (
-            <div className="flex justify-between w-1/2">
-              {/* navigate to dasboard buttotn */}
+            <div className="flex justify-between w-1/2"> 
               <button
                 className="bg-blue-300   hover:bg-blue-700 text-white font-bold p-2 text-md rounded transition-transform transform hover:scale-110 duration-800 mr-2"
-                onClick={handleNavigate}
+                onClick={handleNavigateDash}
               >
                 <GoHomeFill className="lg:w-5 lg:h-5 " />
               </button>
