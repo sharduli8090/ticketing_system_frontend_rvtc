@@ -45,8 +45,8 @@ const Header = () => {
           className="w-10 h-10 animate-pulse hover:cursor-pointer"
           onClick={handleNavigate}
         />
-        <div className="md:text-3xl lg:text-3xl text-md font-semibold md:font-normal lg:font-normal">
-          Ticketing System
+        <div className="md:text-3xl lg:text-3xl   text-md  font-medium">
+          SmartTask Ticketing System
         </div>
         <div>
           {loggedIn ? (

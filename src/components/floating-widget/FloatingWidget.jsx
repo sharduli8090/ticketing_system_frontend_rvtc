@@ -16,7 +16,7 @@ const FloatingWidget = () => {
         </div>
         {isHovered && (
           <div className="absolute bottom-14 right-0 bg-white border border-gray-300 rounded-lg p-4 shadow-2xl shadow-blue-300">
-            <b>Welcome to Ticketing System!</b>
+            <b>Welcome to SmartTask!</b>
             <div>email: dummyemail@dummy.com</div>
             <div>password: test123</div>
           </div>

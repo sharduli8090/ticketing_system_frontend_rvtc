@@ -17,7 +17,7 @@ const Home = () => {
     navigate("/sendquery");
   };
   useEffect(() => {
-    notifyDefault("Welcome to Ticketing System");
+    notifyDefault("Welcome to SmartTask!");
     notifyDefault("Use dummy data for login as employee ");
     notifyDefault(
       "Click on the icon below right corner of the page for dummy credentials"
