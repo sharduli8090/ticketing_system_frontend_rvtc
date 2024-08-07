@@ -23,7 +23,7 @@ const CardsComponent = ({ cards }) => {
                 </h3>
                 <button
                   onClick={() => navigateToCard(card.endpoint)}
-                  className="bg-blue-600 text-white hover:bg-blue-700 font-bold py-2 px-4 rounded shadow-md text-xs lg:text-lg md:text-md ml-10"
+                  className="bg-blue-600 text-white hover:bg-blue-700 font-bold py-2 px-4 rounded shadow-md text-xs lg:text-lg md:text-md ml-10 transition-transform transform hover:scale-110 duration-800"
                 >
                   {card.buttonText}
                 </button>

@@ -180,7 +180,7 @@ const Table = ({
                     {update && (
                       <button
                         onClick={() => openUpdateModal(row)}
-                        className="bg-blue-500 hover:bg-blue-700 rounded mr-3 text-white text-sm p-2 relative group"
+                        className="bg-blue-500 hover:bg-blue-700 rounded mr-3 text-white text-sm p-2 relative group transition-transform transform hover:scale-110 duration-800"
                       >
                         <MdEdit />
                         <div className="absolute hidden group-hover:block bg-gray-500 text-white text-sm rounded py-1 px-2 bottom-full left-1/2 transform -translate-x-1/2 mb-2">
@@ -191,7 +191,7 @@ const Table = ({
                     {del && (
                       <button
                         onClick={() => handleDeleteRow(row.id, tableType)}
-                        className="bg-red-500 hover:bg-red-700 rounded mr-3 text-white text-sm p-2 relative group"
+                        className="bg-red-500 hover:bg-red-700 rounded mr-3 text-white text-sm p-2 relative group transition-transform transform hover:scale-110 duration-800"
                       >
                         <MdDeleteOutline />
                         <div className="absolute hidden group-hover:block bg-gray-500 text-white text-sm rounded py-1 px-2 bottom-full left-1/2 transform -translate-x-1/2 mb-2">
@@ -206,7 +206,7 @@ const Table = ({
                           row.Status !== "open"
                             ? "bg-gray-300"
                             : "bg-green-500 hover:bg-green-700"
-                        } rounded mr-3 text-white text-sm p-2 relative group`}
+                        } rounded mr-3 text-white text-sm p-2 relative group  transition-transform transform hover:scale-110 duration-800`}
                         disabled={row.Status !== "open"}
                       >
                         <GoCheck />
@@ -222,7 +222,7 @@ const Table = ({
                           row.Status !== "open"
                             ? "bg-gray-300"
                             : "bg-yellow-500 hover:bg-yellow-700"
-                        } rounded mr-3 text-white text-sm p-2 relative group`}
+                        } rounded mr-3 text-white text-sm p-2 relative group  transition-transform transform hover:scale-110 duration-800`}
                         disabled={row.Status !== "open"}
                       >
                         <GoX />
@@ -238,7 +238,7 @@ const Table = ({
                           row.Status !== "open"
                             ? "bg-gray-300"
                             : "bg-gray-500 hover:bg-gray-700"
-                        } rounded mr-3 text-white text-sm p-2 relative group`}
+                        } rounded mr-3 text-white text-sm p-2 relative group  transition-transform transform hover:scale-110 duration-800`}
                         disabled={row.Status !== "open"}
                       >
                         <RiMailCloseLine />

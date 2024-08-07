@@ -113,7 +113,7 @@ const AdminLogin = () => {
               />
               <span
                 onClick={handleAlert}
-                className="text-blue-500 text-xs float-right mt-1 hover:cursor-pointer"
+                className="text-blue-500 text-xs float-right mt-1 hover:cursor-pointer transition-transform transform hover:scale-110 duration-1000"
               >
                 Send Your Query
               </span>
@@ -122,7 +122,7 @@ const AdminLogin = () => {
             <div className="flex items-center mb-4">
               <button
                 type="submit"
-                className="w-full lg:w-1/4 md:w-1/4 mt-5 lg:mt-0 md:mt-0 bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 lg:py-2 md:py-2 rounded focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-700"
+                className="w-full lg:w-1/4 md:w-1/4 mt-5 lg:mt-0 md:mt-0 bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 lg:py-2 md:py-2 rounded focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-700 transition-transform transform hover:scale-110 duration-800"
               >
                 Login
               </button>
@@ -134,7 +134,7 @@ const AdminLogin = () => {
             <div className="text-center text-gray-500 text-xs lg:text-sm md:text-sm ">
               Sign in as Employee &nbsp;
               <span
-                className="text-blue-500 font-bold hover:cursor-pointer"
+                className="text-blue-500 font-bold hover:cursor-pointer "
                 onClick={handleEmployeeLogin}
               >
                 Employee Login

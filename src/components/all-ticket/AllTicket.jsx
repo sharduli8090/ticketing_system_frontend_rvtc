@@ -106,7 +106,7 @@ const AllTicket = () => {
               </select>
               <button
                 onClick={filterByDept}
-                className="text-sm text-white bg-blue-600 px-3 py-1 rounded-md hover:bg-blue-800 focus:outline-none ml-2"
+                className="text-sm text-white bg-blue-600 px-3 py-1 rounded-md hover:bg-blue-800 focus:outline-none ml-2  transition-transform transform hover:scale-110 duration-800"
               >
                 Filter
               </button>
@@ -114,7 +114,7 @@ const AllTicket = () => {
             <div className="flex justify-end items-center border-gray-200 border-2 rounded-md px-4 py-2">
               <button
                 onClick={handleDeleteAll}
-                className="text-sm text-white bg-red-500 px-3 py-1 rounded-md hover:bg-red-800 focus:outline-none"
+                className="text-sm text-white bg-red-500 px-3 py-1 rounded-md hover:bg-red-800 focus:outline-none  transition-transform transform hover:scale-110 duration-800"
               >
                 Delete All
               </button>

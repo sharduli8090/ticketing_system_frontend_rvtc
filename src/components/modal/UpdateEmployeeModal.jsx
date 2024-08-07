@@ -1,6 +1,7 @@
 /* eslint-disable no-unused-vars */
 import PropTypes from "prop-types";
 import { useEffect, useState } from "react";
+import { IoCloseOutline } from "react-icons/io5";
 import useAdminService from "../../services/adminService/AdminService";
 import useToastNotifications from "../../services/toastify/ToasterService";
 import Loader from "../loader/Loader";
@@ -78,22 +79,9 @@ const UpdateEmployeeModal = ({ isOpen, closeModal, selectedRow }) => {
     <div className="fixed z-10 inset-0 overflow-y-auto">
       <div className="flex items-center justify-center min-h-screen">
         <div className="fixed inset-0 bg-gray-500 opacity-75"></div>
-        <div className="relative bg-white rounded-lg p-8">
+        <div className="relative bg-white rounded-lg p-10">
           <button className="absolute top-0 right-0 p-2" onClick={closeModal}>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-6 w-6 text-gray-600"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M6 18L18 6M6 6l12 12"
-              />
-            </svg>
+            <IoCloseOutline className="h-6 w-6 text-gray-600 transition-transform transform hover:scale-150 hover:rotate-180 hover:cursor-pointer duration-1000 hover:text-gray-900 hover:bg-gray-100 rounded-full" />
           </button>
           <h2 className="text-xl font-bold mb-4">Update Employee</h2>
           {loading ? (
@@ -201,7 +189,7 @@ const UpdateEmployeeModal = ({ isOpen, closeModal, selectedRow }) => {
               </div>
               <button
                 type="submit"
-                className="mt-4 bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600"
+                className="mt-4 bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 transition-transform transform hover:scale-110 duration-800"
               >
                 Update
               </button>

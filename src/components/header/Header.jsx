@@ -51,14 +51,14 @@ const Header = () => {
         <div>
           {loggedIn ? (
             <button
-              className="bg-red-500 hover:bg-red-700 text-white font-bold md:py-2 lg:py-2 md:px-4 lg:px-4 py-1 px-2 text-sm rounded"
+              className="bg-red-500 hover:bg-red-700 text-white font-bold md:py-2 lg:py-2 md:px-4 lg:px-4 py-1 px-2 text-sm rounded transition-transform transform hover:scale-110 duration-800"
               onClick={handleLogout}
             >
               Logout
             </button>
           ) : (
             <button
-              className="bg-blue-500 hover:bg-blue-700 text-white font-bold md:py-2 lg:py-2 md:px-4 lg:px-4 py-1 px-2 text-sm rounded"
+              className="bg-blue-500 hover:bg-blue-700 text-white font-bold md:py-2 lg:py-2 md:px-4 lg:px-4 py-1 px-2 text-sm rounded transition-transform transform hover:scale-110 duration-800"
               onClick={toggleLogin}
             >
               {isEmployeeLogin ? "Admin Login" : "Employee Login"}
