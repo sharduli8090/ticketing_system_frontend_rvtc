@@ -11,11 +11,11 @@ const FloatingWidget = () => {
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
       >
-        <div className="w-12 h-12 bg-indigo-500 rounded-full flex items-center justify-center text-white text-2xl border-2 border-indigo-700 transform transition-transform hover:scale-125 duration-1000 hover:cursor-pointer hover:rotate-90">
+        <div className="w-12 h-12 bg-gray-800 rounded-full flex items-center justify-center text-white text-2xl border-4 border-blue-900 transform transition-transform hover:scale-125 duration-1000 hover:cursor-pointer hover:rotate-90  glow-button-floating">
           <FaUserTie className="" />
         </div>
         {isHovered && (
-          <div className="absolute bottom-14 right-0 bg-white border border-gray-300 rounded-lg p-4 shadow-2xl shadow-blue-300">
+          <div className="absolute bottom-14 right-0 bg-gray-950 text-gray-100 border border-gray-300 rounded-md p-4 shadow-2xl shadow-blue-900">
             <b>Welcome to SmartTask!</b>
             <div>email: dummyemail@dummy.com</div>
             <div>password: test123</div>

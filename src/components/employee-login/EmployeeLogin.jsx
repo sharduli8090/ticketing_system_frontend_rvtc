@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import useEmployeeLoginService from "../../services/employeeLoginService/EmployeeLoginService";
 import useToastNotifications from "../../services/toastify/ToasterService";
 import Loader from "../loader/Loader";
+import BackButtonHome from "../backButton/BackButtonHome";
 
 const EmployeeLogin = () => {
   const { employeeLogin } = useEmployeeLoginService();
@@ -71,6 +72,7 @@ const EmployeeLogin = () => {
 
   return (
     <div className="min-h-screen flex justify-center items-center bg-gradient-to-br from-blue-50 via-white to-blue-100">
+      <BackButtonHome />
       {!loading ? (
         <div className="lg:w-full md:w-full w-3/4 max-w-md bg-white rounded-lg px-8 py-12 shadow-2xl flex flex-col items-center">
           <h1 className="text-center lg:text-2xl md:text-2xl text-lg font-medium mb-8">

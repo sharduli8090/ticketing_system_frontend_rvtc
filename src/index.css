@@ -6,3 +6,77 @@
 body {
     @apply font-sans;
 }
+
+
+.glow-button {
+    @apply bg-blue-700;
+    @apply border-2;
+    @apply border-blue-600;
+    box-shadow: 0 0 10px rgba(6, 75, 185, 0.5),
+        0 0 20px rgba(6, 75, 185, 0.5),
+        0 0 30px rgba(6, 75, 185, 0.5),
+        0 0 20px rgba(6, 75, 185, 0.5);
+}
+
+.glow-button:hover {
+    @apply bg-blue-500;
+}
+
+.glow-button-floating {
+    box-shadow: 0 0 10px rgba(6, 75, 185, 0.5),
+        0 0 20px rgba(6, 75, 185, 0.5),
+        0 0 30px rgba(6, 75, 185, 0.5),
+        0 0 40px rgba(6, 75, 185, 0.5);
+}
+
+.glow-button-logout {
+    box-shadow: 0 0 10px rgba(185, 6, 6, 0.5),
+        0 0 20px rgba(185, 6, 6, 0.5),
+        0 0 30px rgba(185, 6, 6, 0.5),
+        0 0 40px rgba(185, 6, 6, 0.5);
+}
+
+.glow-input {
+    @apply border-2;
+    @apply border-purple-600;
+    box-shadow: 0 0 10px rgba(121, 42, 196, 0.5),
+        0 0 10px rgba(121, 42, 196, 0.5),
+        0 0 30px rgba(121, 42, 196, 0.5),
+        0 0 20px rgba(121, 42, 196, 0.5);
+
+
+}
+
+.glow-button-more {
+
+    box-shadow: 0 0 10px rgba(6, 75, 185, 0.5),
+        0 0 20px rgba(6, 75, 185, 0.5),
+        0 0 30px rgba(6, 75, 185, 0.5),
+        0 0 40px rgba(6, 75, 185, 0.5);
+}
+
+.glow-feat-card {
+    box-shadow: 0 0 10px rgba(121, 42, 196, 0.5),
+        0 0 20px rgba(121, 42, 196, 0.5),
+        0 0 30px rgba(121, 42, 196, 0.5),
+        0 0 40px rgba(121, 42, 196, 0.5);
+}
+
+.glow-button-image {
+    box-shadow: 0 0 20px rgba(121, 42, 196, 0.5),
+        0 0 30px rgba(121, 42, 196, 0.5),
+        0 0 70px rgba(121, 42, 196, 0.5),
+        0 0 90px rgba(121, 42, 196, 0.5);
+
+    @apply border-2;
+    @apply border-purple-500;
+}
+
+
+.glow-stat-card {
+
+    box-shadow: 0 0 10px rgba(6, 75, 185, 0.5),
+        0 0 20px rgba(6, 75, 185, 0.5),
+        0 0 30px rgba(6, 75, 185, 0.5),
+        0 0 40px rgba(6, 75, 185, 0.5);
+}

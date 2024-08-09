@@ -10,6 +10,7 @@ const useToastNotifications = () => {
       closeOnClick: true,
       pauseOnHover: true,
       draggable: true,
+      theme: "dark",
     });
   };
 
@@ -21,6 +22,7 @@ const useToastNotifications = () => {
       closeOnClick: true,
       pauseOnHover: true,
       draggable: true,
+      theme: "dark",
     });
   };
 
@@ -32,6 +34,7 @@ const useToastNotifications = () => {
       closeOnClick: true,
       pauseOnHover: true,
       draggable: true,
+      theme: "dark",
     });
   };
 
