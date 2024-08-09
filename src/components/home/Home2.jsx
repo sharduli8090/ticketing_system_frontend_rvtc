@@ -81,7 +81,7 @@ const Home = () => {
           <div className="text-2xl lg:text-5xl md:text-4xl lg:mb-6 mb-2 font-semilbold  lg:text-left md:text-left text-center text-white ">
             Enhancing Operations with Superior
           </div>
-          <div className="text-6xl lg:text-9xl md:text-7xl font-semibold bg-gradient-to-r from-blue-600 via-purple-500 to-purple-600 bg-clip-text text-transparent lg:text-left md:text-left text-center h-40">
+          <div className="text-6xl lg:text-9xl md:text-7xl font-semibold bg-gradient-to-r from-blue-600 via-purple-500 to-purple-600 bg-clip-text text-transparent lg:text-left md:text-left text-center lg:h-40 h-14 md:h-20">
             {displayQuality}
           </div>
         </div>
