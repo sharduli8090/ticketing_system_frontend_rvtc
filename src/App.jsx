@@ -19,7 +19,7 @@ import EmployeeProfile from "./components/employeeProfile/EmployeeProfile";
 import FloatingWidget from "./components/floating-widget/FloatingWidget";
 import Footer from "./components/footer/Footer";
 import Header from "./components/header/Header2";
-import Home from "./components/home/Home2";
+import Home from "./components/home/Home3";
 import SendQuery from "./components/sendQuery/SendQuery";
 import TicketsRaisedByMe from "./components/ticketsbyme/TicketsRaisedByMe";
 import TicketsInMyName from "./components/ticketsinmyname/TicketsInMyName";
