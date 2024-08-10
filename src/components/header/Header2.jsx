@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { GoHomeFill } from "react-icons/go";
-import { useNavigate, Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Img1 from "../../asset/images/favicon.ico";
 import useAuthService from "../../services/authService/AuthService";
 
@@ -51,14 +51,12 @@ const Header = () => {
   return (
     <>
       <header className="flex items-center justify-between px-4 py-3 bg-black text-white transition-colors duration-1000  shadow-lg ">
-        <div className="flex items-center">
-          <img
-            src={Img1}
-            alt="Logo"
-            className="w-10 h-10 animate-pulse hover:cursor-pointer"
-            onClick={handleNavigate}
-          />
-          <div className="text-2xl ml-5 font-extrabold text-gray-200">
+        <div
+          className="flex items-center animate-pulse hover:cursor-pointer"
+          onClick={handleNavigate}
+        >
+          <img src={Img1} alt="Logo" className="w-10 h-10 " />
+          <div className="text-2xl ml-5 font-medium text-gray-200">
             SmartTask
           </div>
         </div>
@@ -67,7 +65,10 @@ const Header = () => {
             window.innerWidth < 445 ? "hidden" : ""
           }`}
         >
-          <Link to="/home#home" className="cursor-pointer mx-2 hover:underline hover:font-medium text-gray-300 transition-all transform hover:text-gray-100 duration-900 hover:scale-110">
+          <Link
+            to="/home#home"
+            className="cursor-pointer mx-2 hover:underline hover:font-medium text-gray-300 transition-all transform hover:text-gray-100 duration-900 hover:scale-110"
+          >
             Home
           </Link>
           <button
