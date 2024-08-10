@@ -120,10 +120,11 @@ const EmployeeLogin = () => {
                 Forgot Password?
               </span>
             </div>
-            <div className="flex items-center mb-4">
+
+            <div className="flex items-center mb-4 lg:mt-10 md:mt-10">
               <button
                 type="submit"
-                className="w-full lg:w-1/4 md:w-1/4 mt-5 lg:mt-0 md:mt-0   hover:bg-blue-500 text-white font-bold py-1 lg:py-2 md:py-2 rounded focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-700 transition-all transform hover:scale-110 duration-1000 glow-button "
+                className="w-full   mt-5 lg:mt-0 md:mt-0   hover:bg-blue-500 text-white font-bold py-1 lg:py-2 md:py-2 rounded focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-700 transition-all transform hover:scale-110 duration-1000 glow-button "
               >
                 Login
               </button>

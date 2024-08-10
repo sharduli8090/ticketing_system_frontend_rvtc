@@ -142,10 +142,10 @@ body {
 .glow-button-back{
     @apply border-2;
     @apply border-blue-300;
-    box-shadow: 0 0 20px rgba(6, 75, 185, 0.5),
-    0 0 50px rgba(6, 75, 185, 0.5),
-    0 0 90px rgba(6, 75, 185, 0.5),
-    0 0 90px rgba(6, 75, 185, 0.5);
+    box-shadow: 0 0 10px rgba(6, 75, 185, 0.5),
+    0 0 10px rgba(6, 75, 185, 0.5),
+    0 0 20px rgba(6, 75, 185, 0.5),
+    0 0 20px rgba(6, 75, 185, 0.5);
 
 }
 
@@ -159,3 +159,7 @@ body {
 
 
  
+
+.zindeximage{
+    z-index: 1;
+}

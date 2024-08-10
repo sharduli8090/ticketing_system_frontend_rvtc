@@ -35,7 +35,7 @@ const Footer = () => {
         onSubmit={handleSubmit}
         className="flex flex-col md:flex-row mt-5 md:mt-0 mb-7 md:mb-20 md:flex-wrap lg:flex-nowrap justify-center lg:py-7 md:py-10 lg:mx-0 md:w-full bg-gray-950"
       >
-        <input
+        {/* <input
           type="text"
           name="name"
           placeholder="Title or Anonymous"
@@ -44,7 +44,7 @@ const Footer = () => {
           className="md:px-3 md:py-2 px-2 py-2 md:mr-2 md:mb-0 mb-2 text-center md:text-left lg:text-left rounded-md focus:outline-none focus:none  text-white text-sm lg:text-md md:text-md glow-input-blue-query "
           autoComplete="off"
         />
-        <input
+        <textarea
           type="text"
           name="query"
           placeholder="Your Query"
@@ -58,7 +58,7 @@ const Footer = () => {
           className="btn btn-sm   text-white font-bold py-2 px-4 rounded-md md:mt-5 md:w-full md:mx-28 lg:mx-0 lg:w-auto lg:mt-0 transition-all transform hover:scale-110 duration-1000 text-sm lg:text-md md:text-md glow-button hover:bg-blue-500"
         >
           Send Query
-        </button>
+        </button> */}
       </form>
       <p className="text-xs transition-transform transform hover:scale-150 duration-1000 hover:cursor-default">
         &copy; 2024 Created by Creativstan
