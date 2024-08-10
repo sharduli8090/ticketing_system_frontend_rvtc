@@ -7,7 +7,7 @@ import {
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import AdminDashboard from "./components/admin-dash/AdminDashboard";
-import AdminLogin from "./components/admin-login/AdminLogin";
+import AdminLogin from "./components/admin-login/AdminLogin2";
 import AllEmployee from "./components/all-employee/AllEmployee";
 import AllTicket from "./components/all-ticket/AllTicket";
 import AllQuery from "./components/allquery/AllQuery";

@@ -18,6 +18,16 @@ body {
         0 0 20px rgba(6, 75, 185, 0.5);
 }
 
+.glow-button-purple {
+    @apply bg-purple-700;
+    @apply border-2;
+    @apply border-purple-600;
+    box-shadow: 0 0 10px rgba(121, 42, 196, 0.5),
+        0 0 10px rgba(121, 42, 196, 0.5),
+        0 0 30px rgba(121, 42, 196, 0.5),
+        0 0 20px rgba(121, 42, 196, 0.5);
+}
+
 .glow-button:hover {
     @apply bg-blue-500;
 }
@@ -39,6 +49,7 @@ body {
 .glow-input {
     @apply border-2;
     @apply border-purple-600;
+    @apply bg-gray-900;
     box-shadow: 0 0 10px rgba(121, 42, 196, 0.5),
         0 0 10px rgba(121, 42, 196, 0.5),
         0 0 30px rgba(121, 42, 196, 0.5),
@@ -79,4 +90,23 @@ body {
         0 0 20px rgba(6, 75, 185, 0.5),
         0 0 30px rgba(6, 75, 185, 0.5),
         0 0 40px rgba(6, 75, 185, 0.5);
+}
+
+.glow-login {
+    @apply bg-gray-900;
+    @apply border-2;
+    @apply border-purple-500;
+    box-shadow: 0 0 10px rgba(121, 42, 196, 0.5),
+        0 0 40px rgba(121, 42, 196, 0.5),
+        0 0 60px rgba(121, 42, 196, 0.5),
+        0 0 50px rgba(121, 42, 196, 0.5);
+}
+
+
+/* Add this in your main CSS file */
+@media (max-width: 640px) {
+    .no-bg-sm {
+        background-image: url('./asset/images/sec1Small.png') !important;
+        /* @apply bg-gradient-to-b from-black to-gray-800; */
+    }
 }

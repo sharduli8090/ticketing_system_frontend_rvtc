@@ -67,29 +67,33 @@ const Home = () => {
   useEffect(() => {
     if (!hasNotified.current) {
       showNotifications();
-      hasNotified.current = true;  
+      hasNotified.current = true;
     }
   }, []);
   return (
     <div className="flex flex-col items-center">
       {/* Login Buttons Section */}
       <section
-        className="w-full min-h-screen bg-gray-900 flex flex-row justify-center lg:justify-start md:justify-start items-center relative bg-cover bg-center"
+        className={`w-full min-h-screen bg-gray-900 flex flex-row justify-center lg:justify-start md:justify-start items-center relative bg-cover bg-center ${
+          window.innerWidth < 640 ? "no-bg-sm" : ""
+        }`}
         style={{ backgroundImage: `url(${Img})` }}
       >
-        <div className="lg:mx-14 md:mx-14 mx-10 rounded-lg  bg-black bg-opacity-60 md:bg-opacity-40 lg:bg-opacity-0 py-20 px-2 lg:p-0">
-          <div className="text-2xl lg:text-5xl md:text-4xl lg:mb-6 mb-2 font-semilbold  lg:text-left md:text-left text-center text-white ">
+        <div className="lg:mx-14 md:mx-14 mx-3 rounded-lg p-0 myw-56">
+          <div className="text-5xl lg:text-5xl md:text-4xl lg:mb-6 mb-2 font-semibold lg:text-left md:text-left text-center  text-white">
             Enhancing Operations with Superior
           </div>
-          <div className="text-6xl lg:text-9xl md:text-7xl font-semibold bg-gradient-to-r from-blue-600 via-purple-500 to-purple-600 bg-clip-text text-transparent lg:text-left md:text-left text-center lg:h-40 h-14 md:h-20">
+          <div className="text-6xl lg:text-9xl md:text-7xl font-bold bg-gradient-to-r from-blue-600 via-purple-500 to-purple-600 bg-clip-text text-transparent lg:text-left md:text-left text-center lg:h-40 h-24 md:h-20">
             {displayQuality}
           </div>
         </div>
       </section>
 
       {/* About Section */}
-      <section className="w-full min-h-screen bg-white py-20 text-gray-200 flex justify-center items-center transition-all duration-500 ease-in-out relative bg-cover bg-center"
-        style={{ backgroundImage: `url(${Bg2})` }}>
+      <section
+        className="w-full min-h-screen bg-white py-20 text-gray-200 flex justify-center items-center transition-all duration-500 ease-in-out relative bg-cover bg-center"
+        style={{ backgroundImage: `url(${Bg2})` }}
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center text-center md:text-left ">
           <div className="md:w-1/2 p-4">
             <h2 className="lg:text-4xl md:text-4xl text-2xl font-bold mb-4">
@@ -118,8 +122,10 @@ const Home = () => {
       </section>
 
       {/* Stats Section */}
-      <section className="w-full min-h-screen bg-gray-900 py-20 flex flex-col justify-center items-center transition-all duration-500 ease-in-out relative bg-cover bg-center"
-        style={{ backgroundImage: `url(${Bg3})` }}>
+      <section
+        className="w-full min-h-screen bg-gray-900 py-20 flex flex-col justify-center items-center transition-all duration-500 ease-in-out relative bg-cover bg-center"
+        style={{ backgroundImage: `url(${Bg3})` }}
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="lg:text-4xl md:text-4xl text-2xl  font-semibold mb-20 text-white">
             Our Stats
@@ -144,8 +150,10 @@ const Home = () => {
       </section>
 
       {/* Feature Section */}
-      <section className="w-full min-h-screen bg-white py-20  flex flex-col justify-center items-center transition-all duration-500 ease-in-out relative bg-cover bg-center"
-        style={{ backgroundImage: `url(${Bg3})` }}>
+      <section
+        className="w-full min-h-screen bg-white py-20  flex flex-col justify-center items-center transition-all duration-500 ease-in-out relative bg-cover bg-center"
+        style={{ backgroundImage: `url(${Bg3})` }}
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="lg:text-4xl md:text-4xl text-2xl font-bold mb-4 text-gray-100">
             Our Features
@@ -169,8 +177,10 @@ const Home = () => {
       </section>
 
       {/* More Info Section */}
-      <section className="w-full min-h-screen   py-20 flex flex-col justify-center items-center transition-all duration-500 ease-in-out  relative bg-cover bg-center"
-        style={{ backgroundImage: `url(${Bg3})` }}>
+      <section
+        className="w-full min-h-screen   py-20 flex flex-col justify-center items-center transition-all duration-500 ease-in-out  relative bg-cover bg-center"
+        style={{ backgroundImage: `url(${Bg3})` }}
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-gray-100">
           <h2 className="lg:text-4xl md:text-4xl text-2xl font-bold mb-4 ">
             More Information
