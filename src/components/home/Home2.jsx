@@ -73,12 +73,12 @@ const Home = () => {
     <div className="flex flex-col items-center">
       {/* Login Buttons Section */}
       <section
-        className={`w-full min-h-screen bg-gray-900 flex flex-row justify-center lg:justify-start md:justify-start items-center relative bg-cover bg-center ${
+        className={`w-full min-h-screen bg-gray-900 flex flex-row justify-center lg:justify-start md:justify-start items-start lg:items-center md:items-center relative bg-cover bg-center ${
           window.innerWidth < 768 ? "no-bg-sm" : ""
         }`}
         style={{ backgroundImage: `url(${Img})` }}
       >
-        <div className="lg:mx-14 md:mx-14 mx-3 rounded-lg p-0 md:bg-gray-900 md:bg-opacity-60 md:p-5 lg:bg-opacity-0 ">
+        <div className="lg:mx-14 md:mx-14 mx-3 rounded-lg p-0 md:bg-gray-900 md:bg-opacity-60 md:p-5 lg:bg-opacity-0 mt-36 lg:mt-0 md:mt-0 ">
           <div className="text-6xl lg:text-4xl md:text-4xl lg:mb-6 mb-2 font-semibold lg:font-normal  lg:text-left md:text-left text-center  text-white">
             Enhancing Operations with Superior
           </div>
