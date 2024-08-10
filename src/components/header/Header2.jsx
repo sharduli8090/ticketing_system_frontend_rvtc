@@ -5,7 +5,7 @@ import Img1 from "../../asset/images/favicon.ico";
 import useAuthService from "../../services/authService/AuthService";
 
 const Header = () => {
-  const { isLoggedIn, logout , getUserType} = useAuthService();
+  const { isLoggedIn, logout, getUserType } = useAuthService();
   const [loggedIn, setLoggedIn] = useState(isLoggedIn());
   const [isEmployeeLogin, setIsEmployeeLogin] = useState(true);
   const navigate = useNavigate();
@@ -37,14 +37,14 @@ const Header = () => {
     navigate("/home");
   };
 
-const handleNavigateDash = () => {
-  const userType = getUserType();
-  if (userType === "admin") {
-    navigate("/admindash");
-  } else {
-    navigate("/employeedash");
-  }
-}
+  const handleNavigateDash = () => {
+    const userType = getUserType();
+    if (userType === "admin") {
+      navigate("/admindash");
+    } else {
+      navigate("/employeedash");
+    }
+  };
 
   return (
     <>
@@ -55,12 +55,16 @@ const handleNavigateDash = () => {
           className="w-10 h-10 animate-pulse hover:cursor-pointer"
           onClick={handleNavigate}
         />
-        <div className="md:text-3xl lg:text-3xl hidden lg:block md:block  text-md  ">
+        <div
+          className={`md:text-3xl lg:text-3xl lg:block md:block  text-lg ${
+            window.innerWidth < 445 ? "hidden" : ""
+          }`}
+        >
           SmartTask Ticketing System
         </div>
         <div>
           {loggedIn ? (
-            <div className="flex justify-between w-1/2"> 
+            <div className="flex justify-between w-1/2">
               <button
                 className="    text-white font-bold p-2 text-md rounded transition-all transform hover:scale-110 duration-1000 mr-2 glow-button"
                 onClick={handleNavigateDash}

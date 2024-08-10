@@ -104,7 +104,7 @@ body {
 
 
 /* Add this in your main CSS file */
-@media (max-width: 640px) {
+@media (max-width: 900px) {
     .no-bg-sm {
         background-image: url('./asset/images/sec1Small.png') !important;
         /* @apply bg-gradient-to-b from-black to-gray-800; */

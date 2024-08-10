@@ -17,7 +17,6 @@ const Home = () => {
     "Efficiency",
     "Speed",
     "Reliability",
-    "Excellence",
     "Simplicity",
   ];
   const [displayQuality, setDisplayQuality] = useState("");
@@ -75,15 +74,15 @@ const Home = () => {
       {/* Login Buttons Section */}
       <section
         className={`w-full min-h-screen bg-gray-900 flex flex-row justify-center lg:justify-start md:justify-start items-center relative bg-cover bg-center ${
-          window.innerWidth < 640 ? "no-bg-sm" : ""
+          window.innerWidth < 768 ? "no-bg-sm" : ""
         }`}
         style={{ backgroundImage: `url(${Img})` }}
       >
-        <div className="lg:mx-14 md:mx-14 mx-3 rounded-lg p-0 myw-56">
-          <div className="text-5xl lg:text-5xl md:text-4xl lg:mb-6 mb-2 font-semibold lg:text-left md:text-left text-center  text-white">
+        <div className="lg:mx-14 md:mx-14 mx-3 rounded-lg p-0 md:bg-gray-900 md:bg-opacity-60 md:p-5 lg:bg-opacity-0 ">
+          <div className="text-6xl lg:text-4xl md:text-4xl lg:mb-6 mb-2 font-semibold lg:font-normal  lg:text-left md:text-left text-center  text-white">
             Enhancing Operations with Superior
           </div>
-          <div className="text-6xl lg:text-9xl md:text-7xl font-bold bg-gradient-to-r from-blue-600 via-purple-500 to-purple-600 bg-clip-text text-transparent lg:text-left md:text-left text-center lg:h-40 h-24 md:h-20">
+          <div className="text-7xl lg:text-9xl md:text-7xl font-bold lg:font-semibold bg-gradient-to-r from-blue-600 via-purple-500 to-purple-600 bg-clip-text text-transparent lg:text-left md:text-left text-center lg:h-40 h-24 md:h-20">
             {displayQuality}
           </div>
         </div>
