@@ -14,7 +14,7 @@ import AllQuery from "./components/allquery/AllQuery";
 import CreateEmployee from "./components/create-employee/CreateEmployee";
 import CreateTicket from "./components/create-ticket/CreateTicket";
 import EmployeeDashboard from "./components/employee-dash/EmployeeDashboard";
-import EmployeeLogin from "./components/employee-login/EmployeeLogin";
+import EmployeeLogin from "./components/employee-login/EmployeeLogin2";
 import EmployeeProfile from "./components/employeeProfile/EmployeeProfile";
 import FloatingWidget from "./components/floating-widget/FloatingWidget";
 import Footer from "./components/footer/Footer";

@@ -18,6 +18,10 @@
     }
 }
 
+.loaderindex{
+    z-index: 1000;
+}
+
 .particle {
     position: absolute;
     top: 0%;

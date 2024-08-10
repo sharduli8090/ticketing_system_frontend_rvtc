@@ -11,7 +11,7 @@ const BackButton = () => {
   };
   return (
     <button
-      className="absolute top-16 lg:top-20 md:top-20 left-5 flex items-center justify-between shadow-xl px-3 transition-transform transform hover:scale-110  hover:cursor-pointer duration-1000  bg-gradient-to-br from-blue-300   to-blue-500 rounded-3xl text-white  "
+      className="absolute top-16 lg:top-20 md:top-20 left-5 flex items-center justify-between shadow-xl px-3 transition-transform transform hover:scale-110  hover:cursor-pointer duration-1000  bg-gradient-to-br from-gray-900 via-gray-800   to-gray-700 rounded-3xl text-white glow-button-back "
       onClick={navigateDashboard}
     >
       <IoArrowBack className="lg:h-6 lg:w-6 md:h-8 md:w-8 " />

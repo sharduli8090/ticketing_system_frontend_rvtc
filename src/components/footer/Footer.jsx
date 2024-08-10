@@ -41,7 +41,7 @@ const Footer = () => {
           placeholder="Title or Anonymous"
           value={formData.name}
           onChange={handleInputChange}
-          className="md:px-3 md:py-2 px-2 py-2 md:mr-2 md:mb-0 mb-2 text-center md:text-left lg:text-left rounded-md focus:outline-none focus:none  text-white text-sm lg:text-md md:text-md glow-input "
+          className="md:px-3 md:py-2 px-2 py-2 md:mr-2 md:mb-0 mb-2 text-center md:text-left lg:text-left rounded-md focus:outline-none focus:none  text-white text-sm lg:text-md md:text-md glow-input-blue-query "
           autoComplete="off"
         />
         <input
@@ -50,7 +50,7 @@ const Footer = () => {
           placeholder="Your Query"
           value={formData.query}
           onChange={handleInputChange}
-          className="md:px-3 md:py-2 px-2 py-2 md:mb-0 md:mr-2 mb-2 text-center md:text-left lg:text-left rounded-md focus:outline-none focus:none text-white text-sm lg:text-md md:text-md glow-input  "
+          className="md:px-3 md:py-2 px-2 py-2 md:mb-0 md:mr-2 mb-2 text-center md:text-left lg:text-left rounded-md focus:outline-none focus:none text-white text-sm lg:text-md md:text-md glow-input-blue-query  "
           autoComplete="off"
         />
         <button
