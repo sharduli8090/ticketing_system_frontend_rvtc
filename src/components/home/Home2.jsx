@@ -78,7 +78,7 @@ const Home = () => {
         }`}
         style={{ backgroundImage: `url(${Img})` }}
       >
-        <div className="lg:mx-14 md:mx-14 mx-3 rounded-lg p-0 md:bg-gray-900 md:bg-opacity-60 md:p-5 lg:bg-opacity-0 mt-36 lg:mt-0 md:mt-0 ">
+        <div className="lg:mx-14 md:mx-14 mx-3 rounded-lg p-0 md:bg-gray-900 md:bg-opacity-60 md:p-5 lg:bg-opacity-0 mt-44 lg:mt-0 md:mt-0 ">
           <div className="text-6xl lg:text-4xl md:text-4xl lg:mb-6 mb-2 font-semibold lg:font-normal  lg:text-left md:text-left text-center  text-white">
             Enhancing Operations with Superior
           </div>
