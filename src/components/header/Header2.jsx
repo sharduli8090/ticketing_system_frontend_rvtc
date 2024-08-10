@@ -67,30 +67,30 @@ const Header = () => {
             window.innerWidth < 445 ? "hidden" : ""
           }`}
         >
-          <Link to="/home#home" className="cursor-pointer mx-2">
+          <Link to="/home#home" className="cursor-pointer mx-2 hover:underline hover:font-medium text-gray-300 transition-all transform hover:text-gray-100 duration-900 hover:scale-110">
             Home
           </Link>
           <button
             onClick={() => handleScrollToSection("about")}
-            className="cursor-pointer mx-2"
+            className="cursor-pointer mx-2 hover:underline hover:font-medium text-gray-300 transition-all transform hover:text-gray-100 duration-900 hover:scale-110"
           >
             About
           </button>
           <button
             onClick={() => handleScrollToSection("stats")}
-            className="cursor-pointer mx-2"
+            className="cursor-pointer mx-2 hover:underline hover:font-medium text-gray-300 transition-all transform hover:text-gray-100 duration-900 hover:scale-110"
           >
             Stats
           </button>
           <button
             onClick={() => handleScrollToSection("features")}
-            className="cursor-pointer mx-2"
+            className="cursor-pointer mx-2 hover:underline hover:font-medium text-gray-300 transition-all transform hover:text-gray-100 duration-900 hover:scale-110"
           >
             Features
           </button>
           <button
             onClick={() => handleScrollToSection("more-info")}
-            className="cursor-pointer mx-2"
+            className="cursor-pointer mx-2 hover:underline hover:font-medium text-gray-300 transition-all transform hover:text-gray-100 duration-900 hover:scale-110"
           >
             More
           </button>
