@@ -5,11 +5,21 @@
 
 body {
     @apply font-sans;
+    /* @apply bg-black ; */
 }
 
 
 .glow-button {
     @apply bg-blue-700;
+    @apply border-2;
+    @apply border-blue-300;
+    box-shadow: 0 0 10px rgba(6, 75, 185, 0.5),
+        0 0 10px rgba(6, 75, 185, 0.5),
+        0 0 10px rgba(6, 75, 185, 0.5),
+        0 0 10px rgba(6, 75, 185, 0.5);
+}
+
+.glow-button-l {
     @apply border-2;
     @apply border-blue-300;
     box-shadow: 0 0 10px rgba(6, 75, 185, 0.5),
@@ -30,6 +40,11 @@ body {
 
 .glow-button:hover {
     @apply bg-blue-500;
+}
+
+
+.glow-button-purple:hover {
+    @apply bg-purple-500;
 }
 
 .glow-button-floating {
@@ -60,25 +75,27 @@ body {
         0 0 10px rgba(121, 42, 196, 0.5),
         0 0 10px rgba(121, 42, 196, 0.5);
 }
+
 .glow-input-blue {
     @apply border-2;
     @apply border-blue-300;
     @apply bg-gray-900;
     @apply focus:bg-gray-900;
     box-shadow: 0 0 8px rgba(6, 75, 185, 0.5),
-    0 0 8px rgba(6, 75, 185, 0.5),
-    0 0 8px rgba(6, 75, 185, 0.5),
-    0 0 8px rgba(6, 75, 185, 0.5);
+        0 0 8px rgba(6, 75, 185, 0.5),
+        0 0 8px rgba(6, 75, 185, 0.5),
+        0 0 8px rgba(6, 75, 185, 0.5);
 }
+
 .glow-input-blue-query {
     @apply border-2;
     @apply border-blue-300;
     @apply bg-gray-900;
     @apply focus:bg-gray-900;
     box-shadow: 0 0 8px rgba(6, 75, 185, 0.5),
-    0 0 8px rgba(6, 75, 185, 0.5),
-    0 0 8px rgba(6, 75, 185, 0.5),
-    0 0 8px rgba(6, 75, 185, 0.5);
+        0 0 8px rgba(6, 75, 185, 0.5),
+        0 0 8px rgba(6, 75, 185, 0.5),
+        0 0 8px rgba(6, 75, 185, 0.5);
 }
 
 .glow-button-more {
@@ -133,19 +150,19 @@ body {
     @apply border-2;
     @apply border-blue-300;
     box-shadow: 0 0 10px rgba(6, 75, 185, 0.5),
-    0 0 10px rgba(6, 75, 185, 0.5),
-    0 0 30px rgba(6, 75, 185, 0.5),
-    0 0 50px rgba(6, 75, 185, 0.5);
+        0 0 10px rgba(6, 75, 185, 0.5),
+        0 0 30px rgba(6, 75, 185, 0.5),
+        0 0 50px rgba(6, 75, 185, 0.5);
 }
 
 
-.glow-button-back{
+.glow-button-back {
     @apply border-2;
     @apply border-blue-300;
     box-shadow: 0 0 10px rgba(6, 75, 185, 0.5),
-    0 0 10px rgba(6, 75, 185, 0.5),
-    0 0 20px rgba(6, 75, 185, 0.5),
-    0 0 20px rgba(6, 75, 185, 0.5);
+        0 0 10px rgba(6, 75, 185, 0.5),
+        0 0 20px rgba(6, 75, 185, 0.5),
+        0 0 20px rgba(6, 75, 185, 0.5);
 
 }
 
@@ -158,8 +175,8 @@ body {
 }
 
 
- 
 
-.zindeximage{
+
+.zindeximage {
     z-index: 1;
 }

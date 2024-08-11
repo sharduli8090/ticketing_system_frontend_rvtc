@@ -61,8 +61,8 @@ const Header = () => {
           </div>
         </div>
         <div
-          className={`md:text-3xl lg:text-lg lg:block md:block text-lg ${
-            window.innerWidth < 445 ? "hidden" : ""
+          className={`md:text-lg lg:text-lg lg:block md:block text-lg ${
+            window.innerWidth < 712 ? "hidden" : ""
           }`}
         >
           <Link

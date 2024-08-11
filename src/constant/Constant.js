@@ -84,6 +84,13 @@ export const employeeCards = [
     description:
       "Access and manage support tickets that have been raised on your behalf.",
   },
+  // send query
+  {
+    name: "Get your query resolved",
+    buttonText: "Send Query",
+    endpoint: "/sendquery",
+    description: "Send a query to the admin for resolution",
+  }
 ];
 
 export const featCards = [
