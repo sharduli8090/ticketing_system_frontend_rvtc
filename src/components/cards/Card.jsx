@@ -18,7 +18,7 @@ const CardsComponent = ({ cards }) => {
               className={`transform transition-all  hover:scale-110 duration-1000 bg-black  hover:glow-button-purple  shadow-lg rounded mb-4 w-1/w2 w-full max-w-4xl glow-button-l`}
             >
               <div className="p-4 flex items-center justify-between ">
-                <h3 className="text-white font-bold lg:text-2xl md:text-2xl text-lg hover:text-black">
+                <h3 className="text-white font-bold lg:text-2xl md:text-2xl text-lg ">
                   {card.name}
                 </h3>
                 <button
