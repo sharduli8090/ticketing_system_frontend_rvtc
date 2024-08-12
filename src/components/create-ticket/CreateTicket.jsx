@@ -2,8 +2,8 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import useEmployeeService from "../../services/employeeService/EmployeeService";
 import useToastNotifications from "../../services/toastify/ToasterService";
-import Loader from "../loader/Loader";
 import BackButton from "../backButton/BackButton";
+import Loader from "../loader/Loader";
 const CreateTicket = () => {
   const { createTicket } = useEmployeeService();
   const {
@@ -52,35 +52,33 @@ const CreateTicket = () => {
 
   return (
     <div
-      className={`min-h-screen flex justify-center items-center ${
-        loading ? "bg-transparent" : "bg-gradient-to-r from-blue-50 to-blue-100"
-      }`}
+      className={`min-h-screen flex justify-center items-center  bg-transparent`}
     >
       <BackButton />
       {loading ? (
         <Loader />
       ) : (
-        <div className="w-full max-w-screen-md bg-white rounded-lg px-8 py-12 shadow-lg flex flex-col items-center h-screen lg:h-auto md:h-auto">
-          <h1 className="text-center text-2xl font-medium mb-8">
+        <div className="w-full max-w-screen-md bg-gray-950 glow-login rounded-lg px-8 py-12 shadow-lg flex flex-col items-center h-full lg:h-auto md:h-auto">
+          <h1 className="text-center text-2xl font-medium mb-8 text-gray-50">
             Create Ticket
           </h1>
-          <form onSubmit={handleSubmit(onSubmit)} className="w-full">
+          <form onSubmit={handleSubmit(onSubmit)} className="w-full ">
             <div className="mb-6">
               <label
                 htmlFor="ticketName"
-                className="block text-gray-700 text-sm font-bold mb-2"
+                className="block text-sm font-bold mb-2 text-gray-50"
               >
-                Ticket Name: <span className="text-sm text-red-600">*</span>
+                Ticket Name: <span className="text-sm text-red-500">*</span>
               </label>
               <input
                 type="text"
                 id="ticketName"
                 placeholder="Ticket Name"
                 {...register("ticketName", { required: true })}
-                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 focus:outline-none focus:ring-blue-500 focus:ring-opacity-50"
+                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-50 focus:outline-none focus:none glow-input"
               />
               {errors.ticketName && (
-                <span className="text-red-600 text-sm">
+                <span className="text-red-400 font-medium text-sm">
                   Ticket name is required
                 </span>
               )}
@@ -88,19 +86,19 @@ const CreateTicket = () => {
             <div className="mb-6">
               <label
                 htmlFor="ticketDescription"
-                className="block text-gray-700 text-sm font-bold mb-2"
+                className="block text-sm font-bold mb-2 text-gray-50"
               >
-                Ticket Description:{" "}
-                <span className="text-sm text-red-600">*</span>
+                Ticket Description:
+                <span className="text-sm text-red-500">*</span>
               </label>
               <textarea
                 id="ticketDescription"
                 placeholder="Ticket Description"
                 {...register("ticketDescription", { required: true })}
-                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 focus:outline-none focus:ring-blue-500 focus:ring-opacity-50"
+                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-50 focus:outline-none focus:none glow-input"
               />
               {errors.ticketDescription && (
-                <span className="text-red-600 text-sm">
+                <span className="text-red-400 font-medium text-sm ">
                   Ticket description is required
                 </span>
               )}
@@ -108,16 +106,16 @@ const CreateTicket = () => {
             <div className="mb-6">
               <label
                 htmlFor="ticketDepartment"
-                className="block text-gray-700 text-sm font-bold mb-2"
+                className="block text-gray-700 text-sm font-bold mb-2 text-gray-50"
               >
-                Ticket Department:{" "}
-                <span className="text-sm text-red-600">*</span>
+                Ticket Department:
+                <span className="text-sm text-red-500">*</span>
               </label>
               <select
                 id="ticketDepartment"
                 defaultValue="admin"
                 {...register("ticketDepartment", { required: true })}
-                className="shadow bg-white border rounded w-full py-2 px-3 text-gray-700 focus:outline-none focus:ring-blue-500 focus:ring-opacity-50"
+                className="shadow bg-white border rounded w-full py-2 px-3 text-gray-50 focus:outline-none focus:none glow-input"
               >
                 <option value="admin">Admin</option>
                 <option value="hr">HR</option>
@@ -131,12 +129,14 @@ const CreateTicket = () => {
               )}
             </div>
             {errorMessage && (
-              <div className="text-red-500 text-sm mt-1">{errorMessage}</div>
+              <div className="text-red-500 font-medium text-sm my-5">
+                {errorMessage}
+              </div>
             )}
             <div className="flex items-center mb-4">
               <button
                 type="submit"
-                className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-700 transition-transform transform hover:scale-110 duration-800"
+                className="w-full glow-button-purple text-white font-bold py-2 px-4 rounded focus:outline-none focus:none transition-transform transform hover:scale-105 duration-1000"
               >
                 Create Ticket
               </button>

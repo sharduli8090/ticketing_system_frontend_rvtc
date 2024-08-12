@@ -1,6 +1,8 @@
 import { FaLock } from "react-icons/fa";
 import useToastNotifications from "../../services/toastify/ToasterService";
+import { useNavigate } from "react-router-dom";
 const Unauthorized = () => {
+  const navigate = useNavigate();
   const { notifyError } = useToastNotifications();
   notifyError("Unauthorized access");
   return (
@@ -18,7 +20,7 @@ const Unauthorized = () => {
       </p>
       <button
         className="bg-blue-600 hover:bg-blue-800 text-white font-bold py-3 px-6 rounded-full shadow-lg transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105"
-        onClick={() => (window.location.href = "/")}
+        onClick={() => navigate("/home")}
       >
         Take me to Home
       </button>

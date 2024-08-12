@@ -2,21 +2,22 @@
 import { useEffect, useState } from "react";
 import useAdminService from "../../services/adminService/AdminService";
 import useToastNotifications from "../../services/toastify/ToasterService";
+import BackButton from "../backButton/BackButton";
 import Loader from "../loader/Loader";
 import Table from "../table/Table";
-import BackButton from "../backButton/BackButton";
 
 const AllEmployee = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [selectedDepartment, setSelectedDepartment] = useState("all");
+  const [noData, setNoData] = useState(false);
 
   const { getAllEmployee, getEmployeeDeptWise, deleteAllEmployee } =
     useAdminService();
   const { notifyError } = useToastNotifications();
 
   useEffect(() => {
-    fetchData();
+    // fetchData();
   }, []);
 
   const fetchData = async () => {
@@ -88,6 +89,13 @@ const AllEmployee = () => {
     }
   };
 
+  useEffect(() => {
+    if (data.length === 0) {
+      setNoData(true);
+    } else {
+      setNoData(false);
+    }
+  }, [data]);
   return (
     <div className="flex flex-col justify-between items-center mt-32 mb-64 w-auto mx-28">
       <BackButton />
@@ -95,12 +103,16 @@ const AllEmployee = () => {
         <Loader />
       ) : (
         <>
-          <div className="flex justify-center items-center flex-row w-full mb-10">
-            <div className="flex justify-start items-center border-gray-200 border-2 rounded-md px-4 py-2 mr-4">
+          <div
+            className={`flex justify-center items-center flex-row w-full mb-10    ${
+              noData ? "hidden" : "block"
+            }`}
+          >
+            <div className="flex justify-start items-center border-gray-600 border-2 rounded-md px-4 py-2 mr-4">
               <select
                 value={selectedDepartment}
                 onChange={(e) => setSelectedDepartment(e.target.value)}
-                className="text-sm w-full px-2 py-1 border rounded-md focus:outline-none focus:ring-blue-500 bg-blue-200 hover:bg-blue-100 hover:cursor-pointer"
+                className="text-sm w-full px-2 py-1 border rounded-md focus:outline-none font-semibold focus:none glow-input text-gray-50  hover:cursor-pointer"
               >
                 <option value="all">All</option>
                 <option value="hr">HR</option>
@@ -109,15 +121,15 @@ const AllEmployee = () => {
               </select>
               <button
                 onClick={filterByDepartment}
-                className="text-sm text-white bg-blue-600 px-3 py-1 rounded-md hover:bg-blue-800 focus:outline-none ml-2  transition-transform transform hover:scale-110 duration-800"
+                className="text-sm text-white font-semibold  px-3 py-1 rounded-md glow-button-purple focus:outline-none ml-2  transition-all transform hover:scale-110 duration-1000"
               >
                 Filter
               </button>
             </div>
-            <div className="flex justify-end items-center border-gray-200 border-2 rounded-md px-4 py-2">
+            <div className="flex justify-end items-center border-gray-600 border-2 rounded-md px-4 py-2">
               <button
                 onClick={handleDeleteAll}
-                className="text-sm text-white bg-red-500 px-3 py-1 rounded-md hover:bg-red-800 focus:outline-none transition-transform transform hover:scale-110 duration-800"
+                className="text-sm text-white  px-3 py-1 rounded-md font-semibold focus:outline-none transition-all transform hover:scale-110 duration-1000 glow-button-logout"
               >
                 Delete All
               </button>

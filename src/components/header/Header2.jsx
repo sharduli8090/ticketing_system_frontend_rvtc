@@ -106,7 +106,7 @@ const Header = () => {
                 <GoHomeFill className="lg:w-5 lg:h-5 " />
               </button>
               <button
-                className="bg-red-600 hover:bg-red-500 text-white font-bold md:py-2 lg:py-2 md:px-4 lg:px-4 py-1 px-2 text-sm rounded transition-all transform hover:scale-110 duration-1000 glow-button-logout"
+                className=" text-white font-bold md:py-2 lg:py-2 md:px-4 lg:px-4 py-1 px-2 text-sm rounded transition-all transform hover:scale-110 duration-1000 glow-button-logout"
                 onClick={handleLogout}
               >
                 Logout

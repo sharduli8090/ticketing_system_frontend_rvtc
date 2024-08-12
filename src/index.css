@@ -5,7 +5,7 @@
 
 body {
     @apply font-sans;
-    /* @apply bg-black ; */
+    @apply bg-gradient-to-b from-black via-gray-900 to-gray-950;
 }
 
 
@@ -59,6 +59,8 @@ body {
 .glow-button-logout {
     @apply border-2;
     @apply border-red-300;
+    @apply bg-red-600;
+    @apply hover:bg-red-500;
     box-shadow: 0 0 10px rgba(185, 6, 6, 0.5),
         0 0 10px rgba(185, 6, 6, 0.5),
         0 0 10px rgba(185, 6, 6, 0.5),
@@ -136,7 +138,7 @@ body {
 }
 
 .glow-login {
-    @apply bg-black;
+    @apply bg-gray-950;
     @apply border-2;
     @apply border-purple-300;
     box-shadow: 0 0 10px rgba(121, 42, 196, 0.5),
@@ -146,7 +148,7 @@ body {
 }
 
 .glow-login-blue {
-    @apply bg-black;
+    @apply bg-gray-950;
     @apply border-2;
     @apply border-blue-300;
     box-shadow: 0 0 10px rgba(6, 75, 185, 0.5),
@@ -179,4 +181,84 @@ body {
 
 .zindeximage {
     z-index: 1;
+}
+
+
+
+.disabled-button {
+    @apply disabled:bg-gray-950;
+    @apply text-gray-400;
+    @apply border-2;
+    @apply border-gray-400;
+}
+
+.glow-green {
+    @apply bg-green-600;
+    @apply hover:bg-green-700;
+    @apply border-2;
+    @apply border-green-300;
+    @apply text-gray-50;
+    @apply transition-all;
+    @apply transform;
+    @apply hover:scale-110;
+    @apply duration-1000;
+    @apply hover:cursor-pointer;
+    @apply hover:bg-green-500;
+    box-shadow: 0 0 10px rgba(6, 185, 21, 0.5),
+        0 0 10px rgba(6, 185, 21, 0.5),
+        0 0 10px rgba(6, 185, 21, 0.5),
+        0 0 10px rgba(6, 185, 21, 0.5);
+}
+
+
+.glow-yellow{
+    @apply bg-yellow-600;
+    @apply hover:bg-yellow-700;
+    @apply border-2;
+    @apply border-yellow-300;
+    @apply text-gray-50;
+    @apply transition-all;
+    @apply transform;
+    @apply hover:scale-110;
+    @apply duration-1000;
+    @apply hover:cursor-pointer;
+    @apply hover:bg-yellow-500;
+    box-shadow: 0 0 10px rgba(185, 185, 6, 0.5),
+        0 0 10px rgba(185, 185, 6, 0.5),
+        0 0 10px rgba(185, 185, 6, 0.5),
+        0 0 10px rgba(185, 185, 6, 0.5);
+}
+
+.glow-gray{
+    @apply bg-gray-600;
+    @apply hover:bg-gray-700;
+    @apply border-2;
+    @apply border-gray-300;
+    @apply text-gray-50;
+    @apply transition-all;
+    @apply transform;
+    @apply hover:scale-110;
+    @apply duration-1000;
+    @apply hover:cursor-pointer;
+    @apply hover:bg-gray-500;
+    box-shadow: 0 0 10px rgba(185, 185, 185, 0.5),
+        0 0 10px rgba(185, 185, 185, 0.5),
+        0 0 10px rgba(185, 185, 185, 0.5),
+        0 0 10px rgba(185, 185, 185, 0.5);
+}
+
+.info-text{
+    @apply absolute;
+    @apply hidden;
+    @apply group-hover:block;
+    @apply bg-gray-500;
+    @apply text-white;
+    @apply text-sm;
+    @apply rounded;
+    @apply py-1;
+    @apply px-2;
+    @apply bottom-full;
+    @apply left-1/2;
+    @apply transform;
+    @apply -translate-x-1/2 mb-2;
 }

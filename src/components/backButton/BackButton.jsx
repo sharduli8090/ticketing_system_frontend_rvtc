@@ -15,8 +15,8 @@ const BackButton = () => {
       onClick={navigateDashboard}
     >
       <IoArrowBack className="lg:h-6 lg:w-6 md:h-8 md:w-8 " />
-      &nbsp;
-      <span className="text-xs lg:text-sm md:text-sm">Back To Dashboard</span>
+      
+      <span className="text-xs lg:text-sm md:text-sm lg:block md:block hidden">&nbsp;Back To Dashboard</span>
     </button>
   );
 };
