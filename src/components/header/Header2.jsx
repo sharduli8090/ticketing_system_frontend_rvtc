@@ -56,7 +56,7 @@ const Header = () => {
           onClick={handleNavigate}
         >
           <img src={Img1} alt="Logo" className="w-10 h-10 " />
-          <div className="text-2xl ml-5 font-medium text-gray-200">
+          <div className="md:text-2xl text-xl lg:text-2xl ml-5 font-medium text-gray-200">
             SmartTask
           </div>
         </div>

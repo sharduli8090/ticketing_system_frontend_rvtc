@@ -5,8 +5,8 @@ import { useNavigate } from "react-router-dom";
 import "tailwindcss/tailwind.css";
 import useEmployeeService from "../../services/employeeService/EmployeeService";
 import useToastNotifications from "../../services/toastify/ToasterService";
-import Loader from "../loader/Loader";
 import BackButton from "../backButton/BackButton";
+import Loader from "../loader/Loader";
 
 const EmployeeProfile = () => {
   const { getEmployee } = useEmployeeService();
@@ -75,32 +75,32 @@ const EmployeeProfile = () => {
   const isFemale = empGender.toLowerCase() === "female";
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-white p-8 mb-56">
+    <div className="min-h-screen flex flex-col items-center justify-center  p-8 mb-56">
       <BackButton />
-      <div className="relative w-40 h-40 mb-6 transition-transform transform hover:scale-110 duration-300">
-        <div className="absolute inset-0 rounded-full bg-gray-200 shadow-md  "></div>
-        <div className="absolute inset-0 rounded-full flex items-center justify-center  text-blue-500   text-8xl ">
-          {isFemale ? <FaFemale /> : <FaMale />}
-        </div>
-      </div>
-      <h2 className="mt-8 lg:text-6xl md:text-4xl text-2xl text-center font-bold text-gray-800 capitalize">
+      {isFemale ? (
+        <FaFemale className="  glow-icon  transition-all transform hover:scale-110  duration-1000" />
+      ) : (
+        <FaMale className=" glow-icon   transition-all transform hover:scale-110 duration-1000" />
+      )}
+
+      <h2 className="mt-8 lg:text-6xl md:text-4xl text-3xl text-center font-bold  capitalize text-gray-200">
         {empName}
       </h2>
-      <p className="lg:text-2xl md:text-xl text-lg text-gray-600 mt-2 capitalize">
+      <p className="lg:text-2xl md:text-xl text-lg   mt-2 capitalize text-gray-300">
         {empPosition}
       </p>
 
       <button
-        className="bg-blue-500 text-white text-sm lg:text-lg md:text-sm font-bold lg:py-2 md:py-2 lg:px-4 md:px-4 py-1 px-2 rounded-md mt-10 hover:bg-blue-600 transition-transform transform hover:scale-110 duration-300"
+        className=" glow-button-purple text-gray-50 text-sm lg:text-lg md:text-sm font-bold lg:py-2 md:py-2 lg:px-4 md:px-4 py-1 px-2 rounded-md mt-10  transition-all transform hover:scale-110 duration-1000"
         onClick={handleNavigate}
       >
         <MdOutlineModeEditOutline className="inline-block lg:text-2xl md:text-xl text-lg mr-1 lg:mr-2 md:mr-2" />{" "}
         Edit Profile
       </button>
-      <div className="mt-10 w-full max-w-4xl text-xl text-gray-700">
-        <div className="flex justify-between py-4 border-b border-gray-300 text-sm lg:text-xl md:text-xl">
+      <div className="mt-10 w-full max-w-4xl text-xl text-gray-50  glow-login p-10 ">
+        <div className="flex justify-between py-4 border-b border-gray-300 text-sm lg:text-xl md:text-xl ">
           <span className="font-semibold capitalize">Gender:</span>
-          <span>{empGender}</span>
+          <span className="capitalize">{empGender}</span>
         </div>
         <div className="flex justify-between py-4 border-b border-gray-300 text-sm lg:text-xl md:text-xl">
           <span className="font-semibold capitalize">Email:</span>
@@ -116,7 +116,7 @@ const EmployeeProfile = () => {
         </div>
         <div className="flex justify-between py-4 border-b border-gray-300 text-sm lg:text-xl md:text-xl">
           <span className="font-semibold capitalize">Department:</span>
-          <span>{empDepartment}</span>
+          <span className="capitalize">{empDepartment}</span>
         </div>
       </div>
     </div>

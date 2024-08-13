@@ -5,7 +5,7 @@ const FloatingWidget = () => {
   const [isHovered, setIsHovered] = useState(false);
 
   return (
-    <div className="fixed bottom-3 right-1 lg:bottom-4 lg:right-4 md:bottom-4 md:right-4 z-500">
+    <div className="fixed bottom-3 right-1 lg:bottom-4 lg:right-4 md:bottom-4 md:right-4 z-2000">
       <div
         className="relative"
         onMouseEnter={() => setIsHovered(true)}

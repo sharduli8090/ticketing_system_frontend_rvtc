@@ -19,6 +19,25 @@ body {
         0 0 10px rgba(6, 75, 185, 0.5);
 }
 
+.glow-icon { 
+    @apply border-2;
+    @apply border-purple-300;
+    @apply hover:bg-purple-600;
+    @apply text-purple-200;
+    @apply hover:text-gray-800  ;
+    @apply p-3;
+    @apply rounded-full;
+    @apply   text-7xl;
+    @apply lg:p-5;
+    @apply md:p-4;
+    @apply lg:text-9xl;
+    @apply md:text-8xl; 
+    box-shadow: 0 0 10px rgba(121, 42, 196, 0.5),
+        0 0 10px rgba(121, 42, 196, 0.5),
+        0 0 30px rgba(121, 42, 196, 0.5),
+        0 0 20px rgba(121, 42, 196, 0.5);
+}
+
 .glow-button-l {
     @apply border-2;
     @apply border-blue-300;
@@ -211,7 +230,7 @@ body {
 }
 
 
-.glow-yellow{
+.glow-yellow {
     @apply bg-yellow-600;
     @apply hover:bg-yellow-700;
     @apply border-2;
@@ -229,7 +248,7 @@ body {
         0 0 10px rgba(185, 185, 6, 0.5);
 }
 
-.glow-gray{
+.glow-gray {
     @apply bg-gray-600;
     @apply hover:bg-gray-700;
     @apply border-2;
@@ -247,7 +266,7 @@ body {
         0 0 10px rgba(185, 185, 185, 0.5);
 }
 
-.info-text{
+.info-text {
     @apply absolute;
     @apply hidden;
     @apply group-hover:block;
