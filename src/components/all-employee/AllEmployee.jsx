@@ -17,7 +17,7 @@ const AllEmployee = () => {
   const { notifyError } = useToastNotifications();
 
   useEffect(() => {
-    // fetchData();
+    fetchData();
   }, []);
 
   const fetchData = async () => {

@@ -14,20 +14,21 @@ const ApproveDenyComments = ({
   return (
     <div className="fixed z-10 inset-0 overflow-y-auto">
       <div className="flex items-center justify-center min-h-screen">
-        <div className="fixed inset-0 bg-gray-500 opacity-75"></div>
-        <div className="relative bg-white rounded-lg p-10">
+        <div className="fixed inset-0 bg-gray-900 opacity-75"></div>
+        <div className="relative bg-gray-950 text-gray-50 rounded-lg p-10 glow-login">
           <button
             className="absolute top-0 right-0 p-2"
             onClick={closeCommentModal}
           >
-            <IoCloseOutline className="h-6 w-6 text-gray-600 transition-transform transform hover:scale-150 hover:rotate-180 hover:cursor-pointer duration-1000 hover:text-gray-900 hover:bg-gray-100 rounded-full" />
+            <IoCloseOutline className="h-6 w-6 text-gray-300 transition-transform transform hover:scale-150 hover:rotate-180 hover:cursor-pointer duration-1000 hover:text-gray-50  rounded-full " />
           </button>
-          <h2 className="text-xl font-bold mb-4">
+          <h2 className="text-xl font-medium mb-4">
+            Comments for{" "}
             {ticketStatus.charAt(0).toUpperCase() + ticketStatus.slice(1)}{" "}
             Ticket
           </h2>
           <textarea
-            className="w-full border rounded px-3 py-2 mb-4"
+            className="w-full border rounded px-3 py-2 mb-4 glow-input "
             rows="5"
             placeholder="Enter comments"
             value={ticketComments}
@@ -35,7 +36,7 @@ const ApproveDenyComments = ({
           />
           <button
             onClick={handleApproveDeny}
-            className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 transition-transform transform hover:scale-110 duration-800"
+            className=" glow-button-purple text-gray-50 py-2 px-4 rounded   transition-all transform hover:scale-110 duration-1000"
           >
             Submit
           </button>
