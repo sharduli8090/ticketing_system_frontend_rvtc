@@ -78,16 +78,28 @@ const UpdateEmployeeModal = ({ isOpen, closeModal, selectedRow }) => {
   return (
     <div className="fixed z-10 inset-0 overflow-y-auto">
       <div className="flex items-center justify-center min-h-screen">
-        <div className="fixed inset-0 bg-gray-500 opacity-75"></div>
-        <div className="relative bg-white rounded-lg p-10">
-          <button className="absolute top-0 right-0 p-2" onClick={closeModal}>
-            <IoCloseOutline className="h-6 w-6 text-gray-600 transition-transform transform hover:scale-150 hover:rotate-180 hover:cursor-pointer duration-1000 hover:text-gray-900 hover:bg-gray-100 rounded-full" />
+        <div className="fixed inset-0 bg-gray-900 opacity-75"></div>
+        <div className="relative bg-gray-950 text-gray-50 rounded-lg p-10 glow-login lg:hidden md:block">
+          {" "}
+          <button
+            className="absolute top-0 right-0 p-2"
+            onClick={closeModal}
+          >
+            <IoCloseOutline className="h-6 w-6 text-gray-300 transition-transform transform hover:scale-150 hover:rotate-180 hover:cursor-pointer duration-1000 hover:text-gray-50  rounded-full " />
           </button>
-          <h2 className="text-xl font-bold mb-4">Update Employee</h2>
+          Open in Desktop View
+        </div>
+        <div className="relative bg-gray-950 glow-login-blue rounded-lg p-10 lg:block hidden md:hidden ">
+          <button className="absolute top-0 right-0 p-2" onClick={closeModal}>
+            <IoCloseOutline className="h-6 w-6 text-gray-400 transition-transform transform hover:scale-150 hover:rotate-180 hover:cursor-pointer duration-1000 hover:text-gray-50   rounded-full" />
+          </button>
+          <h2 className="text-xl font-bold mb-4 text-gray-50">
+            Update Employee
+          </h2>
           {loading ? (
             <Loader />
           ) : (
-            <form onSubmit={submitForm}>
+            <form onSubmit={submitForm} className="text-gray-50">
               <div className="grid grid-cols-2 gap-4">
                 <div>
                   <label htmlFor="email" className="block mb-2">
@@ -97,7 +109,7 @@ const UpdateEmployeeModal = ({ isOpen, closeModal, selectedRow }) => {
                     id="email"
                     name="email"
                     type="email"
-                    className="w-full border rounded px-3 py-2"
+                    className="w-full border rounded px-3 py-2 glow-input-blue"
                     value={formData.email}
                     onChange={handleInputChange}
                     required
@@ -111,7 +123,7 @@ const UpdateEmployeeModal = ({ isOpen, closeModal, selectedRow }) => {
                     id="password"
                     name="password"
                     type="password"
-                    className="w-full border rounded px-3 py-2"
+                    className="w-full border rounded px-3 py-2 glow-input-blue"
                     value={formData.password}
                     onChange={handleInputChange}
                   />
@@ -124,7 +136,7 @@ const UpdateEmployeeModal = ({ isOpen, closeModal, selectedRow }) => {
                     id="empName"
                     name="empName"
                     type="text"
-                    className="w-full border rounded px-3 py-2"
+                    className="w-full border rounded px-3 py-2 glow-input-blue"
                     value={formData.empName}
                     onChange={handleInputChange}
                     required
@@ -138,7 +150,7 @@ const UpdateEmployeeModal = ({ isOpen, closeModal, selectedRow }) => {
                     id="empPosition"
                     name="empPosition"
                     type="text"
-                    className="w-full border rounded px-3 py-2"
+                    className="w-full border rounded px-3 py-2 glow-input-blue"
                     value={formData.empPosition}
                     onChange={handleInputChange}
                     required
@@ -152,7 +164,7 @@ const UpdateEmployeeModal = ({ isOpen, closeModal, selectedRow }) => {
                     id="empDateOfBirth"
                     name="empDateOfBirth"
                     type="date"
-                    className="w-full border rounded px-3 py-2"
+                    className="w-full border rounded px-3 py-2 glow-input-blue"
                     value={formData.empDateOfBirth}
                     onChange={handleInputChange}
                     required
@@ -162,34 +174,42 @@ const UpdateEmployeeModal = ({ isOpen, closeModal, selectedRow }) => {
                   <label htmlFor="empDepartment" className="block mb-2">
                     Department:
                   </label>
-                  <input
+                  <select
                     id="empDepartment"
                     name="empDepartment"
-                    type="text"
-                    className="w-full border rounded px-3 py-2"
+                    className="w-full border rounded px-3 py-2 glow-input-blue"
                     value={formData.empDepartment}
                     onChange={handleInputChange}
-                    required
-                  />
+                    required 
+                >
+                  <option value="admin">Admin</option>
+                  <option value="hr">HR</option>
+                  <option value="finance">Finance</option>
+                  <option value="it">IT</option>
+                </select>
+                  
                 </div>
                 <div>
                   <label htmlFor="empGender" className="block mb-2">
                     Gender:
                   </label>
-                  <input
+                  <select
                     id="empGender"
                     name="empGender"
-                    type="text"
-                    className="w-full border rounded px-3 py-2"
                     value={formData.empGender}
                     onChange={handleInputChange}
                     required
-                  />
+                    className=" border rounded w-full py-2 px-3  focus:outline-none focus:none glow-input-blue"
+                  >
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                    <option value="other">Other</option>
+                  </select> 
                 </div>
               </div>
               <button
                 type="submit"
-                className="mt-4 bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 transition-transform transform hover:scale-110 duration-800"
+                className="w-full mt-7  glow-button py-2 px-4 rounded hover:bg-blue-600 transition-transform transform hover:scale-110 duration-1000"
               >
                 Update
               </button>

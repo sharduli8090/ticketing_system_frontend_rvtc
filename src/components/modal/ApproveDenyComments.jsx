@@ -15,7 +15,17 @@ const ApproveDenyComments = ({
     <div className="fixed z-10 inset-0 overflow-y-auto">
       <div className="flex items-center justify-center min-h-screen">
         <div className="fixed inset-0 bg-gray-900 opacity-75"></div>
-        <div className="relative bg-gray-950 text-gray-50 rounded-lg p-10 glow-login">
+        <div className="relative bg-gray-950 text-gray-50 rounded-lg p-10 glow-login lg:hidden md:block">
+          {" "}
+          <button
+            className="absolute top-0 right-0 p-2"
+            onClick={closeCommentModal}
+          >
+            <IoCloseOutline className="h-6 w-6 text-gray-300 transition-transform transform hover:scale-150 hover:rotate-180 hover:cursor-pointer duration-1000 hover:text-gray-50  rounded-full " />
+          </button>
+          Open in Desktop View
+        </div>
+        <div className="relative bg-gray-950 text-gray-50 rounded-lg p-10 glow-login lg:block md:hidden hidden">
           <button
             className="absolute top-0 right-0 p-2"
             onClick={closeCommentModal}
