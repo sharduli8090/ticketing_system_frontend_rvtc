@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { GoHomeFill } from "react-icons/go";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Img1 from "../../asset/images/favicon.ico";
 import useAuthService from "../../services/authService/AuthService";
 
@@ -65,12 +65,14 @@ const Header = () => {
             window.innerWidth < 712 ? "hidden" : ""
           }`}
         >
-          <Link
-            to="/home#home"
+          <button
             className="cursor-pointer mx-2 hover:underline hover:font-medium text-gray-300 transition-all transform hover:text-gray-100 duration-900 hover:scale-110"
+            onClick={() => {
+              navigate("/home#home");
+            }}
           >
             Home
-          </Link>
+          </button>
           <button
             onClick={() => handleScrollToSection("about")}
             className="cursor-pointer mx-2 hover:underline hover:font-medium text-gray-300 transition-all transform hover:text-gray-100 duration-900 hover:scale-110"
