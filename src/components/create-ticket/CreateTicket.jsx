@@ -106,7 +106,7 @@ const CreateTicket = () => {
             <div className="mb-6">
               <label
                 htmlFor="ticketDepartment"
-                className="block text-gray-700 text-sm font-bold mb-2 text-gray-50"
+                className="block text-sm font-bold mb-2 text-gray-50"
               >
                 Ticket Department:
                 <span className="text-sm text-red-500">*</span>
@@ -115,7 +115,7 @@ const CreateTicket = () => {
                 id="ticketDepartment"
                 defaultValue="admin"
                 {...register("ticketDepartment", { required: true })}
-                className="shadow bg-white border rounded w-full py-2 px-3 text-gray-50 focus:outline-none focus:none glow-input"
+                className=" rounded w-full py-2 px-3 text-gray-50 focus:outline-none focus:none glow-input"
               >
                 <option value="admin">Admin</option>
                 <option value="hr">HR</option>
@@ -136,7 +136,7 @@ const CreateTicket = () => {
             <div className="flex items-center mb-4">
               <button
                 type="submit"
-                className="w-full glow-button-purple text-white font-bold py-2 px-4 rounded focus:outline-none focus:none transition-transform transform hover:scale-105 duration-1000"
+                className="w-full glow-button-purple text-gray-50 font-bold py-2 px-4 rounded focus:outline-none focus:none transition-transform transform hover:scale-105 duration-1000"
               >
                 Create Ticket
               </button>
