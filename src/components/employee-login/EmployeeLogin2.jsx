@@ -72,7 +72,7 @@ const EmployeeLogin = () => {
   return (
     <div className="min-h-screen flex justify-center items-center bg-gradient-to-b from-gray-950 via-gray-900 to-gray-800">
       {!loading ? (
-        <div className="lg:w-full md:w-full w-3/4 max-w-md glow-login-blue rounded-lg px-8 py-12  flex flex-col items-center text-white ">
+        <div className="lg:w-full md:w-full w-3/4 max-w-md glow-login-blue rounded-lg px-8 py-12  flex flex-col items-center text-gray-50 ">
           <h1 className="text-center lg:text-2xl md:text-2xl text-lg font-medium mb-8 ">
             Welcome Back Employee!
           </h1>
@@ -81,14 +81,14 @@ const EmployeeLogin = () => {
             <div className="mb-6">
               <label
                 htmlFor="email"
-                className="block  text-xs lg:text-sm md:text-sm font-bold mb-2 text-white   "
+                className="block  text-xs lg:text-sm md:text-sm font-bold mb-2 text-gray-50   "
               >
                 Email:
               </label>
               <input
                 type="email"
                 id="email"
-                className="shadow appearance-none border rounded w-full py-1 lg:py-2 md:py-2 px-2 lg:px-3 md:px-3  text-white focus:outline-none   text-sm lg:text-base md:text-base glow-input-blue"
+                className="shadow appearance-none border rounded w-full py-1 lg:py-2 md:py-2 px-2 lg:px-3 md:px-3  text-gray-50 focus:outline-none   text-sm lg:text-base md:text-base glow-input-blue"
                 placeholder="youremail@example.com"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
@@ -98,14 +98,14 @@ const EmployeeLogin = () => {
             <div className="mb-6">
               <label
                 htmlFor="password"
-                className="block text-white text-xs lg:text-sm md:text-sm font-bold mb-2"
+                className="block text-gray-50 text-xs lg:text-sm md:text-sm font-bold mb-2"
               >
                 Password:
               </label>
               <input
                 type="password"
                 id="password"
-                className="shadow appearance-none border rounded w-full py-1 lg:py-2 md:py-2 px-2 lg:px-3 md:px-3  text-white focus:outline-none    text-sm lg:text-base md:text-base glow-input-blue "
+                className="shadow appearance-none border rounded w-full py-1 lg:py-2 md:py-2 px-2 lg:px-3 md:px-3  text-gray-50 focus:outline-none    text-sm lg:text-base md:text-base glow-input-blue "
                 placeholder="Password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
@@ -122,7 +122,7 @@ const EmployeeLogin = () => {
             <div className="flex items-center mb-4 lg:mt-10 md:mt-10">
               <button
                 type="submit"
-                className="w-full   mt-5 lg:mt-0 md:mt-0   hover:bg-blue-500 text-white font-bold py-1 lg:py-2 md:py-2 rounded focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-700 transition-all transform hover:scale-110 duration-1000 glow-button "
+                className="w-full   mt-5 lg:mt-0 md:mt-0   hover:bg-blue-500 text-gray-50 font-bold py-1 lg:py-2 md:py-2 rounded focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-700 transition-all transform hover:scale-110 duration-1000 glow-button "
               >
                 Login
               </button>
@@ -130,7 +130,7 @@ const EmployeeLogin = () => {
             <div className="text-red-500 lg:text-sm md:text-sm text-xs  text-center h-5">
               {errorMessage}
             </div>
-            <div className="text-center text-white text-xs lg:text-sm md:text-sm ">
+            <div className="text-center text-gray-50 text-xs lg:text-sm md:text-sm ">
               Sign up as Employee &nbsp;
               <span
                 onClick={handleAdminContact}

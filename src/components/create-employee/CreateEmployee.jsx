@@ -2,8 +2,8 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import useAdminService from "../../services/adminService/AdminService";
 import useToastNotifications from "../../services/toastify/ToasterService";
-import Loader from "../loader/Loader";
 import BackButton from "../backButton/BackButton";
+import Loader from "../loader/Loader";
 
 const CreateEmployee = () => {
   const {
@@ -41,29 +41,26 @@ const CreateEmployee = () => {
 
   const password = watch("password", "");
 
-
   return (
     <div
-      className={`min-h-screen flex justify-center items-center ${
-        loading ? "bg-transparent" : "bg-gradient-to-r from-blue-50 to-blue-100"
-      }`}
+      className={`min-h-screen flex justify-center items-center `}
     >
       <BackButton />
-      
+
       {loading ? (
         <Loader />
       ) : (
-        <div className="w-full max-w-screen-md bg-white rounded-lg px-8 py-12 shadow-lg flex flex-col items-center">
+        <div className="w-full max-w-screen-md rounded-lg px-8 py-12 text-gray-50 flex flex-col items-center glow-login-blue">
           <h1 className="text-center text-2xl font-medium mb-8">
             Employee Registration
           </h1>
 
-          <form onSubmit={handleSubmit(onSubmit)} className="w-full">
-            <div className="mb-6 flex flex-col md:flex-row md:space-x-4">
-              <div className="w-full md:w-1/2">
+          <form onSubmit={handleSubmit(onSubmit)} className="w-full text-gray-50 ">
+            <div className="mb-6 flex flex-col md:flex-row md:space-x-4 ">
+              <div className="w-full md:w-1/2 ">
                 <label
                   htmlFor="email"
-                  className="block text-gray-700 text-sm font-bold mb-2"
+                  className="block  text-sm font-bold mb-2"
                 >
                   Email: <span className="text-sm text-red-600">*</span>
                 </label>
@@ -72,10 +69,10 @@ const CreateEmployee = () => {
                   id="email"
                   placeholder="youremail@example.com"
                   {...register("email", { required: true })}
-                  className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 focus:outline-none focus:ring-blue-500 focus:ring-opacity-50"
+                  className="rounded w-full py-2 px-3   focus:outline-none focus:none   glow-input-blue"
                 />
                 {errors.email && (
-                  <span className="text-red-600 text-sm">
+                  <span className="text-red-300 text-sm">
                     Email is required
                   </span>
                 )}
@@ -83,7 +80,7 @@ const CreateEmployee = () => {
               <div className="w-full md:w-1/2">
                 <label
                   htmlFor="empName"
-                  className="block text-gray-700 text-sm font-bold mb-2"
+                  className="block   text-sm font-bold mb-2"
                 >
                   Name: <span className="text-sm text-red-600">*</span>
                 </label>
@@ -92,7 +89,7 @@ const CreateEmployee = () => {
                   id="empName"
                   placeholder="Your Name"
                   {...register("empName", { required: true })}
-                  className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 focus:outline-none focus:ring-blue-500 focus:ring-opacity-50"
+                  className="rounded w-full py-2 px-3 focus:outline-none focus:none  glow-input-blue"
                 />
                 {errors.empName && (
                   <span className="text-red-600 text-sm">Name is required</span>
@@ -104,7 +101,7 @@ const CreateEmployee = () => {
               <div className="w-full md:w-1/2">
                 <label
                   htmlFor="password"
-                  className="block text-gray-700 text-sm font-bold mb-2"
+                  className="block   text-sm font-bold mb-2"
                 >
                   Password: <span className="text-sm text-red-600">*</span>
                 </label>
@@ -113,7 +110,7 @@ const CreateEmployee = () => {
                   id="password"
                   placeholder="Password"
                   {...register("password", { required: true })}
-                  className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 focus:outline-none focus:ring-blue-500 focus:ring-opacity-50"
+                  className="rounded w-full py-2 px-3   focus:outline-none focus:none  glow-input-blue"
                 />
                 {errors.password && (
                   <span className="text-red-600 text-sm">
@@ -124,7 +121,7 @@ const CreateEmployee = () => {
               <div className="w-full md:w-1/2">
                 <label
                   htmlFor="confirmPassword"
-                  className="block text-gray-700 text-sm font-bold mb-2"
+                  className="block   text-sm font-bold mb-2"
                 >
                   Confirm Password:{" "}
                   <span className="text-sm text-red-600">*</span>
@@ -138,7 +135,7 @@ const CreateEmployee = () => {
                     validate: (value) =>
                       value === password || "Passwords do not match",
                   })}
-                  className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 focus:outline-none focus:ring-blue-500 focus:ring-opacity-50"
+                  className=" rounded w-full py-2 px-3   focus:outline-none focus:none  glow-input-blue"
                 />
                 {errors.confirmPassword && (
                   <span className="text-red-600 text-sm">
@@ -152,14 +149,14 @@ const CreateEmployee = () => {
               <div className="w-full md:w-1/2">
                 <label
                   htmlFor="empGender"
-                  className="block text-gray-700 text-sm font-bold mb-2"
+                  className="block  text-sm font-bold mb-2"
                 >
                   Gender: <span className="text-sm text-red-600">*</span>
                 </label>
                 <select
                   id="empGender"
                   {...register("empGender", { required: true })}
-                  className="shadow bg-white border rounded w-full py-2 px-3 text-gray-700 focus:outline-none focus:ring-blue-500 focus:ring-opacity-50"
+                  className=" rounded w-full py-2 px-3   focus:outline-none focus:none  glow-input-blue"
                 >
                   <option value="male">Male</option>
                   <option value="female">Female</option>
@@ -174,7 +171,7 @@ const CreateEmployee = () => {
               <div className="w-full md:w-1/2">
                 <label
                   htmlFor="empDateOfBirth"
-                  className="block text-gray-700 text-sm font-bold mb-2"
+                  className="block   text-sm font-bold mb-2"
                 >
                   Date of Birth: <span className="text-sm text-red-600">*</span>
                 </label>
@@ -182,7 +179,7 @@ const CreateEmployee = () => {
                   type="date"
                   id="empDateOfBirth"
                   {...register("empDateOfBirth", { required: true })}
-                  className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 focus:outline-none focus:ring-blue-500 focus:ring-opacity-50"
+                  className=" rounded w-full py-2 px-3  focus:outline-none focus:none  glow-input-blue"
                 />
                 {errors.empDateOfBirth && (
                   <span className="text-red-600 text-sm">
@@ -192,11 +189,11 @@ const CreateEmployee = () => {
               </div>
             </div>
 
-            <div className="mb-6 flex flex-col md:flex-row md:space-x-4">
+            <div className="mb-12 flex flex-col md:flex-row md:space-x-4">
               <div className="w-full md:w-1/2">
                 <label
                   htmlFor="empDepartment"
-                  className="block text-gray-700 text-sm font-bold mb-2"
+                  className="block  text-sm font-bold mb-2"
                 >
                   Department: <span className="text-sm text-red-600">*</span>
                 </label>
@@ -204,7 +201,7 @@ const CreateEmployee = () => {
                   id="empDepartment"
                   defaultValue="admin"
                   {...register("empDepartment", { required: true })}
-                  className="shadow bg-white border rounded w-full py-2 px-3 text-gray-700 focus:outline-none focus:ring-blue-500 focus:ring-opacity-50"
+                  className="  rounded w-full py-2 px-3  focus:outline-none focus:none  glow-input-blue"
                 >
                   <option value="admin">Admin</option>
                   <option value="hr">HR</option>
@@ -220,7 +217,7 @@ const CreateEmployee = () => {
               <div className="w-full md:w-1/2">
                 <label
                   htmlFor="empPosition"
-                  className="block text-gray-700 text-sm font-bold mb-2"
+                  className="block   text-sm font-bold mb-2"
                 >
                   Position: <span className="text-sm text-red-600">*</span>
                 </label>
@@ -228,7 +225,7 @@ const CreateEmployee = () => {
                   id="empPosition"
                   defaultValue="intern"
                   {...register("empPosition", { required: true })}
-                  className="shadow bg-white border rounded w-full py-2 px-3 text-gray-700 focus:outline-none focus:ring-blue-500 focus:ring-opacity-50"
+                  className="  rounded w-full py-2 px-3  focus:outline-none focus:none  glow-input-blue"
                 >
                   <option value="manager">Manager</option>
                   <option value="intern">Intern</option>
@@ -247,10 +244,10 @@ const CreateEmployee = () => {
               <div className="text-red-500 text-sm mt-1">{errorMessage}</div>
             )}
 
-            <div className="flex items-center mb-4">
+            <div className="flex items-center mb-2">
               <button
                 type="submit"
-                className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-700 transition-transform transform hover:scale-110 duration-800"
+                className=" text-gray-50 w-full font-bold py-2 px-4 rounded focus:outline-none focus:none transition-all transform hover:scale-105 duration-1000 glow-button"
               >
                 Register
               </button>
