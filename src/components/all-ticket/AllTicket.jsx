@@ -23,7 +23,7 @@ const AllTicket = () => {
     setLoading(true);
     try {
       const response = await getAllTicket();
-      const formattedData = response.data.map((ticket) => ({
+      const formattedData = response?.data.map((ticket) => ({
         id: ticket.id,
         Title: ticket.ticketName,
         Description: ticket.ticketDescription,
@@ -50,7 +50,7 @@ const AllTicket = () => {
         fetchData();
       } else {
         const response = await getTicketsDeptWise({ dept: selectedStatus });
-        const formattedData = response.data.map((ticket) => ({
+        const formattedData = response?.data.map((ticket) => ({
           id: ticket.id,
           Title: ticket.ticketName,
           Description: ticket.ticketDescription,

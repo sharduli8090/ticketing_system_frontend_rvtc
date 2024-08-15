@@ -20,7 +20,7 @@ const AllQuery = () => {
     setLoading(true);
     try {
       const response = await getquery();
-      const formattedData = response.data.map((query) => ({
+      const formattedData = response?.data.map((query) => ({
         Name: query.name,
         Query: query.query,
       }));

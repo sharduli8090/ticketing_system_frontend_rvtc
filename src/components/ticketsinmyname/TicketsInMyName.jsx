@@ -26,7 +26,7 @@ const TicketsInMyName = () => {
       const response = await getTicketsInMyName({
         empId: localStorage.getItem("empid"),
       });
-      const formattedData = response.data.map((ticket) => ({
+      const formattedData = response?.data.map((ticket) => ({
         id: ticket.id,
         Title: ticket.ticketName,
         Description: ticket.ticketDescription,

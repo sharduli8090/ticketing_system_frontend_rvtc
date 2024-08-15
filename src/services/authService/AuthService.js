@@ -61,7 +61,7 @@ const useAuthService = () => {
     LocalStorageService.removeItem("adminid");
     LocalStorageService.removeItem("emptoken");
     LocalStorageService.removeItem("empid");
-    notifySuccess("Logged out successfully");
+    notifySuccess("You're logged out. Until we meet again, stay awesome!");
   };
 
   return {

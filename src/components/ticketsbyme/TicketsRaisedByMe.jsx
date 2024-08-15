@@ -26,7 +26,7 @@ const TicketsRaisedByMe = () => {
       }
       const obj = { empId: empid };
       const response = await getTicketsRaisedByMe(obj);
-      const formattedData = response.data.map((ticket) => ({
+      const formattedData = response?.data.map((ticket) => ({
         id: ticket.id,
         Title: ticket.ticketName,
         Description: ticket.ticketDescription,

@@ -18,8 +18,7 @@ const useSendQueryService = () => {
       return response.data;
     } catch (error) {
       console.error("Error sending query:", error);
-      notifyError("Error sending query", error);
-      throw new Error("Error sending query");
+      notifyError("Error sending query", error); 
     }
   }, []);
 

@@ -24,7 +24,8 @@ const AllEmployee = () => {
     setLoading(true);
     try {
       const response = await getAllEmployee();
-      const formattedData = response.data.map((employee) => ({
+      
+      const formattedData = response?.data.map((employee) => ({
         id: employee.id,
         Email: employee.email,
         Name: employee.empName,
@@ -140,6 +141,7 @@ const AllEmployee = () => {
             update={true}
             delete={true}
             tableType={"employee"}
+            fetchData={fetchData}
           />
         </>
       )}

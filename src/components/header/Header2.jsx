@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { GoHomeFill } from "react-icons/go";
+import { AiFillDashboard } from "react-icons/ai" ;
 import { useNavigate } from "react-router-dom";
 import Img1 from "../../asset/images/favicon.ico";
 import useAuthService from "../../services/authService/AuthService";
@@ -102,10 +102,11 @@ const Header = () => {
           {loggedIn ? (
             <div className="flex justify-between w-1/2">
               <button
-                className="    text-white font-bold p-2 text-md rounded transition-all transform hover:scale-110 duration-1000 mr-2 glow-button"
                 onClick={handleNavigateDash}
+                className="    text-white font-bold p-2 text-md rounded transition-all transform hover:scale-110 duration-1000 mr-2 glow-button"
               >
-                <GoHomeFill className="lg:w-5 lg:h-5 " />
+                <AiFillDashboard className="lg:w-5 lg:h-5 " />
+                <div className="info-text">Dashboard</div>
               </button>
               <button
                 className=" text-white font-bold md:py-2 lg:py-2 md:px-4 lg:px-4 py-1 px-2 text-sm rounded transition-all transform hover:scale-110 duration-1000 glow-button-logout"

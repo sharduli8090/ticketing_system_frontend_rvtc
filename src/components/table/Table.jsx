@@ -53,7 +53,7 @@ const Table = ({
         const delResp = await deleteTicket(id);
         fetchData();
       } else {
-        const delResp = await deleteEmployee(id);
+        const delResp = await deleteEmployee(id); 
         fetchData();
       }
     } catch (error) {
