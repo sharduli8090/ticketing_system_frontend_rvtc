@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import useEmployeeLoginService from "../../services/employeeLoginService/EmployeeLoginService";
-import useToastNotifications from "../../services/toastify/ToasterService"; 
+import useToastNotifications from "../../services/toastify/ToasterService";
 import Loader from "../loader/Loader";
 
 const EmployeeLogin = () => {
@@ -70,7 +70,7 @@ const EmployeeLogin = () => {
   };
 
   return (
-    <div className="min-h-screen flex justify-center items-center bg-gradient-to-b from-gray-950 via-gray-900 to-gray-800">
+    <div className="min-h-screen flex justify-center items-center   bg-gradient-to-b from-black via-gray-900 to-gray-800">
       {!loading ? (
         <div className="lg:w-full md:w-full w-3/4 max-w-md glow-login-blue rounded-lg px-8 py-12  flex flex-col items-center text-gray-50 ">
           <h1 className="text-center lg:text-2xl md:text-2xl text-lg font-medium mb-8 ">

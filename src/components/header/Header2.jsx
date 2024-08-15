@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { AiFillDashboard } from "react-icons/ai" ;
+import { AiFillDashboard } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
 import Img1 from "../../asset/images/favicon.ico";
 import useAuthService from "../../services/authService/AuthService";
@@ -7,7 +7,6 @@ import useAuthService from "../../services/authService/AuthService";
 const Header = () => {
   const { isLoggedIn, logout, getUserType } = useAuthService();
   const [loggedIn, setLoggedIn] = useState(isLoggedIn());
-  const [isEmployeeLogin, setIsEmployeeLogin] = useState(true);
   const navigate = useNavigate();
 
   // Sync loggedIn state with isLoggedIn
@@ -19,17 +18,7 @@ const Header = () => {
   const handleLogout = () => {
     logout();
     setLoggedIn(false);
-    if (isEmployeeLogin) {
-      navigate("/employee-login");
-    } else {
-      navigate("/admin-login");
-    }
-  };
-
-  // Toggle between admin and employee login
-  const toggleLogin = () => {
-    setIsEmployeeLogin(!isEmployeeLogin);
-    navigate(isEmployeeLogin ? "/admin-login" : "/employee-login");
+    navigate("/home");
   };
 
   // Handle navigation to home
@@ -50,13 +39,16 @@ const Header = () => {
   };
   return (
     <>
-      <header className="flex items-center justify-between px-4 py-3 bg-black text-white transition-colors duration-1000  shadow-lg ">
+      <header className="flex items-center justify-between px-4 py-3 bg-black text-gray-50 transition-colors duration-1000  shadow-lg ">
         <div
           className="flex items-center animate-pulse hover:cursor-pointer"
           onClick={handleNavigate}
         >
           <img src={Img1} alt="Logo" className="w-10 h-10 " />
-          <div className="md:text-2xl text-xl lg:text-2xl ml-5 font-medium text-gray-200">
+          <div
+            className={`md:text-2xl text-lg lg:text-2xl ml-5 font-medium text-gray-200
+           ${window.innerWidth < 330 ? "hidden" : ""}`}
+          >
             SmartTask
           </div>
         </div>
@@ -103,25 +95,33 @@ const Header = () => {
             <div className="flex justify-between w-1/2">
               <button
                 onClick={handleNavigateDash}
-                className="    text-white font-bold p-2 text-md rounded transition-all transform hover:scale-110 duration-1000 mr-2 glow-button"
+                className="    text-gray-50 font-bold p-2 text-md rounded transition-all transform hover:scale-110 duration-1000 mr-2 glow-button"
               >
                 <AiFillDashboard className="lg:w-5 lg:h-5 " />
                 <div className="info-text">Dashboard</div>
               </button>
               <button
-                className=" text-white font-bold md:py-2 lg:py-2 md:px-4 lg:px-4 py-1 px-2 text-sm rounded transition-all transform hover:scale-110 duration-1000 glow-button-logout"
+                className=" text-gray-50 font-bold md:py-2 lg:py-2 md:px-4 lg:px-4 py-1 px-2 text-sm rounded transition-all transform hover:scale-110 duration-1000 glow-button-logout"
                 onClick={handleLogout}
               >
                 Logout
               </button>
             </div>
           ) : (
-            <button
-              className="   text-white w-40 font-bold md:py-2 lg:py-2 md:px-4 lg:px-4 py-1 px-2 text-sm rounded transition-all transform hover:scale-110 duration-1000  glow-button "
-              onClick={toggleLogin}
-            >
-              {isEmployeeLogin ? "Admin Login" : "Employee Login"}
-            </button>
+            <div className="flex justify-between  ">
+              <button
+                className="   text-gray-50 w-22 font-bold md:py-2 lg:py-2 md:px-4 lg:px-4 py-1 px-1 text-sm rounded transition-all transform hover:scale-110 duration-1000  glow-button "
+                onClick={() => navigate("/admin-login")}
+              >
+                Admin
+              </button>
+              <button
+                className="   text-gray-50 w-30 ml-2 font-bold md:py-2 lg:py-2 md:px-4 lg:px-4 py-1 px-1 text-sm rounded transition-all transform hover:scale-110 duration-1000  glow-button "
+                onClick={() => navigate("/employee-login")}
+              >
+                Employee
+              </button>
+            </div>
           )}
         </div>
       </header>

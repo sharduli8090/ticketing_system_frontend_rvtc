@@ -188,7 +188,7 @@ const Table = ({
                   {keys.map((key, idx) => (
                     <td
                       key={idx}
-                      className="px-6 py-4 text-ellipsis overflow-hidden whitespace-nowrap text-center hover:cursor-default "
+                      className="px-6 py-4 text-ellipsis overflow-hidden gray-50space-nowrap text-center hover:cursor-default "
                     >
                       {formatData(row, key)}
                     </td>
@@ -198,7 +198,7 @@ const Table = ({
                       {update && (
                         <button
                           onClick={() => openUpdateModal(row)}
-                          className="glow-button   rounded mr-3 text-white text-sm p-2 relative group transition-all transform hover:scale-110 duration-1000"
+                          className="glow-button   rounded mr-3 text-gray-50 text-sm p-2 relative group transition-all transform hover:scale-110 duration-1000"
                         >
                           <MdEdit />
                           <div className="info-text">Update</div>
@@ -207,7 +207,7 @@ const Table = ({
                       {del && (
                         <button
                           onClick={() => handleDeleteRow(row.id, tableType)}
-                          className="glow-button-logout rounded mr-3 text-white text-sm p-2 relative group transition-all transform hover:scale-110 duration-1000"
+                          className="glow-button-logout rounded mr-3 text-gray-50 text-sm p-2 relative group transition-all transform hover:scale-110 duration-1000"
                         >
                           <MdDeleteOutline />
                           <div className="info-text">Delete</div>
@@ -220,7 +220,7 @@ const Table = ({
                             row.Status !== "open"
                               ? "disabled-button"
                               : "glow-green"
-                          } rounded mr-3 text-white text-sm p-2 relative group  `}
+                          } rounded mr-3 text-gray-50 text-sm p-2 relative group  `}
                           disabled={row.Status !== "open"}
                         >
                           <GoCheck />
@@ -236,7 +236,7 @@ const Table = ({
                             row.Status !== "open"
                               ? "disabled-button"
                               : "glow-yellow"
-                          } rounded mr-3 text-white text-sm p-2 relative group  `}
+                          } rounded mr-3 text-gray-50 text-sm p-2 relative group  `}
                           disabled={row.Status !== "open"}
                         >
                           <GoX />
