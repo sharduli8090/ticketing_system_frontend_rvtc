@@ -279,5 +279,7 @@ body {
     @apply bottom-full;
     @apply left-1/2;
     @apply transform;
-    @apply -translate-x-1/2 mb-2;
+    @apply -translate-y-1/2 ;
+    @apply mb-2; 
 }
+ 

@@ -1,68 +1,128 @@
-/* eslint-disable no-unused-vars */
-import { useState } from "react";
-import useSendQueryService from "../../services/queryservice/QueryService";
-import useToastNotifications from "../../services/toastify/ToasterService";
-import Loader from "../loader/Loader";
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import Img1 from "../../asset/images/favicon.ico";
+import useAuthService from "../../services/authService/AuthService";import { FaGithub ,FaLinkedin} from "react-icons/fa";
 
+import { admin, employee, general1, general2, nologin } from "../../constant/Constant";
 const Footer = () => {
-  const [formData, setFormData] = useState({ name: "", query: "" });
-  const [isLoading, setIsLoading] = useState(false);
+  const navigate = useNavigate();
+  const { isLoggedIn, getUserType } = useAuthService();
+  // useEffect(() => {
+    const loggedIn = isLoggedIn();
+    const userType = getUserType();
+  // }, []);
 
-  const { sendQuery } = useSendQueryService();
-  const { notifyError } = useToastNotifications();
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setIsLoading(true);
-    try {
-      const response = await sendQuery(formData);
-      setFormData({ name: "", query: "" });
-    } catch (error) {
-      notifyError("Error sending query.");
-    } finally {
-      setIsLoading(false);
-    }
-  };
 
   return (
-    <footer className="flex justify-between items-center pb-3 bg-gradient-to-t from-gray-900  to-gray-950 text-white shadow-md flex-col">
-      {isLoading && <Loader />}
-      <form
-        onSubmit={handleSubmit}
-        className="flex flex-col md:flex-row mt-5 md:mt-0 mb-7 md:mb-20 md:flex-wrap lg:flex-nowrap justify-center lg:py-7 md:py-10 lg:mx-0 md:w-full bg-gray-950"
+    <footer className="flex  items-center pb-3 bg-gradient-to-t from-gray-900  to-gray-950 text-gray-50 flex-col">
+
+      <div className="w-full h-24 bg-gray-950 ">&nbsp;</div>
+
+
+        <div className={`flex lg:flex-row flex-col items-center  justify-evenly w-full py-16 px-10 
+        ${
+          innerWidth < 330 ? "hidden" : "block"
+        }
+        `}>
+
+
+          <div className="flex flex-row items-center justify-center animate-pulse w-1/4">
+            <img src={Img1} alt="Logo" className="w-16 h-16  " />
+            <span className="text-2xl ml-2 font-medium">SmartTask</span>
+          </div>
+          
+          <div className="lg:w-[2px] lg:h-44 md:w-full md:h-[2px] w-full h-[2px] bg-gray-800 lg:mx-5 md:my-10 my-7 ">
+&nbsp;
+</div>    
+
+ <div className="w-full lg:w-3/4 flex justify-evenly text-gray-300">
+  
+<div className="flex flex-col items-start bg-whitwe w-1/6">
+  {general1.map((item, index) => (
+    <div key={index} className="text-lg hover:cursor-pointer hover:text-blue-500
+    hover:underline">
+      <a href
+      onClick={() => navigate(item.link)}
       >
-        {/* <input
-          type="text"
-          name="name"
-          placeholder="Title or Anonymous"
-          value={formData.name}
-          onChange={handleInputChange}
-          className="md:px-3 md:py-2 px-2 py-2 md:mr-2 md:mb-0 mb-2 text-center md:text-left lg:text-left rounded-md focus:outline-none focus:none  text-white text-sm lg:text-md md:text-md glow-input-blue-query "
-          autoComplete="off"
-        />
-        <textarea
-          type="text"
-          name="query"
-          placeholder="Your Query"
-          value={formData.query}
-          onChange={handleInputChange}
-          className="md:px-3 md:py-2 px-2 py-2 md:mb-0 md:mr-2 mb-2 text-center md:text-left lg:text-left rounded-md focus:outline-none focus:none text-white text-sm lg:text-md md:text-md glow-input-blue-query  "
-          autoComplete="off"
-        />
-        <button
-          type="submit"
-          className="btn btn-sm   text-white font-bold py-2 px-4 rounded-md md:mt-5 md:w-full md:mx-28 lg:mx-0 lg:w-auto lg:mt-0 transition-all transform hover:scale-110 duration-1000 text-sm lg:text-md md:text-md glow-button hover:bg-blue-500"
+        {item.name}
+      </a>
+    </div>
+  ))}
+</div>
+<div className="flex flex-col items-start bg-whitwe w-1/6">
+  {general2.map((item, index) => (
+    <div key={index} className="text-lg hover:cursor-pointer hover:text-blue-500
+    hover:underline">
+      <a href
+      onClick={() => navigate(item.link)}
+      >
+        {item.name}
+      </a>
+    </div>
+  ))}
+</div>
+
+
+
+
+
+<div className="flex flex-col items-start w-1/6 ">
+{loggedIn && userType === "employee" && employee.map((item, index) => (
+  <div key={index} className="text-lg hover:cursor-pointer hover:text-blue-500
+  hover:underline">
+      <a href
+      onClick={() => navigate(item.link)}
+      >
+        {item.name}
+      </a>
+
+      </div>
+  ))}
+  {loggedIn && userType === "admin" && admin.map((item, index) => (
+    <div key={index} className="text-lg hover:cursor-pointer hover:text-blue-500
+    hover:underline">
+        <a href
+        onClick={() => navigate(item.link)}
         >
-          Send Query
-        </button> */}
-      </form>
-      <p className="text-xs transition-transform transform hover:scale-150 duration-1000 hover:cursor-default">
+          {item.name}
+        </a>
+  
+        </div>
+    ))}
+    {!loggedIn  && nologin.map((item, index) => (
+        <div key={index} className="text-lg hover:cursor-pointer hover:text-blue-500
+        hover:underline">
+          <a href
+          onClick={() => navigate(item.link)}
+          >
+            {item.name}
+          </a>
+    
+          </div>
+      ))}
+  </div>
+  
+
+
+        </div>
+            </div>
+
+
+
+      <div className="bg-gray-800 h-[1px] w-full  mb-10"></div>
+
+      <div className="flex mb-5">
+      <a href="https://github.com/sharduli8090/" target="_blank" rel="noopener noreferrer">
+
+      <FaGithub className="lg:text-4xl md:text-3xl text-xl transition-all transform duration-1000 hover:scale-150  hover:cursor-pointer lg:mx-2 mx-1  "  />
+        </a>
+        <a href="https://www.linkedin.com/in/shardulipandey/" target="_blank" rel="noopener noreferrer">
+      <FaLinkedin className="lg:text-4xl md:text-3xl text-xl  transition-all transform duration-1000 hover:scale-150  hover:cursor-pointer lg:mx-2 mx-1 " />
+     </a>
+      </div>
+      <div className="text-xs   hover:cursor-default mb-10">
         &copy; 2024 Created by Creativstan
-      </p>
+      </div> 
     </footer>
   );
 };

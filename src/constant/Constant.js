@@ -135,3 +135,86 @@ export const statsCards = [
     desc: "24/7",
   },
 ];
+
+
+export const nologin = [
+  {
+    name: "Employee Login",
+    link: "/employee-login",
+  },
+  { name: "Admin Login", link: "/admin-login" },
+];
+
+
+
+export const general1 = [
+  {
+    name: "Home",
+    link: "/home#home",
+  },
+  {
+    name: "About",
+    link: "/home#about",
+  },
+  {
+    name: "Stats",
+    link: "/home#stats",
+  },
+  {
+    name: "Send Query",
+    link: "/sendquery",
+  },
+]
+export  const general2=[
+  { name: "Features", link: "/home#features" },
+  {
+    name: "More",
+    link: "/home#more-info",
+  },
+  {
+    name: "Contact Us",
+    link: "/sendquery",
+  }, 
+];
+export const employee = [
+  {
+    name: "Dashboard",
+    link: "/employeedash",
+  },
+  {
+    name: "Create Ticket",
+    link: "/createticket",
+  },
+  {
+    name: "Profile",
+    link: "/employeeprofile",
+  },
+  {
+    name: "My Tickets",
+    link: "/getticketraisedbyme",
+  },
+  { name: "Tickets for me", link: "/getticketinmyname" },
+];
+
+export const admin = [
+  {
+    name: "Dashboard",
+    link: "/admindash",
+  },
+  {
+    name: "All Employees",
+    link: "/getallemployee",
+  },
+  {
+    name: "All Tickets",
+    link: "/getallticket",
+  },
+  {
+    name: "Create Employee",
+    link: "/createemployee",
+  },
+  {
+    name: "All Query",
+    link: "/getquery",
+  },
+];
