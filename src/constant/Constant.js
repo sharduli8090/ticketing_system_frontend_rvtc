@@ -153,11 +153,11 @@ export const general1 = [
     link: "/home#home",
   },
   {
-    name: "About",
+    name: "About Us",
     link: "/home#about",
   },
   {
-    name: "Stats",
+    name: "Statistics",
     link: "/home#stats",
   },
   {
@@ -168,7 +168,7 @@ export const general1 = [
 export  const general2=[
   { name: "Features", link: "/home#features" },
   {
-    name: "More",
+    name: "More Info",
     link: "/home#more-info",
   },
   {
@@ -186,7 +186,7 @@ export const employee = [
     link: "/createticket",
   },
   {
-    name: "Profile",
+    name: "My Profile",
     link: "/employeeprofile",
   },
   {
@@ -202,16 +202,16 @@ export const admin = [
     link: "/admindash",
   },
   {
+    name: "Create Employee",
+    link: "/createemployee",
+  },
+  {
     name: "All Employees",
     link: "/getallemployee",
   },
   {
     name: "All Tickets",
     link: "/getallticket",
-  },
-  {
-    name: "Create Employee",
-    link: "/createemployee",
   },
   {
     name: "All Query",
