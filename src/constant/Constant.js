@@ -3,6 +3,7 @@ export const Constants = {
     ADMIN_LOGIN: "login",
     CREATE_EMPLOYEE: "createemployee",
     GET_ALL_EMPLOYEE: "getallemployee",
+    GET_ALL_EMPLOYEE_PAGINATION: "getallemployeepagination",
     GET_ALL_TICKET: "getallticket",
     DELETE_ALL_TICKET: "deleteallticket",
     DELETE_TICKET: "deleteticket/",

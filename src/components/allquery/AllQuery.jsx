@@ -4,13 +4,15 @@ import useToastNotifications from "../../services/toastify/ToasterService";
 import BackButton from "../backButton/BackButton";
 import Loader from "../loader/Loader";
 import Table from "../table/Table";
-
+import Pagination from "../pagination/Pagination";
 const AllQuery = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
 
   const { getquery } = useAdminService();
   const { notifyError } = useToastNotifications();
+  const [currentPage, setCurrentPage] = useState(1);
+  const [itemsPerPage] = useState(5); // Number of items per page
 
   useEffect(() => {
     fetchData();
@@ -33,6 +35,13 @@ const AllQuery = () => {
     }
   };
 
+  // Calculate the current page's data
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const currentData = data.slice(indexOfFirstItem, indexOfLastItem);
+
+  // Change page
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
   return (
     <div className="flex flex-col justify-between items-center mt-32 mb-64 w-auto mx-28">
       <BackButton />
@@ -41,7 +50,14 @@ const AllQuery = () => {
       ) : (
         <>
           <div className="flex justify-center items-center flex-row w-full mb-10"></div>
-          <Table data={data} tableType={"query"} />
+          <Table data={currentData} tableType={"query"} />
+
+          <Pagination
+            itemsPerPage={itemsPerPage}
+            totalItems={data.length}
+            paginate={paginate}
+            currentPage={currentPage}
+          />
         </>
       )}
     </div>

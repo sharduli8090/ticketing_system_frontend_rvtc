@@ -4,6 +4,7 @@ import useAdminService from "../../services/adminService/AdminService";
 import useToastNotifications from "../../services/toastify/ToasterService";
 import BackButton from "../backButton/BackButton";
 import Loader from "../loader/Loader";
+import Pagination from "../pagination/Pagination";
 import Table from "../table/Table";
 
 const AllEmployee = () => {
@@ -11,6 +12,8 @@ const AllEmployee = () => {
   const [loading, setLoading] = useState(true);
   const [selectedDepartment, setSelectedDepartment] = useState("all");
   const [noData, setNoData] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [itemsPerPage] = useState(5); // Number of items per page
 
   const { getAllEmployee, getEmployeeDeptWise, deleteAllEmployee } =
     useAdminService();
@@ -24,7 +27,7 @@ const AllEmployee = () => {
     setLoading(true);
     try {
       const response = await getAllEmployee();
-      
+
       const formattedData = response?.data.map((employee) => ({
         id: employee.id,
         Email: employee.email,
@@ -97,6 +100,15 @@ const AllEmployee = () => {
       setNoData(false);
     }
   }, [data]);
+
+  // Calculate the current page's data
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const currentData = data.slice(indexOfFirstItem, indexOfLastItem);
+
+  // Change page
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
+
   return (
     <div className="flex flex-col justify-between items-center mt-32 mb-64 w-auto mx-28">
       <BackButton />
@@ -137,11 +149,17 @@ const AllEmployee = () => {
             </div>
           </div>
           <Table
-            data={data}
+            data={currentData}
             update={true}
             delete={true}
             tableType={"employee"}
             fetchData={fetchData}
+          />
+          <Pagination
+            itemsPerPage={itemsPerPage}
+            totalItems={data.length}
+            paginate={paginate}
+            currentPage={currentPage}
           />
         </>
       )}

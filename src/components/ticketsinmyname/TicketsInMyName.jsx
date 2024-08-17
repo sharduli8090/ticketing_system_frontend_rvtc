@@ -3,12 +3,14 @@ import useEmployeeService from "../../services/employeeService/EmployeeService";
 import useToastNotifications from "../../services/toastify/ToasterService";
 import BackButton from "../backButton/BackButton";
 import Loader from "../loader/Loader";
+import Pagination from "../pagination/Pagination";
 import Table from "../table/Table";
-
 const TicketsInMyName = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
   const { notifyError } = useToastNotifications();
+  const [currentPage, setCurrentPage] = useState(1);
+  const [itemsPerPage] = useState(5); // Number of items per page
 
   const { getTicketsInMyName } = useEmployeeService();
 
@@ -47,6 +49,14 @@ const TicketsInMyName = () => {
     }
   };
 
+  // Calculate the current page's data
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const currentData = data.slice(indexOfFirstItem, indexOfLastItem);
+
+  // Change page
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
+
   return (
     <div className="flex flex-col justify-between items-center mt-32 mb-64 w-auto mx-28">
       <BackButton />
@@ -55,13 +65,19 @@ const TicketsInMyName = () => {
       ) : (
         <>
           <Table
-            data={data}
+            data={currentData}
             delete={false}
             approve={true}
             deny={true}
             close={false}
             tableType={"ticket"}
             fetchDataTicketsInMyName={fetchData}
+          />
+          <Pagination
+            itemsPerPage={itemsPerPage}
+            totalItems={data.length}
+            paginate={paginate}
+            currentPage={currentPage}
           />
         </>
       )}

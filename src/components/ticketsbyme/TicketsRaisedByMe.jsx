@@ -5,10 +5,13 @@ import BackButton from "../backButton/BackButton";
 import Loader from "../loader/Loader";
 import Table from "../table/Table";
 
+import Pagination from "../pagination/Pagination";
 const TicketsRaisedByMe = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
   const { notifyError } = useToastNotifications();
+  const [currentPage, setCurrentPage] = useState(1);
+  const [itemsPerPage] = useState(5); // Number of items per page
 
   const { getTicketsRaisedByMe } = useEmployeeService();
 
@@ -47,6 +50,14 @@ const TicketsRaisedByMe = () => {
     }
   };
 
+  // Calculate the current page's data
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const currentData = data.slice(indexOfFirstItem, indexOfLastItem);
+
+  // Change page
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
+
   return (
     <div className="flex flex-col justify-between items-center mt-32 mb-64 w-auto mx-28">
       <BackButton />
@@ -55,7 +66,7 @@ const TicketsRaisedByMe = () => {
       ) : (
         <>
           <Table
-            data={data}
+            data={currentData}
             update={false}
             del={true}
             approve={false}
@@ -64,6 +75,12 @@ const TicketsRaisedByMe = () => {
             tableType={"ticket"}
             fetchDataTicketsRaisedByMe={fetchData}
           />
+          <Pagination
+           itemsPerPage={itemsPerPage}
+           totalItems={data.length}
+           paginate={paginate}
+           currentPage={currentPage}
+         />
         </>
       )}
     </div>

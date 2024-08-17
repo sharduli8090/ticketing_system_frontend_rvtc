@@ -44,6 +44,26 @@ const useAdminService = () => {
     }
   }, [getAuthorizationHeaders, notifySuccess]);
 
+  const getAllEmployeePagination = useCallback(
+    async (body) => {
+      try {
+        const headers = getAuthorizationHeaders("admin");
+        const response = await axios.post(
+          `${environment.API_ADMIN_URL}${Constants.API_ADMIN_ENDPOINT.GET_ALL_EMPLOYEE_PAGINATION}`,
+          body,
+          headers
+        );
+        notifySuccess(response.data.message);
+        return response.data;
+      } catch (error) {
+        // logout();
+        // navigate("/admin-login");
+        console.log(error);
+      }
+    },
+    [getAuthorizationHeaders, notifySuccess]
+  );
+
   const getAllTicket = useCallback(async () => {
     try {
       const headers = getAuthorizationHeaders("admin");
@@ -85,14 +105,14 @@ const useAdminService = () => {
   }, [getAuthorizationHeaders, notifySuccess]);
 
   const deleteEmployee = useCallback(
-    async (id) => { 
-        const headers = getAuthorizationHeaders("admin");
-        const response = await axios.delete(
-          `${environment.API_ADMIN_URL}${Constants.API_ADMIN_ENDPOINT.DELETE_EMPLOYEE}${id}`,
-          headers
-        );
-        notifySuccess(response.data.message);
-        return response.data; 
+    async (id) => {
+      const headers = getAuthorizationHeaders("admin");
+      const response = await axios.delete(
+        `${environment.API_ADMIN_URL}${Constants.API_ADMIN_ENDPOINT.DELETE_EMPLOYEE}${id}`,
+        headers
+      );
+      notifySuccess(response.data.message);
+      return response.data;
     },
     [getAuthorizationHeaders, notifySuccess]
   );
@@ -209,6 +229,7 @@ const useAdminService = () => {
   return {
     createEmployee,
     getAllEmployee,
+    getAllEmployeePagination,
     getAllTicket,
     deleteAllTicket,
     deleteAllEmployee,
