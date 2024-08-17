@@ -13,7 +13,8 @@ const AllEmployee = () => {
   const [selectedDepartment, setSelectedDepartment] = useState("all");
   const [noData, setNoData] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
-  const [itemsPerPage] = useState(5); // Number of items per page
+  const [itemsPerPage, setItemsPerPage] = useState(5); // Number of items per page
+  const [limit, setLimit] = useState(5);
 
   const { getAllEmployee, getEmployeeDeptWise, deleteAllEmployee } =
     useAdminService();
@@ -109,6 +110,13 @@ const AllEmployee = () => {
   // Change page
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
+  const handleLimitChange = (e) => {
+    if (limit < 1) {
+      notifyError("Limit should be greater than 0");
+      return;
+    }
+    setItemsPerPage(limit);
+  };
   return (
     <div className="flex flex-col justify-between items-center mt-32 mb-64 w-auto mx-28">
       <BackButton />
@@ -161,7 +169,20 @@ const AllEmployee = () => {
             paginate={paginate}
             currentPage={currentPage}
           />
-          
+          <div className="flex mt-2 w-full justify-end items-center">
+            <input
+              type="number"
+              value={limit}
+              onChange={(e) => setLimit(e.target.value)}
+              className="focus:none outline-none  w-16 p-1 text-center h-7 rounded-lg  glow-button-purple text-gray-50 text-sm duration-1000 transition-colors transform"
+            />
+            <button
+              onClick={handleLimitChange}
+              className="glow-button transition-all transform hover:scale-110 rounded-lg text-sm text-gray-50 ml-5 duration-1000 p-1"
+            >
+              Change Limit
+            </button>
+          </div>
         </>
       )}
     </div>
