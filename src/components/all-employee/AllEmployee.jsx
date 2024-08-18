@@ -218,6 +218,7 @@ const AllEmployee = () => {
       notifyError("Limit should be greater than 0");
       return;
     }
+    setCurrentPage(1);
     setItemsPerPage(limit);
   };
   return (
