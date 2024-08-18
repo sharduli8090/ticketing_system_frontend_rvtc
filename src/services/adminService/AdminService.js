@@ -22,8 +22,7 @@ const useAdminService = () => {
         notifySuccess(response.data.message);
         return response.data;
       } catch (error) {
-        logout();
-        navigate("/admin-login");
+        console.log(error);
       }
     },
     [getAuthorizationHeaders, notifySuccess, logout]
@@ -108,8 +107,7 @@ const useAdminService = () => {
         notifySuccess(response.data.message);
         return response.data;
       } catch (error) {
-        logout();
-        navigate("/admin-login");
+        console.log(error);
       }
     },
     [getAuthorizationHeaders, notifySuccess]
@@ -127,8 +125,7 @@ const useAdminService = () => {
         notifySuccess(response.data.message);
         return response.data;
       } catch (error) {
-        logout();
-        navigate("/admin-login");
+        console.log(error);
       }
     },
     [getAuthorizationHeaders, notifySuccess]
@@ -146,12 +143,68 @@ const useAdminService = () => {
         notifySuccess(response.data.message);
         return response.data;
       } catch (error) {
-        logout();
-        navigate("/admin-login");
+        console.log(error);
       }
     },
     [getAuthorizationHeaders, notifySuccess]
   );
+
+  const getPositionWiseEmployee = useCallback(
+    async (obj) => {
+      try {
+        const headers = getAuthorizationHeaders("admin");
+        const response = await axios.post(
+          `${environment.API_ADMIN_URL}${Constants.API_ADMIN_ENDPOINT.GET_POSITION_WISE_EMPLOYEE}`,
+          obj,
+          headers
+        );
+        notifySuccess(response.data.message);
+        return response.data;
+      } catch (error) {
+        console.log(error);
+      }
+    },
+    [getAuthorizationHeaders, notifySuccess]  
+  );
+
+  const getGenderWiseEmployee = useCallback(
+    async (obj) => {
+      try {
+        const headers = getAuthorizationHeaders("admin");
+        const response = await axios.post(
+          `${environment.API_ADMIN_URL}${Constants.API_ADMIN_ENDPOINT.GET_GENDER_WISE_EMPLOYEE}`,
+          obj,
+          headers
+        );
+        notifySuccess(response.data.message);
+        return response.data;
+      } catch (error) {
+        console.log(error);
+      }
+    },
+    [getAuthorizationHeaders, notifySuccess]
+  );
+
+  const getTicketStatusWise = useCallback(
+    async (obj) => {
+      try {
+        const headers = getAuthorizationHeaders("admin");
+        const response = await axios.post(
+          `${environment.API_ADMIN_URL}${Constants.API_ADMIN_ENDPOINT.GET_TICKET_STATUS_WISE}`,
+          obj,
+          headers
+        );
+        notifySuccess(response.data.message);
+        return response.data;
+      } catch (error) {
+        // logout();
+        // navigate("/admin-login");
+        console.log(error);
+      }
+    },
+    [getAuthorizationHeaders, notifySuccess]
+  );
+
 
   const getTicketsDeptWise = useCallback(
     async (obj) => {
@@ -165,8 +218,7 @@ const useAdminService = () => {
         notifySuccess(response.data.message);
         return response.data;
       } catch (error) {
-        logout();
-        navigate("/admin-login");
+        console.log(error);
       }
     },
     [getAuthorizationHeaders, notifySuccess]
@@ -184,8 +236,7 @@ const useAdminService = () => {
         notifySuccess(response.data.message);
         return response.data;
       } catch (error) {
-        logout();
-        navigate("/admin-login");
+        console.log(error);
       }
     },
     [getAuthorizationHeaders, notifySuccess]
@@ -216,6 +267,9 @@ const useAdminService = () => {
     deleteTicket,
     approveDenyTicket,
     getEmployeeDeptWise,
+    getPositionWiseEmployee,
+    getGenderWiseEmployee,
+    getTicketStatusWise,
     getTicketsDeptWise,
     updateEmployee,
     getquery,

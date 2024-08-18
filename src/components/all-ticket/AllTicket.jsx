@@ -9,10 +9,16 @@ import Table from "../table/Table";
 const AllTicket = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [selectedDepartment, setSelectedDepartment] = useState("all");
   const [selectedStatus, setSelectedStatus] = useState("all");
+  const [selectedFilter, setSelectedFilter] = useState("none");
   const [noData, setNoData] = useState(false);
-  const { getAllTicket, getTicketsDeptWise, deleteAllTicket } =
-    useAdminService();
+  const {
+    getAllTicket,
+    getTicketsDeptWise,
+    deleteAllTicket,
+    getTicketStatusWise,
+  } = useAdminService();
   const { notifyError } = useToastNotifications();
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage, setItemsPerPage] = useState(5); // Number of items per page
@@ -24,6 +30,8 @@ const AllTicket = () => {
 
   const fetchData = async () => {
     setLoading(true);
+
+    setFilterNone();
     try {
       const response = await getAllTicket();
       const formattedData = response?.data.map((ticket) => ({
@@ -50,10 +58,42 @@ const AllTicket = () => {
     setLoading(true);
     setCurrentPage(1);
     try {
+      if (selectedDepartment === "all") {
+        fetchData();
+      } else {
+        const response = await getTicketsDeptWise({ dept: selectedDepartment });
+        const formattedData = response?.data.map((ticket) => ({
+          id: ticket.id,
+          Title: ticket.ticketName,
+          Description: ticket.ticketDescription,
+          CreatedAt: ticket.dateOfCreation,
+          DateOfCompletion: ticket.dateOfCompletion || "Not Completed",
+          RaisedBy: ticket.ticketRaisedByName,
+          AssignedTo: ticket.ticketAssignedToName,
+          Status: ticket.ticketStatus,
+          Comments: ticket.ticketComments,
+          Department: ticket.ticketDepartment,
+        }));
+        setData(formattedData);
+      }
+    } catch (error) {
+      notifyError(
+        `An error occurred while fetching data for status: ${selectedDepartment}`
+      );
+      console.error(error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const filterByStatus = async () => {
+    setLoading(true);
+    setCurrentPage(1);
+    try {
       if (selectedStatus === "all") {
         fetchData();
       } else {
-        const response = await getTicketsDeptWise({ dept: selectedStatus });
+        const response = await getTicketStatusWise({ status: selectedStatus });
         const formattedData = response?.data.map((ticket) => ({
           id: ticket.id,
           Title: ticket.ticketName,
@@ -78,6 +118,11 @@ const AllTicket = () => {
     }
   };
 
+  const setFilterNone = () => {
+    setSelectedFilter("none");
+    setSelectedDepartment("all");
+    setSelectedStatus("all");
+  };
   const handleDeleteAll = async () => {
     setLoading(true);
     try {
@@ -88,6 +133,22 @@ const AllTicket = () => {
       console.error(error);
     } finally {
       setLoading(false);
+    }
+  };
+  const setFilterOption = (option) => {
+    switch (option) {
+      case "department":
+        setSelectedFilter("department");
+        break;
+      case "status":
+        setSelectedFilter("status");
+        break;
+      case "none":
+        setSelectedFilter("none");
+        fetchData();
+        break;
+      default:
+        setSelectedFilter("none");
     }
   };
 
@@ -128,23 +189,57 @@ const AllTicket = () => {
           >
             <div className="flex justify-start items-center border-gray-600 border-2 rounded-md px-4 py-2 mr-4">
               <select
-                value={selectedStatus}
-                onChange={(e) => setSelectedStatus(e.target.value)}
+                value={selectedFilter}
+                onChange={(e) => setFilterOption(e.target.value)}
                 className="text-sm w-full px-2 py-1 border rounded-md focus:outline-none font-semibold focus:none glow-input text-gray-50  hover:cursor-pointer"
               >
-                <option value="all">All</option>
-                <option value="hr">HR</option>
-                <option value="it">IT</option>
-                <option value="finance">Finance</option>
-                <option value="admin">Admin</option>
+                <option value="none">No Filter</option>
+                <option value="department">Department</option>
+                <option value="status">Status</option>
               </select>
-              <button
-                onClick={filterByDept}
-                className="text-sm text-gray-50 font-semibold  px-3 py-1 rounded-md glow-button-purple focus:outline-none ml-2  transition-all transform hover:scale-110 duration-1000"
-              >
-                Filter
-              </button>
             </div>
+            {selectedFilter === "department" ? (
+              <div className="flex justify-start items-center border-gray-600 border-2 rounded-md px-4 py-2 mr-4">
+                <select
+                  value={selectedDepartment}
+                  onChange={(e) => setSelectedDepartment(e.target.value)}
+                  className="text-sm w-full px-2 py-1 border rounded-md focus:outline-none font-semibold focus:none glow-input text-gray-50  hover:cursor-pointer"
+                >
+                  <option value="all">All Department</option>
+                  <option value="hr">HR</option>
+                  <option value="it">IT</option>
+                  <option value="finance">Finance</option>
+                  <option value="admin">Admin</option>
+                </select>
+                <button
+                  onClick={filterByDept}
+                  className="text-sm text-gray-50 font-semibold  px-3 py-1 rounded-md glow-button-purple focus:outline-none ml-2  transition-all transform hover:scale-110 duration-1000"
+                >
+                  Filter
+                </button>
+              </div>
+            ) : null}
+            {selectedFilter === "status" ? (
+              <div className="flex justify-start items-center border-gray-600 border-2 rounded-md px-4 py-2 mr-4">
+                <select
+                  value={selectedStatus}
+                  onChange={(e) => setSelectedStatus(e.target.value)}
+                  className="text-sm w-full px-2 py-1 border rounded-md focus:outline-none font-semibold focus:none glow-input text-gray-50  hover:cursor-pointer"
+                >
+                  <option value="all">All Status</option>
+                  <option value="approved">Approved</option>
+                  <option value="denied">Denied</option>
+                  <option value="closed">Closed</option>
+                </select>
+                <button
+                  onClick={filterByStatus}
+                  className="text-sm text-gray-50 font-semibold  px-3 py-1 rounded-md glow-button-purple focus:outline-none ml-2  transition-all transform hover:scale-110 duration-1000"
+                >
+                  Filter
+                </button>
+              </div>
+            ) : null}
+
             <div className="flex justify-end items-center border-gray-600 border-2 rounded-md px-4 py-2">
               <button
                 onClick={handleDeleteAll}
