@@ -17,7 +17,7 @@ const FloatingWidget = () => {
         {isHovered && (
           <div className="absolute bottom-14 right-0 bg-gray-950 text-gray-100 border border-gray-300 rounded-md p-4 shadow-2xl shadow-blue-900">
             <b>Welcome to SmartTask!</b>
-            <div>email: dummyemail@dummy.com</div>
+            <div>email: shardulipandey@smartask.com</div>
             <div>password: test123</div>
           </div>
         )}
