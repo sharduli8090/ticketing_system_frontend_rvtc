@@ -28,7 +28,7 @@ const UpdateEmployeeModal = ({ isOpen, closeModal, selectedRow }) => {
         email: selectedRow.Email || "",
         password: "",
         empName: selectedRow.Name || "",
-        empPosition: selectedRow.Designation || "",
+        empPosition: selectedRow.Position || "",
         empDateOfBirth: selectedRow.Date_Of_Birth || "",
         empDepartment: selectedRow.Department || "",
         empGender: selectedRow.Gender || "",
@@ -143,16 +143,7 @@ const UpdateEmployeeModal = ({ isOpen, closeModal, selectedRow }) => {
                 <div>
                   <label htmlFor="empPosition" className="block mb-2">
                     Position:
-                  </label>
-                  {/* <input
-                    id="empPosition"
-                    name="empPosition"
-                    type="text"
-                    className="w-full border rounded px-3 py-2 glow-input-blue"
-                    value={formData.empPosition}
-                    onChange={handleInputChange}
-                    required
-                  /> */}
+                  </label> 
                   <select
                     id="empPosition"
                     name="empPosition"
@@ -237,7 +228,7 @@ UpdateEmployeeModal.propTypes = {
     id: PropTypes.string,
     Email: PropTypes.string,
     Name: PropTypes.string,
-    Designation: PropTypes.string,
+    Position: PropTypes.string,
     Date_Of_Birth: PropTypes.string,
     Department: PropTypes.string,
     Gender: PropTypes.string,

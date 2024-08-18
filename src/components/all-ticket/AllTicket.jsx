@@ -184,9 +184,7 @@ const AllTicket = () => {
       ) : (
         <>
           <div
-            className={`flex justify-center items-center flex-row w-full mb-10     ${
-              noData ? "hidden" : "block"
-            }`}
+            className={`flex justify-center items-center flex-row w-full mb-10   `}
           >
             <div className="flex justify-start items-center border-gray-600 border-2 rounded-md px-4 py-2 mr-4">
               <select
@@ -216,7 +214,7 @@ const AllTicket = () => {
                   onClick={filterByDept}
                   className="text-sm text-gray-50 font-semibold  px-3 py-1 rounded-md glow-button-purple focus:outline-none ml-2  transition-all transform hover:scale-110 duration-1000"
                 >
-                  Filter
+                  Apply
                 </button>
               </div>
             ) : null}
@@ -228,6 +226,7 @@ const AllTicket = () => {
                   className="text-sm w-full px-2 py-1 border rounded-md focus:outline-none font-semibold focus:none glow-input text-gray-50  hover:cursor-pointer"
                 >
                   <option value="all">All Status</option>
+                  <option value="open">Open</option>
                   <option value="approved">Approved</option>
                   <option value="denied">Denied</option>
                   <option value="closed">Closed</option>
@@ -236,7 +235,7 @@ const AllTicket = () => {
                   onClick={filterByStatus}
                   className="text-sm text-gray-50 font-semibold  px-3 py-1 rounded-md glow-button-purple focus:outline-none ml-2  transition-all transform hover:scale-110 duration-1000"
                 >
-                  Filter
+                  Apply
                 </button>
               </div>
             ) : null}

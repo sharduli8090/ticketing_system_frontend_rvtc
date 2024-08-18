@@ -13,8 +13,7 @@ const AllEmployee = () => {
   const [selectedDepartment, setSelectedDepartment] = useState("all");
   const [selectedGender, setSelectedGender] = useState("all");
   const [selectedPosition, setSelectedPosition] = useState("all");
-  const [selectedFilter, setSelectedFilter] = useState("none");
-  const [noData, setNoData] = useState(false);
+  const [selectedFilter, setSelectedFilter] = useState("none"); 
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage, setItemsPerPage] = useState(5); // Number of items per page
   const [limit, setLimit] = useState(5);
@@ -196,14 +195,7 @@ const AllEmployee = () => {
       setLoading(false);
     }
   };
-
-  useEffect(() => {
-    if (data.length === 0) {
-      setNoData(true);
-    } else {
-      setNoData(false);
-    }
-  }, [data]);
+ 
 
   // Calculate the current page's data
   const indexOfLastItem = currentPage * itemsPerPage;
@@ -229,9 +221,7 @@ const AllEmployee = () => {
       ) : (
         <>
           <div
-            className={`flex justify-center items-center flex-row w-full mb-10    ${
-              noData ? "hidden" : "block"
-            }`}
+            className={`flex justify-center items-center flex-row w-full mb-10    `}
           >
             <div className="flex justify-start items-center border-gray-600 border-2 rounded-md px-4 py-2 mr-4">
               <select

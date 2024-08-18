@@ -86,6 +86,82 @@ const useEmployeeService = () => {
     [getAuthorizationHeaders, notifySuccess]
   );
 
+  const getTicketsRaisedByMeDeptWise = useCallback(
+    async (obj) => {
+      try {
+        const headers = getAuthorizationHeaders("employee");
+        const response = await axios.post(
+          `${environment.API_EMPLOYEE_URL}${Constants.API_EMPLOYEE_ENDPOINT.GET_TICKETS_RAISED_BY_ME_DEPT_WISE}`,
+          obj,
+          headers
+        );
+        notifySuccess(response.data.message);
+        return response.data;
+      } catch (error) {
+        logout();
+        navigate("/employee-login");
+      }
+    },
+    [getAuthorizationHeaders, notifySuccess]
+  );
+
+  const getTicketsRaisedByMeStatusWise = useCallback(
+    async (obj) => {
+      try {
+        const headers = getAuthorizationHeaders("employee");
+        const response = await axios.post(
+          `${environment.API_EMPLOYEE_URL}${Constants.API_EMPLOYEE_ENDPOINT.GET_TICKETS_RAISED_BY_ME_STATUS_WISE}`,
+          obj,
+          headers
+        );
+        notifySuccess(response.data.message);
+        return response.data;
+      } catch (error) {
+        logout();
+        navigate("/employee-login");
+      }
+    },
+    [getAuthorizationHeaders, notifySuccess]
+  );
+
+  const getTicketsInMyNameDeptWise = useCallback(
+    async (obj) => {
+      try {
+        const headers = getAuthorizationHeaders("employee");
+        const response = await axios.post(
+          `${environment.API_EMPLOYEE_URL}${Constants.API_EMPLOYEE_ENDPOINT.GET_TICKETS_IN_MY_NAME_DEPT_WISE}`,
+          obj,
+          headers
+        );
+        notifySuccess(response.data.message);
+        return response.data;
+      } catch (error) {
+        logout();
+        navigate("/employee-login");
+      }
+    },
+    [getAuthorizationHeaders, notifySuccess]
+  );
+
+  const getTicketsInMyNameStatusWise = useCallback(
+    async (obj) => {
+      try {
+        const headers = getAuthorizationHeaders("employee");
+        const response = await axios.post(
+          `${environment.API_EMPLOYEE_URL}${Constants.API_EMPLOYEE_ENDPOINT.GET_TICKETS_IN_MY_NAME_STATUS_WISE}`,
+          obj,
+          headers
+        );
+        notifySuccess(response.data.message);
+        return response.data;
+      } catch (error) {
+        logout();
+        navigate("/employee-login");
+      }
+    },
+    [getAuthorizationHeaders, notifySuccess]
+  );
+
   const getTicketsInMyName = useCallback(
     async (obj) => {
       try {
@@ -130,6 +206,10 @@ const useEmployeeService = () => {
     closeTicket,
     getTicketsRaisedByMe,
     getTicketsInMyName,
+    getTicketsRaisedByMeDeptWise,
+    getTicketsRaisedByMeStatusWise,
+    getTicketsInMyNameDeptWise,
+    getTicketsInMyNameStatusWise,
     approveDenyTicketEmployee,
   };
 };
