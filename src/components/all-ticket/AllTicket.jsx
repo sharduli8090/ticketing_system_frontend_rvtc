@@ -135,6 +135,7 @@ const AllTicket = () => {
                 <option value="hr">HR</option>
                 <option value="it">IT</option>
                 <option value="finance">Finance</option>
+                <option value="admin">Admin</option>
               </select>
               <button
                 onClick={filterByDept}

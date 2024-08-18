@@ -189,7 +189,7 @@ const CreateEmployee = () => {
               </div>
             </div>
 
-            <div className="mb-12 flex flex-col md:flex-row md:space-x-4">
+            <div className="mb-7 flex flex-col md:flex-row md:space-x-4">
               <div className="w-full md:w-1/2">
                 <label
                   htmlFor="empDepartment"
@@ -241,7 +241,7 @@ const CreateEmployee = () => {
             </div>
 
             {errorMessage && (
-              <div className="text-red-500 text-sm mt-1">{errorMessage}</div>
+              <div className="text-red-500 text-md font-medium mt-0 mb-5 text-center">{errorMessage}</div>
             )}
 
             <div className="flex items-center mb-2">
