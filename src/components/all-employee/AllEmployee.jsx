@@ -51,6 +51,7 @@ const AllEmployee = () => {
 
   const filterByDepartment = async () => {
     setLoading(true);
+    setCurrentPage(1);
     try {
       if (selectedDepartment === "all") {
         fetchData();

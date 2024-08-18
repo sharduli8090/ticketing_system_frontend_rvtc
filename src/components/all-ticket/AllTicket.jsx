@@ -48,6 +48,7 @@ const AllTicket = () => {
 
   const filterByDept = async () => {
     setLoading(true);
+    setCurrentPage(1);
     try {
       if (selectedStatus === "all") {
         fetchData();

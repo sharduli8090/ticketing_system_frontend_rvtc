@@ -21,6 +21,7 @@ const AllQuery = () => {
 
   const fetchData = async () => {
     setLoading(true);
+    setCurrentPage(1);
     try {
       const response = await getquery();
       const formattedData = response?.data.map((query) => ({
