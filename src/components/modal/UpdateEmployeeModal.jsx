@@ -55,9 +55,13 @@ const UpdateEmployeeModal = ({ isOpen, closeModal, selectedRow }) => {
 
   const submitForm = async (event) => {
     event.preventDefault();
+    console.log("submitting form");
+    console.log("selectedRow", event);
+
     setLoading(true);
     try {
       const updatedFields = getUpdatedFields();
+      console.log("updatedFields", updatedFields);
       if (Object.keys(updatedFields).length > 0) {
         const updateResp = await updateEmployee(updatedFields, selectedRow.id);
         closeModal();
@@ -81,10 +85,7 @@ const UpdateEmployeeModal = ({ isOpen, closeModal, selectedRow }) => {
         <div className="fixed inset-0 bg-gray-900 opacity-75"></div>
         <div className="relative bg-gray-950 text-gray-50 rounded-lg p-10 glow-login lg:hidden md:block">
           {" "}
-          <button
-            className="absolute top-0 right-0 p-2"
-            onClick={closeModal}
-          >
+          <button className="absolute top-0 right-0 p-2" onClick={closeModal}>
             <IoCloseOutline className="h-6 w-6 text-gray-300 transition-transform transform hover:scale-150 hover:rotate-180 hover:cursor-pointer duration-1000 hover:text-gray-50  rounded-full " />
           </button>
           Open in Desktop View
@@ -146,7 +147,7 @@ const UpdateEmployeeModal = ({ isOpen, closeModal, selectedRow }) => {
                   <label htmlFor="empPosition" className="block mb-2">
                     Position:
                   </label>
-                  <input
+                  {/* <input
                     id="empPosition"
                     name="empPosition"
                     type="text"
@@ -154,7 +155,19 @@ const UpdateEmployeeModal = ({ isOpen, closeModal, selectedRow }) => {
                     value={formData.empPosition}
                     onChange={handleInputChange}
                     required
-                  />
+                  /> */}
+                  <select
+                    id="empPosition"
+                    name="empPosition"
+                    value={formData.empPosition}
+                    onChange={handleInputChange}
+                    className="w-full border rounded px-3 py-2 glow-input-blue"
+                  >
+                    <option value="manager">Manager</option>
+                    <option value="intern">Intern</option>
+                    <option value="associate">Associate</option>
+                    <option value="ceo">CEO</option>
+                  </select>
                 </div>
                 <div>
                   <label htmlFor="empDateOfBirth" className="block mb-2">
@@ -180,14 +193,13 @@ const UpdateEmployeeModal = ({ isOpen, closeModal, selectedRow }) => {
                     className="w-full border rounded px-3 py-2 glow-input-blue"
                     value={formData.empDepartment}
                     onChange={handleInputChange}
-                    required 
-                >
-                  <option value="admin">Admin</option>
-                  <option value="hr">HR</option>
-                  <option value="finance">Finance</option>
-                  <option value="it">IT</option>
-                </select>
-                  
+                    required
+                  >
+                    <option value="admin">Admin</option>
+                    <option value="hr">HR</option>
+                    <option value="finance">Finance</option>
+                    <option value="it">IT</option>
+                  </select>
                 </div>
                 <div>
                   <label htmlFor="empGender" className="block mb-2">
@@ -204,7 +216,7 @@ const UpdateEmployeeModal = ({ isOpen, closeModal, selectedRow }) => {
                     <option value="male">Male</option>
                     <option value="female">Female</option>
                     <option value="other">Other</option>
-                  </select> 
+                  </select>
                 </div>
               </div>
               <button
