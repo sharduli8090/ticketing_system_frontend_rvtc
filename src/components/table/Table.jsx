@@ -53,7 +53,7 @@ const Table = ({
         const delResp = await deleteTicket(id);
         fetchData();
       } else {
-        const delResp = await deleteEmployee(id); 
+        const delResp = await deleteEmployee(id);
         fetchData();
       }
     } catch (error) {
@@ -134,10 +134,16 @@ const Table = ({
   };
 
   const formatData = (row, key) => {
-    if (key === "department") {
-      return row[key] ? row[key].toUpperCase() : "NIL";
+    if (key === "Department") {
+      if (row[key] === "it") return "IT";
+      if (row[key] === "hr") return "HR";
+      return row[key] ? capitalizeFirstLetter(row[key]) : "NIL";
     }
-    return capitalizeFirstLetter(row[key]);
+    if (key !== "Email") {
+      return capitalizeFirstLetter(row[key]);
+    } else {
+      return row[key];
+    }
   };
 
   return (

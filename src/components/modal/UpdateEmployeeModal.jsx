@@ -55,13 +55,10 @@ const UpdateEmployeeModal = ({ isOpen, closeModal, selectedRow }) => {
 
   const submitForm = async (event) => {
     event.preventDefault();
-    console.log("submitting form");
-    console.log("selectedRow", event);
 
     setLoading(true);
     try {
       const updatedFields = getUpdatedFields();
-      console.log("updatedFields", updatedFields);
       if (Object.keys(updatedFields).length > 0) {
         const updateResp = await updateEmployee(updatedFields, selectedRow.id);
         closeModal();

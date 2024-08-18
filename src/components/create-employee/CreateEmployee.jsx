@@ -42,9 +42,7 @@ const CreateEmployee = () => {
   const password = watch("password", "");
 
   return (
-    <div
-      className={`min-h-screen flex justify-center items-center `}
-    >
+    <div className={`min-h-screen flex justify-center items-center `}>
       <BackButton />
 
       {loading ? (
@@ -55,7 +53,10 @@ const CreateEmployee = () => {
             Employee Registration
           </h1>
 
-          <form onSubmit={handleSubmit(onSubmit)} className="w-full text-gray-50 ">
+          <form
+            onSubmit={handleSubmit(onSubmit)}
+            className="w-full text-gray-50 "
+          >
             <div className="mb-6 flex flex-col md:flex-row md:space-x-4 ">
               <div className="w-full md:w-1/2 ">
                 <label
@@ -241,7 +242,9 @@ const CreateEmployee = () => {
             </div>
 
             {errorMessage && (
-              <div className="text-red-500 text-md font-medium mt-0 mb-5 text-center">{errorMessage}</div>
+              <div className="text-red-500 text-md font-medium mt-0 mb-5 text-center">
+                {errorMessage}
+              </div>
             )}
 
             <div className="flex items-center mb-2">
