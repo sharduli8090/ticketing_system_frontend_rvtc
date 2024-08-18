@@ -22,7 +22,8 @@ const useAdminService = () => {
         notifySuccess(response.data.message);
         return response.data;
       } catch (error) {
-        console.log(error);
+        logout();
+        navigate("/admin-login");
       }
     },
     [getAuthorizationHeaders, notifySuccess, logout]
@@ -74,6 +75,7 @@ const useAdminService = () => {
   }, [getAuthorizationHeaders, notifySuccess]);
 
   const deleteAllEmployee = useCallback(async () => {
+    try{
     const headers = getAuthorizationHeaders("admin");
     const response = await axios.delete(
       `${environment.API_ADMIN_URL}${Constants.API_ADMIN_ENDPOINT.DELETE_ALL_EMPLOYEE}`,
@@ -81,10 +83,15 @@ const useAdminService = () => {
     );
     notifySuccess(response.data.message);
     return response.data;
+  } catch (error) {
+    logout();
+    navigate("/admin-login");
+  }
   }, [getAuthorizationHeaders, notifySuccess]);
 
   const deleteEmployee = useCallback(
     async (id) => {
+      try{
       const headers = getAuthorizationHeaders("admin");
       const response = await axios.delete(
         `${environment.API_ADMIN_URL}${Constants.API_ADMIN_ENDPOINT.DELETE_EMPLOYEE}${id}`,
@@ -92,6 +99,10 @@ const useAdminService = () => {
       );
       notifySuccess(response.data.message);
       return response.data;
+    } catch (error) {
+      logout();
+      navigate("/admin-login");
+    }
     },
     [getAuthorizationHeaders, notifySuccess]
   );
@@ -107,7 +118,8 @@ const useAdminService = () => {
         notifySuccess(response.data.message);
         return response.data;
       } catch (error) {
-        console.log(error);
+        logout();
+        navigate("/admin-login");
       }
     },
     [getAuthorizationHeaders, notifySuccess]
@@ -125,7 +137,8 @@ const useAdminService = () => {
         notifySuccess(response.data.message);
         return response.data;
       } catch (error) {
-        console.log(error);
+        logout();
+        navigate("/admin-login");
       }
     },
     [getAuthorizationHeaders, notifySuccess]
@@ -143,7 +156,8 @@ const useAdminService = () => {
         notifySuccess(response.data.message);
         return response.data;
       } catch (error) {
-        console.log(error);
+        logout();
+        navigate("/admin-login");
       }
     },
     [getAuthorizationHeaders, notifySuccess]
@@ -161,10 +175,11 @@ const useAdminService = () => {
         notifySuccess(response.data.message);
         return response.data;
       } catch (error) {
-        console.log(error);
+        logout();
+        navigate("/admin-login");
       }
     },
-    [getAuthorizationHeaders, notifySuccess]  
+    [getAuthorizationHeaders, notifySuccess]
   );
 
   const getGenderWiseEmployee = useCallback(
@@ -179,7 +194,8 @@ const useAdminService = () => {
         notifySuccess(response.data.message);
         return response.data;
       } catch (error) {
-        console.log(error);
+        logout();
+        navigate("/admin-login");
       }
     },
     [getAuthorizationHeaders, notifySuccess]
@@ -197,14 +213,12 @@ const useAdminService = () => {
         notifySuccess(response.data.message);
         return response.data;
       } catch (error) {
-        // logout();
-        // navigate("/admin-login");
-        console.log(error);
+        logout();
+        navigate("/admin-login");
       }
     },
     [getAuthorizationHeaders, notifySuccess]
   );
-
 
   const getTicketsDeptWise = useCallback(
     async (obj) => {
@@ -218,7 +232,8 @@ const useAdminService = () => {
         notifySuccess(response.data.message);
         return response.data;
       } catch (error) {
-        console.log(error);
+        logout();
+        navigate("/admin-login");
       }
     },
     [getAuthorizationHeaders, notifySuccess]
@@ -236,7 +251,8 @@ const useAdminService = () => {
         notifySuccess(response.data.message);
         return response.data;
       } catch (error) {
-        console.log(error);
+        logout();
+        navigate("/admin-login");
       }
     },
     [getAuthorizationHeaders, notifySuccess]
@@ -259,7 +275,7 @@ const useAdminService = () => {
 
   return {
     createEmployee,
-    getAllEmployee, 
+    getAllEmployee,
     getAllTicket,
     deleteAllTicket,
     deleteAllEmployee,
