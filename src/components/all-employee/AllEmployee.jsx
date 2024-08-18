@@ -171,7 +171,7 @@ const AllEmployee = () => {
             paginate={paginate}
             currentPage={currentPage}
           />
-          <div className="flex mt-2 w-full justify-end items-center">
+          <div className="hidden lg:flex md:hidden mt-2 w-full justify-end items-center ">
             <input
               type="number"
               value={limit}

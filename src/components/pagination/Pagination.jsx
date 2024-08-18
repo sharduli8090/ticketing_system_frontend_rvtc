@@ -7,7 +7,7 @@ const Pagination = ({ itemsPerPage, totalItems, paginate, currentPage }) => {
   }
 
   return (
-    <nav>
+    <nav className="hidden lg:block md:hidden">
       <ul className="pagination flex justify-center mt-4 ">
         {pageNumbers.map((number) => (
           <li key={number} className="page-item">
